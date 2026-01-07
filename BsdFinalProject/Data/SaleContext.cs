@@ -23,6 +23,21 @@ namespace BsdFinalProject.Data
             modelBuilder.Entity<Basket>(entity =>
             {
                 entity.HasKey(e => e.Id);
+                entity.Property(e => e.UserId)
+                    .IsRequired(); 
+
+                entity.Property(e => e.GiftId)
+                    .IsRequired();
+
+                entity.HasOne(e => e.User)
+                    .WithMany() 
+                    .HasForeignKey(e => e.UserId) 
+                    .OnDelete(DeleteBehavior.Cascade); 
+               
+                entity.HasOne(e => e.Gift)
+                    .WithMany() 
+                    .HasForeignKey(e => e.GiftId) 
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             // Card configuration
@@ -30,6 +45,21 @@ namespace BsdFinalProject.Data
             {
                 entity.HasKey(e => e.Id);
 
+                entity.Property(e => e.UserId)
+                    .IsRequired();
+                entity.Property(e => e.GiftId)
+                    .IsRequired(); 
+
+
+                entity.HasOne(e => e.Gift)
+                    .WithMany() 
+                    .HasForeignKey(e => e.GiftId) 
+                    .OnDelete(DeleteBehavior.Cascade); 
+
+                entity.HasOne(e => e.User)
+                    .WithMany() 
+                    .HasForeignKey(e => e.UserId) 
+                    .OnDelete(DeleteBehavior.Cascade); 
             });
             // Category configuration
             modelBuilder.Entity<Category>(entity =>
@@ -48,7 +78,6 @@ namespace BsdFinalProject.Data
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
                 entity.HasIndex(e => e.EMail).IsUnique();
-                entity.HasIndex(e => e.EMail).IsUnique();
                 entity.HasMany(e => e.GiftsList)
                       .WithOne(e => e.Donor)
                       .HasForeignKey(e => e.DonorId)
@@ -62,9 +91,15 @@ namespace BsdFinalProject.Data
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Description).HasMaxLength(300);
                 entity.Property(e => e.Cost).IsRequired().HasDefaultValue(30);
-                entity.HasCheckConstraint("CK_Gift_Cost", "Cost > 10 AND Cost < 100");
+                entity.HasCheckConstraint("CK_Gift_Cost", "Cost >= 10 AND Cost <= 100");
                 entity.Property(e => e.Picture).HasMaxLength(300);
-                entity.Property(e => e.WinnerName).HasMaxLength(100).HasDefaultValue("").HasMaxLength(100);
+                entity.Property(e => e.WinnerName).HasMaxLength(100).HasDefaultValue("");
+                entity.HasOne(e => e.Category)
+                   .WithMany()
+                   .HasForeignKey(e => e.CategoryId);
+                entity.HasOne(e => e.Donor)
+                  .WithMany()
+                  .HasForeignKey(e => e.DonorId);
                 entity.HasMany(e => e.CardsList)
                       .WithOne(e => e.Gift)
                       .HasForeignKey(e => e.GiftId)
@@ -85,10 +120,9 @@ namespace BsdFinalProject.Data
                       .OnDelete(DeleteBehavior.Cascade);
                 entity.Property(e => e.FullName).IsRequired().HasMaxLength(100);
                 entity.HasIndex(e => e.EMail).IsUnique();
-
+                entity.Property(e => e.Password).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Phone).HasMaxLength(20);
                 entity.Property(e => e.Address).HasMaxLength(500);
-                entity.HasIndex(e => e.EMail).IsUnique();
                 entity.Property(e => e.Role).HasDefaultValue(Role.User);
 
             });

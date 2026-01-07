@@ -1,17 +1,24 @@
-﻿using BsdFinalProject.Data;
+﻿
+using BsdFinalProject.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Chocolate.Data
 {
     public class SaleContextFactory
     {
-        private const string ConnectionString = "Server=srv2\\pupils;DataBase=Project0583255125;Integrated Security=SSPI;" +
-            "Persist Security Info=False;TrustServerCertificate=true";
+        private readonly IConfiguration _configuration;
 
-        public static SaleContext CreateContext()
+        public SaleContextFactory(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        public SaleContext CreateContext()
         {
             var optionsBuilder = new DbContextOptionsBuilder<SaleContext>();
-            optionsBuilder.UseSqlServer(ConnectionString);
+            var connectionString = _configuration.GetConnectionString("DefaultConnection");
+            optionsBuilder.UseSqlServer(connectionString);
             return new SaleContext(optionsBuilder.Options);
         }
     }

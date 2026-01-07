@@ -1,11 +1,12 @@
 using BsdFinalProject.Data;
+using BsdFinalProject.IRepositories;
 using BsdFinalProject.Models;
 using Chocolate.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace BsdFinalProject.Repositories
 {
-    public class CategoryRepository 
+    public class CategoryRepository : ICategoryRepository
     {
         SaleContext _context = SaleContextFactory.CreateContext();
 
@@ -16,8 +17,8 @@ namespace BsdFinalProject.Repositories
 
         public async Task<Category?> GetCategoryById(int id)
         {
-           var c= await _context.Category.FindAsync(id);
-              return c==null?null:c;
+            var c = await _context.Category.FindAsync(id);
+            return c == null ? null : c;
         }
     }
 }

@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace BsdFinalProject.DTOs
@@ -5,10 +6,10 @@ namespace BsdFinalProject.DTOs
    
     public class CreateDonorDto
     {
-        [MaxLength(20)]
+        [Required,MaxLength(100)]
         public string Name { get; set; }
 
-        [Required, EmailAddress, MaxLength(50)]
+        [EmailAddress]
         public string Email { get; set; }
     }
 }

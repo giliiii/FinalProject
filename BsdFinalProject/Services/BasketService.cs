@@ -1,11 +1,14 @@
 ﻿using BsdFinalProject.DTOs;
+using BsdFinalProject.IServices;
+
+//using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Repositories;
 using BsdFinalProject.Services;
 using FinalProject.Repositories;
 namespace FinalProject.Services
 {
-    public class BasketService
+    public class BasketService : IBasketService
     {
         private readonly BasketRepository _repository = new();
         private readonly GiftService _giftService = new();
@@ -33,7 +36,7 @@ namespace FinalProject.Services
             Basket b = new();
             b.UserId = basket.UserId;
             b.GiftId = basket.GiftId;
-   
+
             var gift = await _giftService.GetGiftById(b.GiftId);
             if (gift == null)
             {

@@ -1,12 +1,13 @@
 //using BsdFinalProject.IRepositories;
 //using BsdFinalProject.IServices;
 using BsdFinalProject.DTOs;
+using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Repositories;
 
 namespace BsdFinalProject.Services
 {
-    public class DonorService
+    public class DonorService : IDonorService
     {
         private readonly DonorRepository _repository = new();
 
@@ -21,7 +22,7 @@ namespace BsdFinalProject.Services
                 Email = d.EMail,
             };
         }
- 
+
 
         public async Task<DonorDto?> CreateNewDonor(CreateDonorDto donorDto)
         {

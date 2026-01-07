@@ -4,7 +4,7 @@ namespace BsdFinalProject.DTOs
 {
     public class CreateUserDto
     {
-        [Required, EmailAddress, MaxLength(50)]
+        [Required, EmailAddress]
         public string EMail { get; set; }
 
         [Required, MinLength(6)]
@@ -13,10 +13,10 @@ namespace BsdFinalProject.DTOs
         [Required, MaxLength(100)]
         public string FullName { get; set; }
 
-        [MaxLength(10)]
+        [MaxLength(20)]
         public string Phone { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(500)]
         public string Address { get; set; }
     }
 }

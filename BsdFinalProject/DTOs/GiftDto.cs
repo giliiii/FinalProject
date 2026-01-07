@@ -1,4 +1,6 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BsdFinalProject.DTOs
 {
@@ -6,21 +8,50 @@ namespace BsdFinalProject.DTOs
     {
         public int Id { get; set; }
 
-        [Required, MaxLength(30)]
+        [Required, MaxLength(100)]
         public string Name { get; set; }
 
         [MaxLength(300)]
         public string Description { get; set; }
 
-        [Range(0, 100000)]
+        [Required, DefaultValue(30), Range(0, 100000)]
         public int Cost { get; set; }
 
-        [MaxLength(200)]
+        [MaxLength(300)]
         public string Picture { get; set; }
 
+        [ForeignKey("category")]
         public int CategoryId { get; set; }
+
+        [ForeignKey("donor")]
         public int DonorId { get; set; }
-        [MaxLength(100)]
+
+        [MaxLength(100),DefaultValue(""),]
         public string WinnerName { get; set; }
+    }
+
+    public class GiftDtoWithSum
+    {
+        [Required, MaxLength(100)]
+        public string Name { get; set; }
+
+        [MaxLength(300)]
+        public string Description { get; set; }
+
+        [Required, DefaultValue(30), Range(0, 100000)]
+        public int Cost { get; set; }
+
+        [MaxLength(300)]
+        public string Picture { get; set; }
+        
+        [ForeignKey("category")]
+        public int CategoryId { get; set; }
+        [ForeignKey("donor")]
+        public int DonorId { get; set; }
+        
+        [MaxLength(100), DefaultValue(""),]
+        public string WinnerName { get; set; }
+
+        public int Count { get; set; }
     }
 }

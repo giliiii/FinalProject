@@ -6,10 +6,10 @@ namespace BsdFinalProject.DTOs
     {
         public int Id { get; set; }
 
-        [MaxLength(20)]
+        [Required,MaxLength(100)]
         public string Name { get; set; }
 
-        [EmailAddress, MaxLength(50)]
+        [EmailAddress]
         public string Email { get; set; }
     }
 }

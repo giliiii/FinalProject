@@ -3,10 +3,11 @@
 using BsdFinalProject.Models;
 using BsdFinalProject.Repositories;
 using BsdFinalProject.DTOs;
+using BsdFinalProject.IServices;
 
 namespace BsdFinalProject.Services
 {
-    public class GiftService
+    public class GiftService : IGiftService
     {
         private readonly GiftRepository _repository = new();
         private readonly CategoryRepository _categoryRepository = new();
@@ -75,17 +76,17 @@ namespace BsdFinalProject.Services
         }
         public async Task<bool> DeleteGift(int id)
         {
-            var deleteGift= await _repository.GetGiftById(id);
-            return deleteGift!=null;
+            var deleteGift = await _repository.GetGiftById(id);
+            return deleteGift != null;
         }
         public async Task<List<GiftDto>> GetGiftsByCategoryId(int categoryId)
         {
-            var category= await _categoryRepository.GetCategoryById(categoryId);
+            var category = await _categoryRepository.GetCategoryById(categoryId);
             var gifts = await _repository.GetGiftsByCategory(categoryId);
-            if(gifts == null)
+            if (gifts == null)
             {
                 return null;
-                
+
             }
             return gifts.Select(g => new GiftDto
             {
@@ -100,19 +101,19 @@ namespace BsdFinalProject.Services
             }).ToList();
         }
         public async Task<List<GiftDto>> GetGiftsByCost(int price1, int price2)
-        { 
-            if (price1 < 0 || price2<0)
+        {
+            if (price1 < 0 || price2 < 0)
             {
                 return null;
             }
-           
-            if (price1 > price2 )
+
+            if (price1 > price2)
             {
                 var temp = price1;
                 price1 = price2;
                 price2 = temp;
             }
-          
+
             var gifts = await _repository.GetGiftByCost(price1, price2);
             return gifts.Select(g => new GiftDto
             {
