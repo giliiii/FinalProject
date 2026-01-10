@@ -11,9 +11,15 @@ namespace BsdFinalProject.Services
     {
         private readonly GiftRepository _repository = new();
         private readonly CategoryRepository _categoryRepository = new();
+        private readonly ILogger<GiftService> _logger;
+        public GiftService(ILogger<GiftService> logger)
+        {
+            _logger = logger;
+        }
 
         public async Task<GiftDto> CreateNewGift(GiftDto giftDto)
         {
+            _logger.LogInformation("Creating a new gift");
             Gift gift = new Gift
             {
                 Name = giftDto.Name,
@@ -23,14 +29,38 @@ namespace BsdFinalProject.Services
                 CategoryId = giftDto.CategoryId,
                 DonorId = giftDto.DonorId,
             };
-
-            var g = await _repository.CreateNewGift(gift);
-            return g == null ? null : giftDto;
+            try
+            {
+                var g = await _repository.CreateNewGift(gift);
+                _logger.LogInformation("Gift created successfully with id: {GiftId}", g.Id);
+                return new GiftDto
+                {
+                    Id = g.Id,
+                    Name = g.Name,
+                    Description = g.Description,
+                    Cost = g.Cost,
+                    Picture = g.Picture,
+                    CategoryId = g.CategoryId,
+                    DonorId = g.DonorId,
+                    WinnerName = g.WinnerName
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating a new gift");
+                throw new Exception("Gift could not be created: " + ex.Message);
+            }
+       
         }
-        public async Task<GiftDto?> GetGiftById(int id)
-        {
+        public async Task<GiftDto?> GetGiftById(int id) { 
+        
+            _logger.LogInformation("start Retrieving gift with id: {GiftId}", id);
             var g = await _repository.GetGiftById(id);
-            if (g == null) return null;
+            if (g == null)
+            {
+                _logger.LogWarning("Gift with id: {GiftId} not found", id);
+                throw new Exception($"Gift with id {id} not found.");
+            }
             return new GiftDto
             {
                 Id = g.Id,
@@ -45,7 +75,9 @@ namespace BsdFinalProject.Services
         }
         public async Task<List<GiftDto>> GetAllGifts()
         {
+            _logger.LogInformation("start Retrieving all gifts");
             var gifts = await _repository.GetAllGifts();
+            _logger.LogInformation("Retrieved gifts");
             return gifts.Select(g => new GiftDto
             {
                 Id = g.Id,
@@ -60,8 +92,14 @@ namespace BsdFinalProject.Services
         }
         public async Task<GiftDto?> UpdateGift(GiftDto giftDto)
         {
+            _logger.LogInformation("start Updating gift with id {GiftId}", giftDto.Id);
             var existingGift = await _repository.GetGiftById(giftDto.Id);
-            if (existingGift == null) return null;
+            _logger.LogInformation("Retrieved existing gift for update");
+            if (existingGift == null)
+            {
+                _logger.LogWarning("Gift with id {GiftId} not found", giftDto.Id);
+                throw new Exception($"Gift with id {giftDto.Id} not found.");
+            }
             existingGift.Name = giftDto.Name;
             existingGift.Description = giftDto.Description;
             existingGift.Cost = giftDto.Cost;
@@ -69,26 +107,32 @@ namespace BsdFinalProject.Services
             existingGift.CategoryId = giftDto.CategoryId;
             existingGift.DonorId = giftDto.DonorId;
             existingGift.WinnerName = giftDto.WinnerName;
+            _logger.LogInformation("Updating gift in repository");
             var updatedGift = await _repository.UpdateGift(existingGift);
-            if (updatedGift == null) return null;
+            if (updatedGift == null)
+            {
+                _logger.LogError("Failed to update gift with id {GiftId}", giftDto.Id);
+                throw new Exception("Gift could not be updated.");
+            }
             return giftDto;
-
         }
         public async Task<bool> DeleteGift(int id)
         {
-            var deleteGift = await _repository.GetGiftById(id);
+            _logger.LogInformation("start Deleting gift with id {GiftId}", id);
+            var deleteGift = await _repository.DeleteGift(id);
+            _logger.LogInformation("Retrieved gift for deletion");
             return deleteGift != null;
         }
         public async Task<List<GiftDto>> GetGiftsByCategoryId(int categoryId)
         {
-            var category = await _categoryRepository.GetCategoryById(categoryId);
+            _logger.LogInformation("start Retrieving gifts for category id {CategoryId}", categoryId);
             var gifts = await _repository.GetGiftsByCategory(categoryId);
             if (gifts == null)
             {
-                return null;
-
+                throw new Exception($"No gifts found for category id {categoryId}.");
+                _logger.LogWarning("No gifts found for category id {CategoryId}", categoryId);
             }
-            return gifts.Select(g => new GiftDto
+                return gifts.Select(g => new GiftDto
             {
                 Id = g.Id,
                 Name = g.Name,
@@ -102,9 +146,11 @@ namespace BsdFinalProject.Services
         }
         public async Task<List<GiftDto>> GetGiftsByCost(int price1, int price2)
         {
+            _logger.LogInformation("start Retrieving gifts with cost between {Price1} and {Price2}", price1, price2);
             if (price1 < 0 || price2 < 0)
             {
-                return null;
+                _logger.LogWarning("Invalid price values: {Price1}, {Price2}", price1, price2);
+                throw new Exception("Price values must be non-negative.");
             }
 
             if (price1 > price2)
@@ -113,7 +159,7 @@ namespace BsdFinalProject.Services
                 price1 = price2;
                 price2 = temp;
             }
-
+            _logger.LogInformation("Fetching gifts from repository");
             var gifts = await _repository.GetGiftByCost(price1, price2);
             return gifts.Select(g => new GiftDto
             {

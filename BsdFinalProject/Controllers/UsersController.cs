@@ -14,11 +14,14 @@ namespace BsdFinalProject.Controllers
     {
         private readonly SaleContext _context;
         private readonly UserService _service;
+        private readonly ILogger<UsersController>  _logger;
 
-        public UsersController(SaleContext context, UserService service)
+        public UsersController(SaleContext context, UserService service, ILogger<UsersController> logger)
         {
             _context = context;
             _service = service;
+            _logger = logger;
+
         }
 
         //[HttpGet]
@@ -101,7 +104,10 @@ namespace BsdFinalProject.Controllers
         public async Task<IActionResult> UserRegister([FromBody] CreateUserDto dto)
         {
             var (success, token, error) = await _service.UserRegister(dto);
-            if (!success) return BadRequest(new { error });
+            if (!success) { 
+                _logger.LogWarning("User registration failed: {Error}", error);
+                return BadRequest(new { error }); 
+            }
 
             return Created(string.Empty, new { token });
         }
@@ -113,7 +119,11 @@ namespace BsdFinalProject.Controllers
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var (success, token, error) = await _service.LoginAsync(dto);
-            if (!success) return BadRequest(new { error });
+            if (!success)
+            {
+                _logger.LogWarning("User login failed: {Error}", error);
+                return BadRequest(new { error });
+            }
 
             return Ok(new { token });
         }

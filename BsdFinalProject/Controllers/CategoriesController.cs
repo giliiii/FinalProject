@@ -14,16 +14,19 @@ namespace BsdFinalProject.Controllers
     {
         private readonly SaleContext _context;
         private readonly CategoryService _CategoryService;
+        private readonly ILogger<CategoriesController> _logger;
         //public BasketsController(SaleContext context) => _context = context;
 
-        public CategoriesController(CategoryService categoryService, SaleContext context)
+        public CategoriesController(CategoryService categoryService, SaleContext context, ILogger<CategoriesController> logger)
         {
             _CategoryService = categoryService;
             _context = context;
+            _logger = logger;
+
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<CategoryDto>>> GetAllCategories()
+        public async Task<ActionResult<List<CategoryDto?>>> GetAllCategories()
         {
             var categories = await _CategoryService.GetAllCategories();
             return Ok(categories);
@@ -31,12 +34,16 @@ namespace BsdFinalProject.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<CategoryDto>> GetCategoryById(int id)
         {
-            var category = await _CategoryService.GetCategoryById(id);
-            if (category == null)
+            try
             {
-                return NotFound(new { message = $"Category with ID {id} not found." });
+                var category = await _CategoryService.GetCategoryById(id);
+                return Ok(category);
             }
-            return Ok(category);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while fetching category with ID: {CategoryId}", id);
+                return NotFound(new { message = ex.Message });
+            }
         }
         //[HttpGet]
         //public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAll()
