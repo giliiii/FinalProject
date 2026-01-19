@@ -10,24 +10,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
-//cors
-// CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("allowlocalhost", policy =>
-    {
-        policy.WithOrigins("http://localhost:4200")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
-});
-//builder.Services.AddCors();
-
 
 // Configure Serilog
 Log.Logger = new LoggerConfiguration()
@@ -36,7 +21,6 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
     .CreateLogger();
 
-// Add services to the container.
 builder.Host.UseSerilog();
 
 builder.Services.AddControllers(options =>
@@ -49,9 +33,9 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
 });
 
+// NOTE: CORS removed temporarily for debugging
+// builder.Services.AddCors(...);
 
-
-// Add repository and service registrations
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IGiftService, GiftService>();
@@ -71,34 +55,31 @@ builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddDbContext<SaleContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
-
-
-    // JWT configuration
-    var key = builder.Configuration["Jwt:Key"];
-    if (!string.IsNullOrEmpty(key))
+// JWT configuration
+var key = builder.Configuration["Jwt:Key"];
+if (!string.IsNullOrEmpty(key))
+{
+    builder.Services.AddAuthentication(options =>
     {
-        builder.Services.AddAuthentication(options =>
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
         {
-            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        })
-        .AddJwtBearer(options =>
-        {
-            options.RequireHttpsMetadata = false;
-            options.SaveToken = true;
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = !string.IsNullOrEmpty(builder.Configuration["Jwt:Issuer"]),
-                ValidateAudience = !string.IsNullOrEmpty(builder.Configuration["Jwt:Audience"]),
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
-            };
-        });
-    }
+            ValidateIssuer = !string.IsNullOrEmpty(builder.Configuration["Jwt:Issuer"]),
+            ValidateAudience = !string.IsNullOrEmpty(builder.Configuration["Jwt:Audience"]),
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
+        };
+    });
+}
 
-    var app = builder.Build();
-app.UseCors("allowlocalhost");
+var app = builder.Build();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -110,43 +91,16 @@ if (app.Environment.IsDevelopment())
         c.RoutePrefix = string.Empty; // Swagger UI at app root
     });
 }
-//app.Use(async (context, next) =>
-//{
-//    if (context.Request.Method == "OPTIONS")
-//    {
-//        context.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:4200");
-//        context.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//        context.Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-//        context.Response.StatusCode = 200;
-//        await context.Response.CompleteAsync();
-//        return;
-//    }
 
-//    await next();
-//});
 app.UseHttpsRedirection();
-    app.UseRouting();
+app.UseRouting();
 
-//app.UseCors(x => x
-//    .AllowAnyOrigin()
-//    .AllowAnyHeader()
-//    .AllowAnyMethod()
-//);
+// CORS disabled for debug
+// app.UseCors("AllowSpecificOrigin");
 
 app.UseAuthentication();
-    app.UseAuthorization();
-    app.MapControllers();
-    app.Run();
+app.UseAuthorization();
 
+app.MapControllers();
 
-//namespace BsdFinalProject.DTOs
-//{
-//    public class CreateDonorDto
-//    {
-//        [Required, MaxLength(20)]
-//        public string Name { get; set; }
-
-//        [Required, EmailAddress, MaxLength(50)]
-//        public string Email { get; set; }
-//    }
-//}
+app.Run();

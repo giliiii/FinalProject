@@ -17,24 +17,35 @@ namespace BsdFinalProject.Services
     {
         private readonly UserRepository _repo;
         private readonly IConfiguration _config;
+        private readonly ILogger<UserService> _logger;
 
-        public UserService(UserRepository repo, IConfiguration config)
+        public UserService(UserRepository repo, IConfiguration config, ILogger<UserService> logger)
         {
             _repo = repo;
             _config = config;
+            _logger = logger;
+
         }
 
         public async Task<(bool Success, string? Token, string? Error)> UserRegister(CreateUserDto dto)
         {
-            // basic validation
+            
+            _logger.LogInformation("start Registering user with email: {Email}", dto.EMail);
             if (string.IsNullOrWhiteSpace(dto.EMail) || string.IsNullOrWhiteSpace(dto.Password))
+            {
+                _logger.LogWarning("Registration failed: Email or password is empty.");
                 return (false, null, "Email and password are required.");
-
+            }
+            _logger.LogInformation("Checking if email {Email} is already in use.", dto.EMail);
             var existing = await _repo.GetByEmail(dto.EMail);
-            if (existing != null) return (false, null, "Email already in use.");
+            if (existing != null) {
+                _logger.LogWarning("Registration failed: Email {Email} is already in use.", dto.EMail);
+                return (false, null, "Email already in use."); }
 
             // hash password
+            _logger.LogInformation("Hashing password for email: {Email}", dto.EMail);
             var hashed = HashPassword(dto.Password);
+            _logger.LogInformation("try Creating new user record for email: {Email}", dto.EMail);
 
             var user = new User
             {
@@ -47,8 +58,10 @@ namespace BsdFinalProject.Services
             };
 
             var created = await _repo.CreateUser(user);
+            _logger.LogInformation("User registered successfully with email: {Email}", dto.EMail);
 
             var token = CreateToken(created);
+            _logger.LogInformation("JWT token created for user with email: {Email}", dto.EMail);
             return (true, token, null);
         }
 
@@ -56,26 +69,39 @@ namespace BsdFinalProject.Services
         public async Task<(bool Success, string? Token, string? Error)> LoginAsync(LoginDto dto)
         {
             if (dto == null || string.IsNullOrWhiteSpace(dto.EMail) || string.IsNullOrWhiteSpace(dto.Password))
+            {
+                _logger.LogWarning("Login failed: Email or password is empty.");
                 return (false, null, "Email and password are required.");
-
+            }
+            _logger.LogInformation("Attempting to log in user with email: {Email}", dto.EMail);
             var user = await _repo.GetByEmail(dto.EMail);
-            if (user == null) return (false, null, "Invalid credentials.");
+            if (user == null) { 
+                _logger.LogWarning("Login failed: No user found with email: {Email}", dto.EMail);
+                return (false, null, "Invalid credentials.");
+            }
 
             if (string.IsNullOrEmpty(user.Password) || !VerifyPassword(user.Password, dto.Password))
+            {
+                _logger.LogWarning("Login failed: Invalid password for email: {Email}", dto.EMail);
                 return (false, null, "Invalid credentials.");
-
+            }
+            _logger.LogInformation("Password verified for user with email: {Email}", dto.EMail);
             var token = CreateToken(user);
+            _logger.LogInformation("User logged in successfully with email: {Email}", dto.EMail);
             return (true, token, null);
         }
 
         private string CreateToken(User user)
         {
+            _logger.LogInformation("start Creating JWT token for user with email: {Email}", user.EMail);
             var key = _config["Jwt:Key"];
             var issuer = _config["Jwt:Issuer"];
             var audience = _config["Jwt:Audience"];
             var expireMinutes = int.TryParse(_config["Jwt:ExpireMinutes"], out var m) ? m : 60;
 
-            if (string.IsNullOrEmpty(key)) throw new InvalidOperationException("JWT Key not configured.");
+            if (string.IsNullOrEmpty(key)) {
+                _logger.LogError("JWT Key not configured.");
+                throw new InvalidOperationException("JWT Key not configured."); }
 
             var claims = new[]
             {
@@ -105,6 +131,7 @@ namespace BsdFinalProject.Services
         // PBKDF2 hashing (salt + hash stored as: iterations.saltBase64.hashBase64)
         private  string HashPassword(string password, int iterations = 100_000)
         {
+            _logger.LogInformation("start Hashing password using PBKDF2.");
             using var rng = RandomNumberGenerator.Create();
             var salt = new byte[16];
             rng.GetBytes(salt);
@@ -117,6 +144,7 @@ namespace BsdFinalProject.Services
 
         public  bool VerifyPassword(string hashedPassword, string password)
         {
+            _logger.LogInformation("start Verifying password using PBKDF2.");
             var parts = hashedPassword.Split('.', 3);
             if (parts.Length != 3) return false;
 

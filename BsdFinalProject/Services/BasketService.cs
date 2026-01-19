@@ -1,70 +1,113 @@
 ﻿using BsdFinalProject.DTOs;
-using BsdFinalProject.IServices;
+
 
 //using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Repositories;
 using BsdFinalProject.Services;
 using FinalProject.Repositories;
+using BsdFinalProject.IServices;
+using Microsoft.Extensions.Logging;
+
 namespace FinalProject.Services
 {
     public class BasketService : IBasketService
     {
         private readonly BasketRepository _repository = new();
         private readonly GiftService _giftService = new();
+        private readonly ILogger<BasketService> _logger;
 
-        public async Task<List<BasketDto>> GetAllMyBasket(int Id)
+        public BasketService(ILogger<BasketService> logger)
         {
+            _logger = logger;
+        }
 
-            var Baskets = (await _repository.GetAllMyBasket(Id)).ToList();
-
-            List<BasketDto> b = new();
-            for (int i = 0; i < Baskets.Count; i++)
+        public async Task<List<BasketDto>> GetAllMyBasket(int userId)
+        {
+            _logger.LogInformation("Fetching baskets for user with ID: {UserId}", userId);
+            var baskets = await _repository.GetAllMyBasket(userId);
+            _logger.LogInformation("Retrieved  baskets for user with ID: {UserId}",userId);
+            return baskets.Select(b => new BasketDto
             {
-                BasketDto bd = new();
-                bd.Id = Baskets[i].Id;
-                bd.UserId = Baskets[i].UserId;
-                bd.GiftId = Baskets[i].GiftId;
-                b.Add(bd);
-            }
-
-            return b;
+                Id = b.Id,
+                UserId = b.UserId,
+                GiftId = b.GiftId
+            }).ToList();
         }
         public async Task<CreateBasketDto> CreateNewBasket(CreateBasketDto basket)
         {
-
-            Basket b = new();
-            b.UserId = basket.UserId;
-            b.GiftId = basket.GiftId;
-
-            var gift = await _giftService.GetGiftById(b.GiftId);
-            if (gift == null)
+            _logger.LogInformation("Creating new basket for user with ID: {UserId} and Gift ID: {GiftId}", basket.UserId, basket.GiftId);
+            try
             {
-                return null;
+                var gift = await _giftService.GetGiftById(basket.GiftId);
+                _logger.LogInformation("Fetched gift with ID: {GiftId} for basket creation", basket.GiftId);
+                if (gift == null)
+                {
+                    _logger.LogWarning("Gift with ID: {GiftId} not found", basket.GiftId);
+                    throw new Exception("Gift not found");
+                }
+
+                Basket b = new();
+                b.UserId = basket.UserId;
+                b.GiftId = basket.GiftId;
+
+
+                var B = await _repository.CreateNewBasket(b);
+                return basket;
             }
-            var B = await _repository.CreateNewBasket(b);
-            return B == null ? null : basket;
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating basket for user with ID: {UserId} and Gift ID: {GiftId}", basket.UserId, basket.GiftId);
+                throw new ApplicationException("Failed to create basket", ex);
+            }
         }
         public async Task<BasketDto> DeleteOneBasket(int id)
         {
-            Basket B = await _repository.DeleteOneBasket(id);
-            if (B == null) return null;
-            var gift = await _giftService.GetGiftById(B.GiftId);
-            if (gift == null)
+            _logger.LogInformation("start Deleting basket with ID: {BasketId}", id);
+            try
             {
-                return null;
+                var basket = await _repository.DeleteOneBasket(id);
+                if (basket == null)
+                {
+                    _logger.LogWarning("Basket with ID: {BasketId} not found for deletion", id);
+                    throw new Exception("Basket not found");
+                }
+                var gift = await _giftService.GetGiftById(basket.GiftId);
+                if (gift == null)
+                {
+                    _logger.LogWarning("Gift with ID: {GiftId} not found during basket deletion", basket.GiftId);
+                    throw new Exception("Gift not found");
+                }
+                BasketDto bd = new();
+                bd.Id = basket.Id;
+                bd.UserId = basket.UserId;
+                bd.GiftId = basket.GiftId;
+                return bd;
             }
-            BasketDto bd = new();
-            bd.Id = B.Id;
-            bd.UserId = B.UserId;
-            bd.GiftId = B.GiftId;
-            return bd;
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while deleting basket with ID: {BasketId}", id);
+                throw new ApplicationException("Failed to delete basket", ex);
+            }
         }
-        public async Task<bool> DeleteAllBasket(int id)
+        public async Task DeleteAllBasket(int userId)
         {
-            var deleted = await _repository.DeleteAllBasket(id);
-            return !deleted ? false : true;
+            _logger.LogInformation("start Deleting all baskets for user with ID: {UserId}", userId);
+            try
+            {
+                var deletedBaskets = await _repository.DeleteAllBasket(userId);
 
+                if (!deletedBaskets.Any())
+                {
+                    _logger.LogWarning("No baskets found to delete for user with ID: {UserId}", userId);
+                    throw new Exception("No baskets found to delete");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while deleting all baskets for user with ID: {UserId}", userId);
+                throw new ApplicationException("Failed to delete all baskets", ex);
+            }
         }
 
     }

@@ -16,11 +16,14 @@ namespace BsdFinalProject.Controllers
     {
         private readonly SaleContext _context;
         private readonly WinnerService _WinnerService;
+        private readonly ILogger<WinnersController> _logger;
 
-        public WinnersController(WinnerService winnerService, SaleContext context)
+        public WinnersController(WinnerService winnerService, SaleContext context, ILogger<WinnersController> logger)
         {
             _WinnerService = winnerService;
             _context = context;
+            _logger = logger;
+
         }
 
         [HttpGet]
@@ -33,6 +36,7 @@ namespace BsdFinalProject.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error occurred while getting all winners.");
                 return BadRequest(new { message = ex.Message });
             }
         }
@@ -45,8 +49,14 @@ namespace BsdFinalProject.Controllers
                 var winner = await _WinnerService.CreateNewWinner(giftId);
                 return Ok(winner);
             }
+            catch (ArgumentException ex)
+            {
+                _logger.LogError(ex, "Invalid argument provided while adding a new winner.");
+                return BadRequest(new { message = ex.Message });
+            }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error occurred while adding a new winner.");
                 return BadRequest(new { message = ex.Message });
             }
         }
@@ -61,6 +71,7 @@ namespace BsdFinalProject.Controllers
             }
             catch(Exception ex)
             {
+                _logger.LogError(ex, "Error occurred while deleting all winners.");
                 return BadRequest(new { message = ex.Message });
             }
         }

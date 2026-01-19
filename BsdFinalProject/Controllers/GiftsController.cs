@@ -15,12 +15,15 @@ namespace BsdFinalProject.Controllers
     {
         private readonly SaleContext _context;
         private readonly GiftService _GiftService;
+        private readonly ILogger<GiftsController> _logger;
         //public BasketsController(SaleContext context) => _context = context;
 
-        public GiftsController(GiftService giftService, SaleContext context)
+        public GiftsController(GiftService giftService, SaleContext context, ILogger<GiftsController> logger)
         {
             _GiftService = giftService;
             _context = context;
+            _logger = logger;
+
         }
 
         [HttpGet]
@@ -33,21 +36,38 @@ namespace BsdFinalProject.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<GiftDto>> GetGiftById(int id)
         {
-            var gift = await _GiftService.GetGiftById(id);
-            if (gift == null)
+            try
             {
-                return NotFound(new { message = $"Gift with ID {id} not found." });
+                var gift = await _GiftService.GetGiftById(id);
+                return Ok(gift);
             }
-            return Ok(gift);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving gift with ID {GiftId}", id);
+                return NotFound(new { message = ex.Message });
+            }
         }
 
-        
+
         [HttpPost]
         [Authorize(Roles = "Manager")]
         public async Task<ActionResult<GiftDto>> CreateNewGift(GiftDto giftDto)
         {
-            var createdGift = await _GiftService.CreateNewGift(giftDto);
-            return CreatedAtAction(nameof(GetGiftById), new { id = createdGift.Id }, createdGift);
+            try
+            {
+                var createdGift = await _GiftService.CreateNewGift(giftDto);
+                return CreatedAtAction(nameof(GetGiftById), new { id = createdGift.Id }, createdGift);
+            }
+            catch(ArgumentException ex)
+            {
+                _logger.LogError(ex, "Validation error while creating a new gift.");
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating a new gift.");
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpPut("{id:int}")]
@@ -56,49 +76,62 @@ namespace BsdFinalProject.Controllers
         {
             if (id != giftDto.Id)
             {
+                _logger.LogWarning("ID mismatch: URL ID {UrlId} does not match body ID {BodyId}", id, giftDto.Id);
                 return BadRequest(new { message = "ID mismatch." });
             }
-            var updatedGift = await _GiftService.UpdateGift(giftDto);
-            if (updatedGift == null)
+            try
             {
-                return NotFound(new { message = $"Gift with ID {id} not found." });
+                var updatedGift = await _GiftService.UpdateGift(giftDto);
+                return Ok(updatedGift);
             }
-            return Ok(updatedGift);
+            catch(ArgumentException ex)
+            {
+                _logger.LogError(ex, "Validation error while updating gift with ID {GiftId}", id);
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating gift with ID {GiftId}", id);
+                return NotFound(new { message = ex.Message });
+            }
         }
 
         [HttpDelete("{id:int}")]
         [Authorize(Roles = "Manager")]
         public async Task<ActionResult<GiftDto>> DeleteGift(int id)
-        {
+        {  
             var deletedGift = await _GiftService.DeleteGift(id);
-            if (deletedGift == null)
-            {
-                return NotFound(new { message = $"Gift with ID {id} not found." });
-            }
             return Ok(deletedGift);
         }
 
         [HttpGet("category/{categoryId:int}")]
         public async Task<ActionResult<List<GiftDto>>> GetGiftsByCategory(int categoryId)
         {
-            var gifts = await _GiftService.GetGiftsByCategoryId(categoryId);
-            if(gifts == null)
+            try
             {
-
-                return BadRequest("invalid categiry id");
+                var gifts = await _GiftService.GetGiftsByCategoryId(categoryId);
+                return Ok(gifts);
             }
-            return Ok(gifts);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving gifts for category ID {CategoryId}", category
+                return NotFound(new { message = ex.Message });
+            }
         }
 
         [HttpGet("cost/{Price1:int}/{Price2:int}")]
         public async Task<ActionResult<List<GiftDto>>> GetGiftsByCost(int Price1, int Price2)
         {
-            var gifts = await _GiftService.GetGiftsByCost(Price1, Price2);
-            if (gifts == null)
+            try
             {
-                return BadRequest("price must be non-negative");
+                var gifts = await _GiftService.GetGiftsByCost(Price1, Price2);
+                return Ok(gifts);
             }
-            return Ok(gifts);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving gifts with cost between {Price1} and {Price2}", Price1, Price2);
+                return NotFound(new { message = ex.Message });
+            }
         }
 
         //[HttpGet]

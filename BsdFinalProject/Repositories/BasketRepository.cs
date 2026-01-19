@@ -37,15 +37,14 @@ namespace FinalProject.Repositories
             await _context.SaveChangesAsync();
             return basket;
         }
-        public async Task<bool> DeleteAllBasket(int id)//זה id של user
+        public async Task<List<Basket>> DeleteAllBasket(int userId)
         {
-            var baskets = (await GetAllMyBasket(id)).ToList();
-            if (baskets == null || baskets.Count == 0) return false;
+            var baskets = (await GetAllMyBasket(userId)).ToList();
+            if (!baskets.Any()) return new List<Basket>();
 
-            // Efficient: remove all retrieved entities in one call
             _context.Basket.RemoveRange(baskets);
             await _context.SaveChangesAsync();
-            return true;
+            return baskets;
         }
 
     }

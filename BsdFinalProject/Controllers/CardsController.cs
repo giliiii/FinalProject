@@ -2,6 +2,7 @@ using BsdFinalProject.Data;
 using BsdFinalProject.DTOs;
 using BsdFinalProject.Models;
 using BsdFinalProject.Services;
+using FinalProject.Controllers;
 using FinalProject.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,12 +16,14 @@ namespace BsdFinalProject.Controllers
     {
         private readonly SaleContext _context;
         private readonly CardService _CardService;
+        private readonly ILogger<CardsController> _logger;
         //public BasketsController(SaleContext context) => _context = context;
 
-        public CardsController(CardService cardService, SaleContext context)
+        public CardsController(CardService cardService, SaleContext context,ILogger<CardsController> logger)
         {
             _CardService = cardService;
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet("byId/{id:int}")]
@@ -29,6 +32,7 @@ namespace BsdFinalProject.Controllers
             var card = await _CardService.GetCardById(id);
             if (card == null)
             {
+                _logger.LogWarning("Card with ID {CardId} not found.", id);
                 return NotFound(new { message = $"Card with ID {id} not found." });
             }
             var cardDto = new CardDto
@@ -46,7 +50,10 @@ namespace BsdFinalProject.Controllers
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (userId == null)
+            {
+                _logger.LogWarning("Unauthorized access attempt to GetAllMyCard.");
                 return Unauthorized();
+            }
             int newUserId = int.Parse(userId);
             try
             {
@@ -55,6 +62,7 @@ namespace BsdFinalProject.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error occurred while retrieving cards for user ID {UserId}.", newUserId);
                 return NotFound(new { message = ex.Message });
             }
 
@@ -68,8 +76,14 @@ namespace BsdFinalProject.Controllers
                 var createdCards = await _CardService.CreateNewcCards(baskets);
                 return Ok(createdCards);
             }
+            catch (ArgumentException ex)
+            {
+                _logger.LogWarning(ex, "Invalid input provided to CreateNewcCards.");
+                return BadRequest(new { message = ex.Message });
+            }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error occurred while creating new cards.");
                 return BadRequest(new { message = ex.Message });
             }
         }

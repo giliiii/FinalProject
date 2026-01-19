@@ -14,12 +14,15 @@ namespace BsdFinalProject.Controllers
     {
         private readonly SaleContext _context;
         private readonly Services.DonorService _DonorService;
+        private readonly ILogger<DonorsController> _logger;
         //public BasketsController(SaleContext context) => _context = context;
 
-        public DonorsController(DonorService donorService, SaleContext context)
+        public DonorsController(DonorService donorService, SaleContext context, ILogger<DonorsController> logger)
         {
             _DonorService = donorService;
             _context = context;
+            _logger = logger;
+
         }
 
         [HttpGet]
@@ -33,10 +36,16 @@ namespace BsdFinalProject.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<DonorDto>> GetDonorById(int id)
         {
-            var donor = await _DonorService.GetDonorById(id);
-            if (donor == null)
-                return NotFound(new {message=$"Donor with ID {id} not found."});
-            return Ok(donor);
+            try
+            {
+                var donor = await _DonorService.GetDonorById(id);
+                return Ok(donor);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving donor with ID {DonorId}", id);
+                return NotFound(new { message = ex.Message });
+            }
         }
 
         [HttpPost]
@@ -45,13 +54,16 @@ namespace BsdFinalProject.Controllers
             try
             {
                 var createdDonor = await _DonorService.CreateNewDonor(donorDto);
-
-                if (createdDonor == null)
-                    return BadRequest(new { message = "Failed to create donor." });
                 return Ok(createdDonor);
+            }
+            catch (ArgumentException ex)
+            {
+                _logger.LogError(ex, "Validation error while creating a new donor");
+                return BadRequest(new { message = ex.Message });
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error creating a new donor");
                 return BadRequest(new { message = ex.Message });
             }
         }
@@ -59,27 +71,51 @@ namespace BsdFinalProject.Controllers
         [HttpPut]
         public async Task<ActionResult<DonorDto>> UpdateDonor(DonorDto donorDto)
         {
-            var updatedDonor = await _DonorService.UpdateDonor(donorDto);
-            if (updatedDonor == null)
-                return NotFound(new { message = $"Donor with ID {donorDto.Id} not found." });
-            return Ok(donorDto);
+            try
+            {
+                var updatedDonor = await _DonorService.UpdateDonor(donorDto);
+                return Ok(donorDto);
+            }
+            catch (ArgumentException ex)
+            {
+                _logger.LogError(ex, "Validation error while updating donor with ID {DonorId}", donorDto.Id);
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating donor with ID {DonorId}", donorDto.Id);
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<DonorDto>> DeleteDonor(int id)
         {
-            var deletedDonor = await _DonorService.DeleteDonor(id);
-            if (deletedDonor == null)
-                return NotFound(new { message = $"Donor with ID {id} not found." });
-            return Ok(deletedDonor);
+            try
+            {
+                var deletedDonor = await _DonorService.DeleteDonor(id);
+                return Ok(deletedDonor);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error deleting donor with ID {DonorId}", id);
+                return BadRequest(new { message = ex.Message });
+            }
         }
+        
         [HttpGet("{id:int}/gifts")]
         public async Task<ActionResult<IEnumerable<GiftDto>>> GetDonorGiftList(int id)
         {
-            var gifts = await _DonorService.GetDonorGiftList(id);
-            if (gifts == null || !gifts.Any())
-                return NotFound(new { message = $"No gifts found for Donor with ID {id}." });
-            return Ok(gifts);
+            try
+            {
+                var gifts = await _DonorService.GetDonorGiftList(id);
+                return Ok(gifts);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving gifts for donor with ID {DonorId}", id);
+                return NotFound(new { message = ex.Message });
+            }
         }
 
         //[HttpGet]

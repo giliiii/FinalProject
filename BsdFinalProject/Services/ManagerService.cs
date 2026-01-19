@@ -30,13 +30,13 @@ namespace BsdFinalProject.Services
             return new ManegerDto { Id = m.Id, Name = m.Name, Password = m.Password };
         }
 
-        // Used by middleware: check if given user id belongs to a manager
-        public static async Task<bool> IsUserManagerAsync(string userId)
-        {
-            if (!int.TryParse(userId, out var id)) return false;
+        //// Used by middleware: check if given user id belongs to a manager
+        //public static async Task<bool> IsUserManagerAsync(string userId)
+        //{
+        //    if (!int.TryParse(userId, out var id)) return false;
 
-            using var ctx = SaleContextFactory.CreateContext();
-            return await ctx.Manager.AnyAsync(m => m.Id == id);
-        }
+        //    using var ctx = SaleContextFactory.CreateContext();
+        //    return await ctx.Manager.AnyAsync(m => m.Id == id);
+        //}
     }
 }
