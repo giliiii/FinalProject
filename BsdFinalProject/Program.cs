@@ -15,6 +15,20 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//cors
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("allowlocalhost", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+//builder.Services.AddCors();
+
+
 // Configure Serilog
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
@@ -25,12 +39,17 @@ Log.Logger = new LoggerConfiguration()
 // Add services to the container.
 builder.Host.UseSerilog();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true;
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
 });
+
+
 
 // Add repository and service registrations
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -52,31 +71,34 @@ builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddDbContext<SaleContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// JWT configuration
-var key = builder.Configuration["Jwt:Key"];
-if (!string.IsNullOrEmpty(key))
-{
-    builder.Services.AddAuthentication(options =>
+
+
+
+    // JWT configuration
+    var key = builder.Configuration["Jwt:Key"];
+    if (!string.IsNullOrEmpty(key))
     {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
-    .AddJwtBearer(options =>
-    {
-        options.RequireHttpsMetadata = false;
-        options.SaveToken = true;
-        options.TokenValidationParameters = new TokenValidationParameters
+        builder.Services.AddAuthentication(options =>
         {
-            ValidateIssuer = !string.IsNullOrEmpty(builder.Configuration["Jwt:Issuer"]),
-            ValidateAudience = !string.IsNullOrEmpty(builder.Configuration["Jwt:Audience"]),
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
-        };
-    });
-}
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer(options =>
+        {
+            options.RequireHttpsMetadata = false;
+            options.SaveToken = true;
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = !string.IsNullOrEmpty(builder.Configuration["Jwt:Issuer"]),
+                ValidateAudience = !string.IsNullOrEmpty(builder.Configuration["Jwt:Audience"]),
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
+            };
+        });
+    }
 
-var app = builder.Build();
-
+    var app = builder.Build();
+app.UseCors("allowlocalhost");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -88,13 +110,33 @@ if (app.Environment.IsDevelopment())
         c.RoutePrefix = string.Empty; // Swagger UI at app root
     });
 }
+//app.Use(async (context, next) =>
+//{
+//    if (context.Request.Method == "OPTIONS")
+//    {
+//        context.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:4200");
+//        context.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//        context.Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//        context.Response.StatusCode = 200;
+//        await context.Response.CompleteAsync();
+//        return;
+//    }
 
+//    await next();
+//});
 app.UseHttpsRedirection();
-app.UseRouting();
+    app.UseRouting();
+
+//app.UseCors(x => x
+//    .AllowAnyOrigin()
+//    .AllowAnyHeader()
+//    .AllowAnyMethod()
+//);
+
 app.UseAuthentication();
-app.UseAuthorization();
-app.MapControllers();
-app.Run();
+    app.UseAuthorization();
+    app.MapControllers();
+    app.Run();
 
 
 //namespace BsdFinalProject.DTOs

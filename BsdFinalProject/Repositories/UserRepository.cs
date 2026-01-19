@@ -9,8 +9,12 @@ namespace BsdFinalProject.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        SaleContext _context = SaleContextFactory.CreateContext();
-
+        //SaleContext _context = SaleContextFactory.CreateContext();
+        SaleContext _context;
+        public UserRepository(SaleContext context)
+        {
+            _context=context;
+        }
         public async Task<User?> GetByEmail(string email)
         {
             return await _context.User

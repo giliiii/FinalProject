@@ -343,3 +343,4 @@ M:\updated\BsdFinalProject\obj\Debug\net9.0\BsdFinalProject.pdb
 M:\updated\BsdFinalProject\obj\Debug\net9.0\BsdFinalProject.genruntimeconfig.cache
 M:\updated\BsdFinalProject\obj\Debug\net9.0\ref\BsdFinalProject.dll
 M:\updated\BsdFinalProject\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+M:\updated\BsdFinalProject\obj\Debug\net9.0\BsdFinalProject.sourcelink.json
