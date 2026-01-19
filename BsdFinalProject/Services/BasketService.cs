@@ -1,25 +1,25 @@
 ﻿using BsdFinalProject.DTOs;
-
-
+using BsdFinalProject.IServices;
 //using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Repositories;
 using BsdFinalProject.Services;
+using Chocolate.Data;
 using FinalProject.Repositories;
-using BsdFinalProject.IServices;
 using Microsoft.Extensions.Logging;
 
 namespace FinalProject.Services
 {
     public class BasketService : IBasketService
     {
-        private readonly BasketRepository _repository = new();
+        private readonly BasketRepository _repository;
         private readonly GiftService _giftService = new();
         private readonly ILogger<BasketService> _logger;
 
-        public BasketService(ILogger<BasketService> logger)
+        public BasketService(ILogger<BasketService> logger, SaleContextFactory saleContextFactory)
         {
             _logger = logger;
+            _repository = new BasketRepository(saleContextFactory);
         }
 
         public async Task<List<BasketDto>> GetAllMyBasket(int userId)

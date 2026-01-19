@@ -4,16 +4,18 @@ using BsdFinalProject.DTOs;
 using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Repositories;
+using Chocolate.Data;
 
 namespace BsdFinalProject.Services
 {
     public class DonorService : IDonorService
     {
-        private readonly DonorRepository _repository = new();
+        private readonly DonorRepository _repository;
         private readonly ILogger<DonorService> _logger;
-        public DonorService(ILogger<DonorService> logger)
+        public DonorService(ILogger<DonorService> logger,SaleContextFactory saleContextFactory)
         {
             _logger = logger;
+            _repository = new DonorRepository(saleContextFactory);
         }
 
         public async Task<DonorDto?> GetDonorById(int id)

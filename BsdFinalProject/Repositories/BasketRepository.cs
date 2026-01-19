@@ -10,7 +10,17 @@ namespace FinalProject.Repositories
 {
     public class BasketRepository : IBasketRepository
     {
-        SaleContext _context = SaleContextFactory.CreateContext();
+        private readonly SaleContextFactory _saleContextFactory;
+        private Lazy<SaleContext> _lazyContext;
+
+        public BasketRepository(SaleContextFactory saleContextFactory)
+        {
+            _saleContextFactory = saleContextFactory;
+            _lazyContext = new Lazy<SaleContext>(() => _saleContextFactory.CreateContext());
+        }
+
+
+        private SaleContext _context => _lazyContext.Value;
         //private readonly IMapper _mapper;
 
 

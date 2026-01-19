@@ -9,12 +9,17 @@ namespace BsdFinalProject.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        //SaleContext _context = SaleContextFactory.CreateContext();
-        SaleContext _context;
-        public UserRepository(SaleContext context)
+        private readonly SaleContextFactory _saleContextFactory;
+        private Lazy<SaleContext> _lazyContext;
+
+        public UserRepository(SaleContextFactory saleContextFactory)
         {
-            _context=context;
+            _saleContextFactory = saleContextFactory;
+            _lazyContext = new Lazy<SaleContext>(() => _saleContextFactory.CreateContext());
         }
+
+
+        private SaleContext _context => _lazyContext.Value;
         public async Task<User?> GetByEmail(string email)
         {
             return await _context.User

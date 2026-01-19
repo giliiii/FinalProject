@@ -1,20 +1,26 @@
 //using BsdFinalProject.IRepositories;
 //using BsdFinalProject.IServices;
+using BsdFinalProject.DTOs;
+using BsdFinalProject.IRepositories;
+using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Repositories;
-using BsdFinalProject.DTOs;
-using BsdFinalProject.IServices;
+using Chocolate.Data;
 
 namespace BsdFinalProject.Services
 {
     public class WinnerService : IWinnerService
     {
-        private readonly WinnerRepository _repository = new();
-        private readonly GiftRepository _giftRepository = new();
+        private readonly WinnerRepository _repository;
+        private readonly GiftRepository _giftRepository;
         private readonly ILogger<WinnerService> _logger;
-        public WinnerService(ILogger<WinnerService> logger)
+        public WinnerService(ILogger<WinnerService> logger,SaleContextFactory saleContextFactory)
         {
             _logger = logger;
+            _repository = new WinnerRepository(saleContextFactory);
+            _giftRepository = new GiftRepository(saleContextFactory);
+
+
         }
 
         public async Task<IEnumerable<WinnerDto?>> GetAllWinners()
@@ -106,6 +112,7 @@ namespace BsdFinalProject.Services
                 }
                 return true;
             }
+            return false;
         }
     }
 }

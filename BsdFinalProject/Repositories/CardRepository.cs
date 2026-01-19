@@ -8,8 +8,18 @@ using BsdFinalProject.IRepositories;
 namespace BsdFinalProject.Repositories
 {
     public class CardRepository : ICardRepository
+       
     {
-        SaleContext _context = SaleContextFactory.CreateContext();
+        private readonly SaleContextFactory _saleContextFactory;
+        private Lazy<SaleContext> _lazyContext;
+
+        public CardRepository(SaleContextFactory saleContextFactory)
+        {
+            _saleContextFactory = saleContextFactory;
+            _lazyContext = new Lazy<SaleContext>(() => _saleContextFactory.CreateContext());
+        }
+
+        private SaleContext _context => _lazyContext.Value;
         public async Task<IEnumerable<GroupedCardDto?>> GetAllMyCard(int Id)
         {
             return await _context.Card

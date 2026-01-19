@@ -3,16 +3,20 @@ using BsdFinalProject.IRepositories;
 using BsdFinalProject.IServices;
 using BsdFinalProject.Repositories;
 using BsdFinalProject.Services;
+using Chocolate.Data;
 using FinalProject.Repositories;
 using FinalProject.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
 
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Configure Serilog
 Log.Logger = new LoggerConfiguration()
@@ -35,6 +39,15 @@ builder.Services.AddSwaggerGen(c =>
 
 // NOTE: CORS removed temporarily for debugging
 // builder.Services.AddCors(...);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()   // .AllowAnyOrigin() бочен .WithOrigins("*")
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
@@ -50,6 +63,7 @@ builder.Services.AddScoped<ICardService, CardService>();
 builder.Services.AddScoped<ICardRepository, CardRepository>();
 builder.Services.AddScoped<IBasketService, BasketService>();
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+builder.Services.AddScoped<SaleContextFactory>();
 
 // DbContext
 builder.Services.AddDbContext<SaleContext>(options =>
@@ -96,7 +110,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 // CORS disabled for debug
-// app.UseCors("AllowSpecificOrigin");
+ app.UseCors("AllowAll");
 
 app.UseAuthentication();
 app.UseAuthorization();

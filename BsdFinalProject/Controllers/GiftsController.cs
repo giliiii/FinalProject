@@ -114,7 +114,7 @@ namespace BsdFinalProject.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error retrieving gifts for category ID {CategoryId}", category
+                _logger.LogError(ex, "Error retrieving gifts for category ID {CategoryId}", categoryId);
                 return NotFound(new { message = ex.Message });
             }
         }

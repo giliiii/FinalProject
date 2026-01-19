@@ -4,16 +4,18 @@ using BsdFinalProject.DTOs;
 using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Repositories;
+using Chocolate.Data;
 
 namespace BsdFinalProject.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly CategoryRepository _repository = new();
+        private readonly CategoryRepository _repository;
         private readonly ILogger<CategoryService> _logger;
-        public CategoryService(ILogger<CategoryService> logger)
+        public CategoryService(ILogger<CategoryService> logger,SaleContextFactory saleContextFactory)
         {
             _logger = logger;
+            _repository = new CategoryRepository(saleContextFactory);
         }
 
         public async Task<IEnumerable<CategoryDto>> GetAllCategories()

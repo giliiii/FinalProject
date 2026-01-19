@@ -8,7 +8,16 @@ namespace BsdFinalProject.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
-        SaleContext _context = SaleContextFactory.CreateContext();
+        private readonly SaleContextFactory _saleContextFactory;
+        private Lazy<SaleContext> _lazyContext;
+
+        public CategoryRepository(SaleContextFactory saleContextFactory)
+        {
+            _saleContextFactory = saleContextFactory;
+            _lazyContext = new Lazy<SaleContext>(() => _saleContextFactory.CreateContext());
+        }
+
+        private SaleContext _context => _lazyContext.Value;
 
         public async Task<IEnumerable<Category>> GetAllCategories()
         {

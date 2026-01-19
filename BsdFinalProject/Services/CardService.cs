@@ -4,17 +4,20 @@ using BsdFinalProject.DTOs;
 using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Repositories;
+using Chocolate.Data;
+using FinalProject.Repositories;
 
 namespace BsdFinalProject.Services
 {
     public class CardService : ICardService
     {
-        private readonly CardRepository _repository = new();
+        private readonly CardRepository _repository;
         private readonly GiftService _Gservice = new();
         private readonly ILogger<CardService> _logger;
-        public CardService(ILogger<CardService> logger)
+        public CardService(ILogger<CardService> logger, SaleContextFactory saleContextFactory)
         {
             _logger = logger;
+            _repository = new CardRepository(saleContextFactory);
         }
 
         public async Task<IEnumerable<GiftDtoWithSum?>> GetAllMyCard(int Id)

@@ -1,20 +1,23 @@
 //using BsdFinalProject.IRepositories;
 //using BsdFinalProject.IServices;
-using BsdFinalProject.Models;
-using BsdFinalProject.Repositories;
 using BsdFinalProject.DTOs;
 using BsdFinalProject.IServices;
+using BsdFinalProject.Models;
+using BsdFinalProject.Repositories;
+using Chocolate.Data;
 
 namespace BsdFinalProject.Services
 {
     public class GiftService : IGiftService
     {
-        private readonly GiftRepository _repository = new();
-        private readonly CategoryRepository _categoryRepository = new();
+        private readonly GiftRepository _repository ;
+        private readonly CategoryRepository _categoryRepository;
         private readonly ILogger<GiftService> _logger;
-        public GiftService(ILogger<GiftService> logger)
+        public GiftService(ILogger<GiftService> logger,SaleContextFactory saleContextFactory)
         {
             _logger = logger;
+            _repository = new GiftRepository(saleContextFactory);
+            _categoryRepository = new CategoryRepository(saleContextFactory);
         }
 
         public GiftService()

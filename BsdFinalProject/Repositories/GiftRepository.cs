@@ -8,7 +8,17 @@ namespace BsdFinalProject.Repositories
 {
     public class GiftRepository : IGiftRepository
     {
-        SaleContext _context = SaleContextFactory.CreateContext();
+        private readonly SaleContextFactory _saleContextFactory;
+        private Lazy<SaleContext> _lazyContext;
+
+        public GiftRepository(SaleContextFactory saleContextFactory)
+        {
+            _saleContextFactory = saleContextFactory;
+            _lazyContext = new Lazy<SaleContext>(() => _saleContextFactory.CreateContext());
+        }
+
+
+        private SaleContext _context => _lazyContext.Value;
 
         public async Task<Gift?> GetGiftById(int id)
         {
