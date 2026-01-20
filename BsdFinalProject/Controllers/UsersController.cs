@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using BsdFinalProject.IServices;
 
 namespace BsdFinalProject.Controllers
 {
@@ -17,10 +18,10 @@ namespace BsdFinalProject.Controllers
     public class UsersController : ControllerBase
     {
         private readonly SaleContext _context;
-        private readonly UserService _service;
+        private readonly IUserService _service;
         private readonly ILogger<UsersController>  _logger;
 
-        public UsersController(SaleContext context, UserService service, ILogger<UsersController> logger)
+        public UsersController(SaleContext context, IUserService service, ILogger<UsersController> logger)
         {
             _context = context;
             _service = service;

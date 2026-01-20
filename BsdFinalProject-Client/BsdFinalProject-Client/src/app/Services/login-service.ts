@@ -10,7 +10,11 @@ export class LoginService {
   http: HttpClient = inject(HttpClient);
   constructor() { }
 
-  login(item:LoginModel): Observable<string> {
-    return this.http.post<string>(`${this.BASE_URL}/login`, item);
+  login(item:LoginModel): Observable<any> {
+    return this.http.post<any>(`${this.BASE_URL}/login`, item);
+  }
+
+  register(item: any): Observable<any> {
+    return this.http.post<any>(`${this.BASE_URL}/register`, item);
   }
 }

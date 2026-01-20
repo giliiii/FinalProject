@@ -1,15 +1,17 @@
 using BsdFinalProject.DTOs;
+using BsdFinalProject.IRepositories;
+using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Repositories;
+using Chocolate.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.IdentityModel.Tokens.Jwt;
-using BsdFinalProject.IServices;
 
 namespace BsdFinalProject.Services
 {
@@ -19,11 +21,18 @@ namespace BsdFinalProject.Services
         private readonly IConfiguration _config;
         private readonly ILogger<UserService> _logger;
 
-        public UserService(UserRepository repo, IConfiguration config, ILogger<UserService> logger)
+        //public UserService(IUserRepository repo, IConfiguration config, ILogger<UserService> logger)
+        //{
+        //    _config = config;
+        //    _logger = logger;
+        //    _repo = (UserRepository?)repo;  // השתמש ב-UserRepository שהוזרק
+        //}
+        public UserService(ILogger<UserService> logger, IConfiguration config, SaleContextFactory saleContextFactory)
         {
-            _repo = repo;
-            _config = config;
             _logger = logger;
+            _repo = new UserRepository(saleContextFactory);
+            _config = config;
+
 
         }
 

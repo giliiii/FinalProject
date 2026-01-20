@@ -1,11 +1,13 @@
-<div class="card flex flex-wrap justify-center items-end gap-4">
-    <p-floatlabel>
-        <input pInputText [(ngModel)]="email" id="email" name="email" type="text" />
-        <label for="email">email</label>
+<div class="card flex flex-wrap justify-center items-end gap-6">
+    <p-floatlabel variant="in">
+        <input pInputText id="email" [(ngModel)]="email" autocomplete="off" />
+        <label for="email">מייל</label>
     </p-floatlabel>
-    <p-floatlabel>
-        <input pInputText [(ngModel)]="password" id="password" name="password" type="password" />
-        <label for="password">password</label>
+    <p-floatlabel variant="in">
+        <input pInputText id="password" [(ngModel)]="password" autocomplete="off" />
+        <label for="password">סיסמא</label>
     </p-floatlabel>
-    <button (click)="login()">אישור</button>
+    <div class="card flex justify-center mt-4">
+        <p-button (click)="login()" label="אישור"  />
+    </div>
 </div>

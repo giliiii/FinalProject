@@ -8,13 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Reflection;
+//using System;
+//using System.Reflection;
 
 //[assembly: System.Reflection.AssemblyCompanyAttribute("BsdFinalProject")]
 //[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 //[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-//[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96e81d1e669725b91c55643a030d2511d02375a8")]
+//[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42f439fbcdd98feca34fdd07af81aadd3ed7cef2.42f439fbcdd98feca34fdd07af81aadd3e" +
+//    "d7cef2")]
 //[assembly: System.Reflection.AssemblyProductAttribute("BsdFinalProject")]
 //[assembly: System.Reflection.AssemblyTitleAttribute("BsdFinalProject")]
 //[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
