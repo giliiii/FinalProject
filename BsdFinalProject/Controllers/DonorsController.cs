@@ -152,6 +152,7 @@ namespace BsdFinalProject.Controllers
         //[HttpPut("{id:int}")]
         //public async Task<IActionResult> Update(int id, CreateDonorDto update)
         //{
+}
         //    if (!ModelState.IsValid) return BadRequest(ModelState);
         //    var donor = await _context.Donor.FindAsync(id);
         //    if (donor == null) return NotFound();
@@ -171,4 +172,3 @@ namespace BsdFinalProject.Controllers
         //    return NoContent();
         //}
     }
-}
