@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "M:\\updated\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|m:\\updated\\bsdfinalproject\\controllers\\donorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\controllers\\donorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|M:\\updated\\BsdFinalProject\\obj\\Debug\\net9.0\\BsdFinalProject.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BsdFinalProject\\obj\\Debug\\net9.0\\BsdFinalProject.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|m:\\updated\\bsdfinalproject\\models\\donor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\models\\donor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|m:\\updated\\bsdfinalproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|m:\\updated\\bsdfinalproject\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -35,10 +51,6 @@
       "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\iservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|M:\\updated\\BsdFinalProject\\obj\\Debug\\net9.0\\BsdFinalProject.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BsdFinalProject\\obj\\Debug\\net9.0\\BsdFinalProject.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|m:\\updated\\bsdfinalproject\\repositories\\basketrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\repositories\\basketrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -63,20 +75,12 @@
       "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|m:\\updated\\bsdfinalproject\\models\\donor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\models\\donor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|m:\\updated\\bsdfinalproject\\repositories\\giftrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\repositories\\giftrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|m:\\updated\\bsdfinalproject\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|m:\\updated\\bsdfinalproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|m:\\updated\\bsdfinalproject\\iservices\\ibasketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -211,10 +215,6 @@
       "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\models\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|m:\\updated\\bsdfinalproject\\controllers\\donorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\controllers\\donorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|m:\\updated\\bsdfinalproject\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7603C058-DEDB-4065-83DC-7DEA280EE7DE}|BsdFinalProject\\BsdFinalProject.csproj|solutionrelative:bsdfinalproject\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -226,74 +226,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 242,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\IRepositories\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "BsdFinalProject\\IRepositories\\IUserRepository.cs",
-              "ToolTip": "M:\\updated\\BsdFinalProject\\IRepositories\\IUserRepository.cs",
-              "RelativeToolTip": "BsdFinalProject\\IRepositories\\IUserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T12:04:04.141Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Program.cs",
-              "RelativeDocumentMoniker": "BsdFinalProject\\Program.cs",
-              "ToolTip": "M:\\updated\\BsdFinalProject\\Program.cs",
-              "RelativeToolTip": "BsdFinalProject\\Program.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAgwDMAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T13:50:20.439Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "BsdFinalProject\\Controllers\\UsersController.cs",
-              "ToolTip": "M:\\updated\\BsdFinalProject\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "BsdFinalProject\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T13:07:51.253Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "BasketService.cs",
-              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Services\\BasketService.cs",
-              "RelativeDocumentMoniker": "BsdFinalProject\\Services\\BasketService.cs",
-              "ToolTip": "M:\\updated\\BsdFinalProject\\Services\\BasketService.cs",
-              "RelativeToolTip": "BsdFinalProject\\Services\\BasketService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T17:10:39.72Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 23,
-              "Title": "DonorService.cs",
-              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Services\\DonorService.cs",
-              "RelativeDocumentMoniker": "BsdFinalProject\\Services\\DonorService.cs",
-              "ToolTip": "M:\\updated\\BsdFinalProject\\Services\\DonorService.cs",
-              "RelativeToolTip": "BsdFinalProject\\Services\\DonorService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T10:32:12.739Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
               "Title": "GiftService.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Services\\GiftService.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Services\\GiftService.cs",
@@ -301,12 +238,11 @@
               "RelativeToolTip": "BsdFinalProject\\Services\\GiftService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T15:25:52.502Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-05T15:25:52.502Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "IUserService.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\IServices\\IUserService.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\IServices\\IUserService.cs",
@@ -314,12 +250,11 @@
               "RelativeToolTip": "BsdFinalProject\\IServices\\IUserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-07T17:39:46.317Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-07T17:39:46.317Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Repositories\\UserRepository.cs",
@@ -327,12 +262,11 @@
               "RelativeToolTip": "BsdFinalProject\\Repositories\\UserRepository.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAiwCMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T09:31:15.883Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T09:31:15.883Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "UserService.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Services\\UserService.cs",
@@ -340,12 +274,11 @@
               "RelativeToolTip": "BsdFinalProject\\Services\\UserService.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAAACEAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T09:30:34.91Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T09:30:34.91Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "WinnerService.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Services\\WinnerService.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Services\\WinnerService.cs",
@@ -353,12 +286,11 @@
               "RelativeToolTip": "BsdFinalProject\\Services\\WinnerService.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-07T13:00:10.317Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-07T13:00:10.317Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "GiftsController.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Controllers\\GiftsController.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Controllers\\GiftsController.cs",
@@ -366,24 +298,23 @@
               "RelativeToolTip": "BsdFinalProject\\Controllers\\GiftsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T15:34:21.914Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-05T15:34:21.914Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "BsdFinalProject.AssemblyInfo.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\obj\\Debug\\net9.0\\BsdFinalProject.AssemblyInfo.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\obj\\Debug\\net9.0\\BsdFinalProject.AssemblyInfo.cs",
               "ToolTip": "M:\\updated\\BsdFinalProject\\obj\\Debug\\net9.0\\BsdFinalProject.AssemblyInfo.cs",
               "RelativeToolTip": "BsdFinalProject\\obj\\Debug\\net9.0\\BsdFinalProject.AssemblyInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-20T11:27:09.236Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "CardRepository.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Repositories\\CardRepository.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Repositories\\CardRepository.cs",
@@ -395,7 +326,104 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Models\\User.cs",
+              "RelativeDocumentMoniker": "BsdFinalProject\\Models\\User.cs",
+              "ToolTip": "M:\\updated\\BsdFinalProject\\Models\\User.cs",
+              "RelativeToolTip": "BsdFinalProject\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T14:50:01.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Donor.cs",
+              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Models\\Donor.cs",
+              "RelativeDocumentMoniker": "BsdFinalProject\\Models\\Donor.cs",
+              "ToolTip": "M:\\updated\\BsdFinalProject\\Models\\Donor.cs",
+              "RelativeToolTip": "BsdFinalProject\\Models\\Donor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T09:59:46.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DonorsController.cs",
+              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Controllers\\DonorsController.cs",
+              "RelativeDocumentMoniker": "BsdFinalProject\\Controllers\\DonorsController.cs",
+              "ToolTip": "M:\\updated\\BsdFinalProject\\Controllers\\DonorsController.cs",
+              "RelativeToolTip": "BsdFinalProject\\Controllers\\DonorsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T10:50:41.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "DonorService.cs",
+              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Services\\DonorService.cs",
+              "RelativeDocumentMoniker": "BsdFinalProject\\Services\\DonorService.cs",
+              "ToolTip": "M:\\updated\\BsdFinalProject\\Services\\DonorService.cs",
+              "RelativeToolTip": "BsdFinalProject\\Services\\DonorService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T10:32:12.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "BsdFinalProject\\Controllers\\UsersController.cs",
+              "ToolTip": "M:\\updated\\BsdFinalProject\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "BsdFinalProject\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T13:07:51.253Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "BasketService.cs",
+              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Services\\BasketService.cs",
+              "RelativeDocumentMoniker": "BsdFinalProject\\Services\\BasketService.cs",
+              "ToolTip": "M:\\updated\\BsdFinalProject\\Services\\BasketService.cs",
+              "RelativeToolTip": "BsdFinalProject\\Services\\BasketService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T17:10:39.72Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Program.cs",
+              "RelativeDocumentMoniker": "BsdFinalProject\\Program.cs",
+              "ToolTip": "M:\\updated\\BsdFinalProject\\Program.cs",
+              "RelativeToolTip": "BsdFinalProject\\Program.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAgwDMAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T13:50:20.439Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\IRepositories\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "BsdFinalProject\\IRepositories\\IUserRepository.cs",
+              "ToolTip": "M:\\updated\\BsdFinalProject\\IRepositories\\IUserRepository.cs",
+              "RelativeToolTip": "BsdFinalProject\\IRepositories\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T12:04:04.141Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "appsettings.json",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\appsettings.json",
               "RelativeDocumentMoniker": "BsdFinalProject\\appsettings.json",
@@ -407,7 +435,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "BasketRepository.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Repositories\\BasketRepository.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Repositories\\BasketRepository.cs",
@@ -419,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "CategoryService.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Services\\CategoryService.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Services\\CategoryService.cs",
@@ -431,7 +459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "launchSettings.json",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "BsdFinalProject\\Properties\\launchSettings.json",
@@ -443,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "SaleContextFactory.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Data\\SaleContextFactory.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Data\\SaleContextFactory.cs",
@@ -455,7 +483,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "CategoryRepository.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Repositories\\CategoryRepository.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Repositories\\CategoryRepository.cs",
@@ -467,7 +495,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "GiftRepository.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Repositories\\GiftRepository.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Repositories\\GiftRepository.cs",
@@ -475,24 +503,11 @@
               "RelativeToolTip": "BsdFinalProject\\Repositories\\GiftRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T15:25:23.873Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-05T15:25:23.873Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Donor.cs",
-              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Models\\Donor.cs",
-              "RelativeDocumentMoniker": "BsdFinalProject\\Models\\Donor.cs",
-              "ToolTip": "M:\\updated\\BsdFinalProject\\Models\\Donor.cs",
-              "RelativeToolTip": "BsdFinalProject\\Models\\Donor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T09:59:46.394Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "IBasketService.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\IServices\\IBasketService.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\IServices\\IBasketService.cs",
@@ -504,7 +519,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "SaleContext.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Data\\SaleContext.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Data\\SaleContext.cs",
@@ -516,19 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "User.cs",
-              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Models\\User.cs",
-              "RelativeDocumentMoniker": "BsdFinalProject\\Models\\User.cs",
-              "ToolTip": "M:\\updated\\BsdFinalProject\\Models\\User.cs",
-              "RelativeToolTip": "BsdFinalProject\\Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T14:50:01.44Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "CardService.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Services\\CardService.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Services\\CardService.cs",
@@ -540,7 +543,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "WinnerRepository.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Repositories\\WinnerRepository.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Repositories\\WinnerRepository.cs",
@@ -552,7 +555,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "DonorRepository.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Repositories\\DonorRepository.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Repositories\\DonorRepository.cs",
@@ -564,7 +567,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "BsdFinalProject.csproj",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\BsdFinalProject.csproj",
               "RelativeDocumentMoniker": "BsdFinalProject\\BsdFinalProject.csproj",
@@ -576,7 +579,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "WinnerDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\WinnerDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\WinnerDto.cs",
@@ -588,7 +591,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "UserDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\UserDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\UserDto.cs",
@@ -600,7 +603,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "LoginDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\LoginDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\LoginDto.cs",
@@ -612,7 +615,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "DonorDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\DonorDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\DonorDto.cs",
@@ -624,7 +627,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "CreateWinnerDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\CreateWinnerDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\CreateWinnerDto.cs",
@@ -636,7 +639,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "CreateManegerDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\CreateManegerDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\CreateManegerDto.cs",
@@ -648,7 +651,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "GiftDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\GiftDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\GiftDto.cs",
@@ -660,7 +663,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "BasketsController.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Controllers\\BasketsController.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Controllers\\BasketsController.cs",
@@ -672,7 +675,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "CreateDonorDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\CreateDonorDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\CreateDonorDto.cs",
@@ -684,7 +687,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "CreateUserDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\CreateUserDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\CreateUserDto.cs",
@@ -696,7 +699,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "CreateCategoryDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\CreateCategoryDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\CreateCategoryDto.cs",
@@ -708,7 +711,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "CreateCardDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\CreateCardDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\CreateCardDto.cs",
@@ -720,7 +723,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "CreateGiftDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\CreateGiftDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\CreateGiftDto.cs",
@@ -732,7 +735,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "CreateBasketDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\CreateBasketDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\CreateBasketDto.cs",
@@ -744,7 +747,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "BasketDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\BasketDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\BasketDto.cs",
@@ -756,7 +759,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "WinnersController.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Controllers\\WinnersController.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Controllers\\WinnersController.cs",
@@ -768,7 +771,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "CardDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\CardDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\CardDto.cs",
@@ -780,7 +783,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "Basket.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Models\\Basket.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Models\\Basket.cs",
@@ -792,7 +795,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "CategoryDto.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\DTOs\\CategoryDto.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\DTOs\\CategoryDto.cs",
@@ -804,7 +807,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "CategoriesController.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Controllers\\CategoriesController.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Controllers\\CategoriesController.cs",
@@ -816,7 +819,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "CardsController.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Controllers\\CardsController.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Controllers\\CardsController.cs",
@@ -828,7 +831,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "Winner.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Models\\Winner.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Models\\Winner.cs",
@@ -840,7 +843,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "Gift.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Models\\Gift.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Models\\Gift.cs",
@@ -852,7 +855,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "Card.cs",
               "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Models\\Card.cs",
               "RelativeDocumentMoniker": "BsdFinalProject\\Models\\Card.cs",
@@ -861,18 +864,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-07T10:59:14.736Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "DonorsController.cs",
-              "DocumentMoniker": "M:\\updated\\BsdFinalProject\\Controllers\\DonorsController.cs",
-              "RelativeDocumentMoniker": "BsdFinalProject\\Controllers\\DonorsController.cs",
-              "ToolTip": "M:\\updated\\BsdFinalProject\\Controllers\\DonorsController.cs",
-              "RelativeToolTip": "BsdFinalProject\\Controllers\\DonorsController.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAIwD8AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T10:50:41.346Z"
             },
             {
               "$type": "Document",
