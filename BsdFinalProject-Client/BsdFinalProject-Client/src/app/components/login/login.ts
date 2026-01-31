@@ -71,9 +71,10 @@ login() {
           alert('משתמש לא מזוהה עבור להרשמה');
         }
       },
-      error: () => {
-        alert('XXXX');
-      },
+     error: (err) => {
+        console.log('Login error:', err);
+        alert(err?.error?.message || 'שגיאת התחברות');
+      }
     });
   } catch {
     alert('XXXX');

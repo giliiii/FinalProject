@@ -7,7 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+            "style": "scss"
         }
       },
       "root": "",
@@ -27,7 +27,8 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+               "primeicons/primeicons.css",
+               "src/styles.scss"
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",

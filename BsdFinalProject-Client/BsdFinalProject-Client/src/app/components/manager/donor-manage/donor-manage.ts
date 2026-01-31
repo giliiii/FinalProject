@@ -45,15 +45,15 @@ export class DonorManage {
     //     delete this.clonedProducts[product.id as string];
     // }
 
-    getSeverity(status: string) {
-        switch (status) {
-            case 'INSTOCK':
-                return 'success';
-            case 'LOWSTOCK':
-                return 'warn';
-            case 'OUTOFSTOCK':
-                return 'danger';
-        }
-    }
+    // getSeverity(status: string) {
+    //     switch (status) {
+    //         case 'INSTOCK':
+    //             return 'success';
+    //         case 'LOWSTOCK':
+    //             return 'warn';
+    //         case 'OUTOFSTOCK':
+    //             return 'danger';
+    //     }
+    // }
 
 }
