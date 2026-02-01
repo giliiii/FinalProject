@@ -1,5 +1,6 @@
 export class DonorModel {
-EMail!: string; 
-Password!: string; 
+Id!:Number;
+Name!:string;    
+EMail!: string;  
 
 }

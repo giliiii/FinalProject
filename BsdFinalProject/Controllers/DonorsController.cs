@@ -1,5 +1,6 @@
 using BsdFinalProject.Data;
 using BsdFinalProject.DTOs;
+using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Services;
 using FinalProject.Services;
@@ -13,11 +14,11 @@ namespace BsdFinalProject.Controllers
     public class DonorsController : ControllerBase
     {
         private readonly SaleContext _context;
-        private readonly Services.DonorService _DonorService;
+        private readonly IDonorService _DonorService;
         private readonly ILogger<DonorsController> _logger;
         //public BasketsController(SaleContext context) => _context = context;
 
-        public DonorsController(DonorService donorService, SaleContext context, ILogger<DonorsController> logger)
+        public DonorsController(IDonorService donorService, SaleContext context, ILogger<DonorsController> logger)
         {
             _DonorService = donorService;
             _context = context;
@@ -30,8 +31,7 @@ namespace BsdFinalProject.Controllers
         {
             var donors = await _DonorService.GetAllDonors();
             return Ok(donors);
-        }
-
+        }   
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult<DonorDto>> GetDonorById(int id)

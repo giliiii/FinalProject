@@ -14,8 +14,8 @@
 //[assembly: System.Reflection.AssemblyCompanyAttribute("BsdFinalProject")]
 //[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 //[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-//[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42f439fbcdd98feca34fdd07af81aadd3ed7cef2.93da1cf62df253024be877ab410cf63080" +
-//    "8a0290")]
+//[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42f439fbcdd98feca34fdd07af81aadd3ed7cef2.fdc5cc3e8fec43096c66de68e2caecccb3" +
+//    "918494")]
 //[assembly: System.Reflection.AssemblyProductAttribute("BsdFinalProject")]
 //[assembly: System.Reflection.AssemblyTitleAttribute("BsdFinalProject")]
 //[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

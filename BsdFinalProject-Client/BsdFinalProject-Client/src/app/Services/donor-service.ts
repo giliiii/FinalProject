@@ -21,7 +21,7 @@ export class DonorService {
   }
 
   getDonors(): Observable<DonorModel[]> {
-     return this.http.get<DonorModel[]>(`${this.BASE_URL}`);
+     return this.http.get<DonorModel[]>(this.BASE_URL);
   }
 
   getOneDonor(id: number): Observable<DonorModel> {

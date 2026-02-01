@@ -63,3 +63,13 @@
                 </ng-template>
             </p-table>
         </div> -->
+        <div><h1>hellow</h1></div>
+        <button click="a()">jjoooi</button>
+  <!-- @for(d of donors; track d.Id){
+        <tr>
+            <td>{{d.Name}}</td>
+        </tr>
+        }  -->
+  <tr *ngFor="let d of donors;">
+     <td>{{ d.Name }}</td>
+  </tr>            

@@ -8,12 +8,16 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { SelectItem, MessageService } from 'primeng/api';
+import { DonorModel } from '../../../Models/donor';
+import { DonorService } from '../../../Services/donor-service';
+import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 // // import { Product } from '@/domain/product';
 
 
 @Component({
   selector: 'app-donor-manage',
-   imports: [SelectModule, TableModule, TagModule, ToastModule, ButtonModule, InputTextModule, RippleModule, FormsModule],
+   imports: [SelectModule, TableModule, TagModule, ToastModule, ButtonModule, InputTextModule, RippleModule, FormsModule,CommonModule],
   templateUrl: './donor-manage.html',
   styleUrl: './donor-manage.scss',
 })
@@ -22,9 +26,55 @@ export class DonorManage {
     // private messageService = inject(MessageService);
     // products!: Product[];
     // statuses!: SelectItem[];
+     donorSrv: DonorService = inject(DonorService );
+     id:Number=0;
+     name: string = "";
+     email: string = "";
+     donors:DonorModel[]=[];
 
-    ngOnInit() {
+    ngOnInit():void {
+        // alert(1)
      //הבאת רשימת התורמים מהשרת
+     try {
+        //  alert(2)
+         this.donorSrv.getDonors().subscribe({       
+          next: (response: DonorModel[]) => {
+            // alert(3)
+            this.donors=response;
+            console.log(this.donors)
+           },
+          error: (err) => {
+            // alert(4)
+            console.log('Login error:', err);
+            //alert(err?.error?.message || 'שגיאת התחברות');
+      }  
+        })
+       } catch {
+         alert('הבקשה נכשלה');
+       }
+    }
+
+// ngOnInit(): void {
+//     alert(1);
+//     this.donorSrv.getDonors().subscribe({
+//       next: (response: DonorModel[]) => {
+//         alert(3);
+//         this.donors = response;
+//       }
+//     });
+//   }
+
+
+    a(){
+       try {
+         alert(1)
+         this.donorSrv.getDonors().subscribe({
+           next: (response: DonorModel[]) => {
+            this.donors=response;
+        }})
+       } catch {
+         alert('הבקשה נכשלה');
+       }
     }
 
     // onRowEditInit(product: Product) {
