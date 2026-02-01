@@ -74,7 +74,7 @@ namespace BsdFinalProject.Controllers
             try
             {
                 var updatedDonor = await _DonorService.UpdateDonor(donorDto);
-                return Ok(donorDto);
+                return Ok(updatedDonor);
             }
             catch (ArgumentException ex)
             {

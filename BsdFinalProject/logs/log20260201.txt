@@ -1,0 +1,373 @@
+2026-02-01 16:23:27.053 +02:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2026-02-01 16:23:27.339 +02:00 [DBG] Hosting starting
+2026-02-01 16:23:27.396 +02:00 [INF] User profile is available. Using 'C:\Users\216233767\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-02-01 16:23:27.415 +02:00 [DBG] Repository contains no viable default key. Caller should generate a key with immediate activation.
+2026-02-01 16:23:27.417 +02:00 [DBG] Policy resolution states that a new key should be added to the key ring.
+2026-02-01 16:23:27.421 +02:00 [INF] Creating key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d} with creation date 2026-02-01 14:23:27Z, activation date 2026-02-01 14:23:27Z, and expiration date 2026-05-02 14:23:27Z.
+2026-02-01 16:23:27.435 +02:00 [DBG] Descriptor deserializer type for key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d} is 'Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'.
+2026-02-01 16:23:27.441 +02:00 [DBG] No key escrow sink found. Not writing key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d} to escrow.
+2026-02-01 16:23:27.446 +02:00 [DBG] Encrypting to Windows DPAPI for current user account (MBYDOMAIN\216233767).
+2026-02-01 16:23:27.456 +02:00 [INF] Writing data to file 'C:\Users\216233767\AppData\Local\ASP.NET\DataProtection-Keys\key-5b951a59-ec10-4d4c-be8e-bbe97774ec5d.xml'.
+2026-02-01 16:23:27.459 +02:00 [DBG] Key cache expiration token triggered by 'CreateNewKey' operation.
+2026-02-01 16:23:27.462 +02:00 [DBG] Reading data from file 'C:\Users\216233767\AppData\Local\ASP.NET\DataProtection-Keys\key-5b951a59-ec10-4d4c-be8e-bbe97774ec5d.xml'.
+2026-02-01 16:23:27.468 +02:00 [DBG] Found key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d}.
+2026-02-01 16:23:27.473 +02:00 [DBG] Considering key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d} with expiration date 2026-05-02 14:23:27Z as default key.
+2026-02-01 16:23:27.478 +02:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2026-02-01 16:23:27.481 +02:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2026-02-01 16:23:27.484 +02:00 [DBG] Using key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d} as the default key.
+2026-02-01 16:23:27.487 +02:00 [DBG] Key ring with default key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d} was loaded during application startup.
+2026-02-01 16:23:27.498 +02:00 [DBG] Middleware loaded
+2026-02-01 16:23:27.503 +02:00 [DBG] Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16515 B).
+2026-02-01 16:23:27.506 +02:00 [DBG] Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-01 16:23:27.589 +02:00 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2026-02-01 16:23:27.592 +02:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2026-02-01 16:23:27.604 +02:00 [DBG] Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-01 16:23:27.705 +02:00 [INF] Now listening on: https://localhost:7097
+2026-02-01 16:23:27.707 +02:00 [INF] Now listening on: http://localhost:5097
+2026-02-01 16:23:27.709 +02:00 [DBG] Loaded hosting startup assembly BsdFinalProject
+2026-02-01 16:23:27.710 +02:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2026-02-01 16:23:27.712 +02:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2026-02-01 16:23:27.714 +02:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2026-02-01 16:23:27.723 +02:00 [DBG] Executing API description provider 'EndpointMetadataApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-02-01 16:23:27.726 +02:00 [DBG] Executing API description provider 'DefaultApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-02-01 16:23:27.799 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-01 16:23:27.801 +02:00 [INF] Hosting environment: Development
+2026-02-01 16:23:27.803 +02:00 [INF] Content root path: M:\updated\BsdFinalProject
+2026-02-01 16:23:27.804 +02:00 [DBG] Hosting started
+2026-02-01 16:23:33.548 +02:00 [DBG] Connection id "0HNJ1JLTGSAHT" received FIN.
+2026-02-01 16:23:33.567 +02:00 [DBG] Connection id "0HNJ1JLTGSAHT" accepted.
+2026-02-01 16:23:33.574 +02:00 [DBG] Connection id "0HNJ1JLTGSAHT" started.
+2026-02-01 16:23:33.575 +02:00 [DBG] Connection id "0HNJ1JLTGSAHU" accepted.
+2026-02-01 16:23:33.580 +02:00 [DBG] Connection id "0HNJ1JLTGSAHU" started.
+2026-02-01 16:23:33.581 +02:00 [DBG] Connection id "0HNJ1JLTGSAHV" accepted.
+2026-02-01 16:23:33.587 +02:00 [DBG] Connection id "0HNJ1JLTGSAHV" started.
+2026-02-01 16:23:33.686 +02:00 [DBG] Connection id "0HNJ1JLTGSAHU" received FIN.
+2026-02-01 16:23:33.702 +02:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2026-02-01 16:23:33.764 +02:00 [DBG] Connection 0HNJ1JLTGSAHU established using the following protocol: "Tls13"
+2026-02-01 16:23:33.764 +02:00 [DBG] Connection 0HNJ1JLTGSAHV established using the following protocol: "Tls13"
+2026-02-01 16:23:33.778 +02:00 [DBG] Connection id "0HNJ1JLTGSAHT" stopped.
+2026-02-01 16:23:33.782 +02:00 [DBG] Connection id "0HNJ1JLTGSAHT" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-02-01 16:23:33.802 +02:00 [DBG] Connection id "0HNJ1JLTGSAHU" is closed. The last processed stream ID was 0.
+2026-02-01 16:23:33.806 +02:00 [DBG] Connection id "0HNJ1JLTGSAHU" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-02-01 16:23:33.812 +02:00 [DBG] The connection queue processing loop for 0HNJ1JLTGSAHU completed.
+2026-02-01 16:23:33.816 +02:00 [DBG] Connection id "0HNJ1JLTGSAHU" stopped.
+2026-02-01 16:23:33.846 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/ - null null
+2026-02-01 16:23:34.060 +02:00 [DBG] Connection id "0HNJ1JLTGSAHV" received FIN.
+2026-02-01 16:23:34.060 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/ - 301 0 null 224.1862ms
+2026-02-01 16:23:34.063 +02:00 [DBG] Connection id "0HNJ1JLTGSAI0" accepted.
+2026-02-01 16:23:34.063 +02:00 [DBG] Connection id "0HNJ1JLTGSAHV" is closed. The last processed stream ID was 1.
+2026-02-01 16:23:34.073 +02:00 [DBG] Connection id "0HNJ1JLTGSAI0" started.
+2026-02-01 16:23:34.074 +02:00 [DBG] The connection queue processing loop for 0HNJ1JLTGSAHV completed.
+2026-02-01 16:23:34.075 +02:00 [DBG] Connection id "0HNJ1JLTGSAHV" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-02-01 16:23:34.081 +02:00 [DBG] Connection 0HNJ1JLTGSAI0 established using the following protocol: "Tls13"
+2026-02-01 16:23:34.087 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/index.html - null null
+2026-02-01 16:23:34.087 +02:00 [DBG] Connection id "0HNJ1JLTGSAHV" stopped.
+2026-02-01 16:23:34.137 +02:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2026-02-01 16:23:34.142 +02:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2026-02-01 16:23:34.166 +02:00 [DBG] Response markup was updated to include Browser Link script injection.
+2026-02-01 16:23:34.170 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/swagger-ui-standalone-preset.js - null null
+2026-02-01 16:23:34.170 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/swagger-ui.css - null null
+2026-02-01 16:23:34.170 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/swagger-ui-bundle.js - null null
+2026-02-01 16:23:34.170 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-01 16:23:34.170 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/_vs/browserLink - null null
+2026-02-01 16:23:34.170 +02:00 [DBG] Response markup was updated to include browser refresh script injection.
+2026-02-01 16:23:34.233 +02:00 [DBG] Script injected: /_framework/aspnetcore-browser-refresh.js
+2026-02-01 16:23:34.237 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/index.html - 200 null text/html;charset=utf-8 150.4213ms
+2026-02-01 16:23:34.240 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 70.4792ms
+2026-02-01 16:23:34.239 +02:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-02-01 16:23:34.239 +02:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-02-01 16:23:34.254 +02:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-02-01 16:23:34.265 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/swagger-ui.css - 200 144929 text/css 95.4563ms
+2026-02-01 16:23:34.268 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/swagger-ui-standalone-preset.js - 200 312163 text/javascript 98.6256ms
+2026-02-01 16:23:34.273 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/swagger-ui-bundle.js - 200 1061536 text/javascript 103.1658ms
+2026-02-01 16:23:34.315 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/_vs/browserLink - 200 null text/javascript; charset=UTF-8 144.8022ms
+2026-02-01 16:23:34.440 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/swagger/v1/swagger.json - null null
+2026-02-01 16:23:34.456 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/favicon-32x32.png - null null
+2026-02-01 16:23:34.463 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-02-01 16:23:34.468 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/favicon-32x32.png - 200 628 image/png 12.0072ms
+2026-02-01 16:23:34.478 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 37.4561ms
+2026-02-01 16:23:37.514 +02:00 [DBG] Connection id "0HNJ1JLTGSAI0" received FIN.
+2026-02-01 16:23:37.522 +02:00 [DBG] Connection id "0HNJ1JLTGSAI0" is closed. The last processed stream ID was 15.
+2026-02-01 16:23:37.522 +02:00 [DBG] The connection queue processing loop for 0HNJ1JLTGSAI0 completed.
+2026-02-01 16:23:37.527 +02:00 [DBG] Connection id "0HNJ1JLTGSAI0" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-02-01 16:23:37.537 +02:00 [DBG] Connection id "0HNJ1JLTGSAI0" stopped.
+2026-02-01 16:23:43.961 +02:00 [DBG] Connection id "0HNJ1JLTGSAI1" accepted.
+2026-02-01 16:23:43.966 +02:00 [DBG] Connection id "0HNJ1JLTGSAI1" started.
+2026-02-01 16:23:43.971 +02:00 [DBG] Connection 0HNJ1JLTGSAI1 established using the following protocol: "Tls13"
+2026-02-01 16:23:43.974 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7097/api/Users/login - application/json 57
+2026-02-01 16:23:43.979 +02:00 [DBG] POST requests are not supported
+2026-02-01 16:23:44.000 +02:00 [DBG] 1 candidate(s) found for the request path '/api/Users/login'
+2026-02-01 16:23:44.003 +02:00 [DBG] Endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)' with route pattern 'api/Users/login' is valid for the request path '/api/Users/login'
+2026-02-01 16:23:44.008 +02:00 [DBG] Request matched endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)'
+2026-02-01 16:23:44.012 +02:00 [DBG] The request has an origin header: 'https://localhost:7097'.
+2026-02-01 16:23:44.013 +02:00 [INF] CORS policy execution successful.
+2026-02-01 16:23:44.500 +02:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-02-01 16:23:44.503 +02:00 [INF] Executing endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)'
+2026-02-01 16:23:44.523 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(BsdFinalProject.DTOs.LoginDto) on controller BsdFinalProject.Controllers.UsersController (BsdFinalProject).
+2026-02-01 16:23:44.526 +02:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-02-01 16:23:44.528 +02:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-02-01 16:23:44.529 +02:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-02-01 16:23:44.531 +02:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-02-01 16:23:44.532 +02:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-02-01 16:23:44.535 +02:00 [DBG] Executing controller factory for controller BsdFinalProject.Controllers.UsersController (BsdFinalProject)
+2026-02-01 16:23:44.944 +02:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-02-01 16:23:44.953 +02:00 [DBG] Executed controller factory for controller BsdFinalProject.Controllers.UsersController (BsdFinalProject)
+2026-02-01 16:23:44.964 +02:00 [DBG] Attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto' ...
+2026-02-01 16:23:44.967 +02:00 [DBG] Attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto' using the name '' in request data ...
+2026-02-01 16:23:44.969 +02:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2026-02-01 16:23:44.975 +02:00 [DBG] Connection id "0HNJ1JLTGSAI1", Request id "0HNJ1JLTGSAI1:00000001": started reading request body.
+2026-02-01 16:23:44.977 +02:00 [DBG] Connection id "0HNJ1JLTGSAI1", Request id "0HNJ1JLTGSAI1:00000001": done reading request body.
+2026-02-01 16:23:44.985 +02:00 [DBG] JSON input formatter succeeded, deserializing to type 'BsdFinalProject.DTOs.LoginDto'
+2026-02-01 16:23:44.987 +02:00 [DBG] Done attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto'.
+2026-02-01 16:23:44.989 +02:00 [DBG] Done attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto'.
+2026-02-01 16:23:44.990 +02:00 [DBG] Attempting to validate the bound parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto' ...
+2026-02-01 16:23:44.995 +02:00 [DBG] Done attempting to validate the bound parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto'.
+2026-02-01 16:23:44.999 +02:00 [INF] Attempting to log in user with email: user@example.com
+2026-02-01 16:24:48.502 +02:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2026-02-01 16:24:48.708 +02:00 [DBG] Hosting starting
+2026-02-01 16:24:48.738 +02:00 [INF] User profile is available. Using 'C:\Users\216233767\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-02-01 16:24:48.752 +02:00 [DBG] Reading data from file 'C:\Users\216233767\AppData\Local\ASP.NET\DataProtection-Keys\key-5b951a59-ec10-4d4c-be8e-bbe97774ec5d.xml'.
+2026-02-01 16:24:48.758 +02:00 [DBG] Found key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d}.
+2026-02-01 16:24:48.767 +02:00 [DBG] Considering key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d} with expiration date 2026-05-02 14:23:27Z as default key.
+2026-02-01 16:24:48.771 +02:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2026-02-01 16:24:48.774 +02:00 [DBG] Decrypting secret element using Windows DPAPI.
+2026-02-01 16:24:48.776 +02:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2026-02-01 16:24:48.780 +02:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2026-02-01 16:24:48.782 +02:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2026-02-01 16:24:48.784 +02:00 [DBG] Using key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d} as the default key.
+2026-02-01 16:24:48.786 +02:00 [DBG] Key ring with default key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d} was loaded during application startup.
+2026-02-01 16:24:48.796 +02:00 [DBG] Middleware loaded
+2026-02-01 16:24:48.800 +02:00 [DBG] Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16515 B).
+2026-02-01 16:24:48.803 +02:00 [DBG] Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-01 16:24:48.864 +02:00 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2026-02-01 16:24:48.867 +02:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2026-02-01 16:24:48.875 +02:00 [DBG] Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-01 16:24:48.954 +02:00 [INF] Now listening on: https://localhost:7097
+2026-02-01 16:24:48.957 +02:00 [INF] Now listening on: http://localhost:5097
+2026-02-01 16:24:48.959 +02:00 [DBG] Loaded hosting startup assembly BsdFinalProject
+2026-02-01 16:24:48.960 +02:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2026-02-01 16:24:48.962 +02:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2026-02-01 16:24:48.965 +02:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2026-02-01 16:24:48.971 +02:00 [DBG] Executing API description provider 'EndpointMetadataApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-02-01 16:24:48.974 +02:00 [DBG] Executing API description provider 'DefaultApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-02-01 16:24:49.042 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-01 16:24:49.044 +02:00 [INF] Hosting environment: Development
+2026-02-01 16:24:49.047 +02:00 [INF] Content root path: M:\updated\BsdFinalProject
+2026-02-01 16:24:49.048 +02:00 [DBG] Hosting started
+2026-02-01 16:24:50.773 +02:00 [DBG] Connection id "0HNJ1JMKHBMSC" accepted.
+2026-02-01 16:24:50.777 +02:00 [DBG] Connection id "0HNJ1JMKHBMSC" started.
+2026-02-01 16:24:50.834 +02:00 [DBG] Connection 0HNJ1JMKHBMSC established using the following protocol: "Tls13"
+2026-02-01 16:24:50.881 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/index.html - null null
+2026-02-01 16:24:51.039 +02:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2026-02-01 16:24:51.048 +02:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2026-02-01 16:24:51.062 +02:00 [DBG] Response markup was updated to include Browser Link script injection.
+2026-02-01 16:24:51.064 +02:00 [DBG] Response markup was updated to include browser refresh script injection.
+2026-02-01 16:24:51.068 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/index.html - 200 null text/html;charset=utf-8 193.2151ms
+2026-02-01 16:24:51.071 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-01 16:24:51.071 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/_vs/browserLink - null null
+2026-02-01 16:24:51.079 +02:00 [DBG] Script injected: /_framework/aspnetcore-browser-refresh.js
+2026-02-01 16:24:51.082 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 11.4405ms
+2026-02-01 16:24:51.143 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/_vs/browserLink - 200 null text/javascript; charset=UTF-8 71.6847ms
+2026-02-01 16:24:51.181 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/swagger/v1/swagger.json - null null
+2026-02-01 16:24:51.201 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.8663ms
+2026-02-01 16:24:58.642 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7097/api/Users/login - application/json 57
+2026-02-01 16:24:58.652 +02:00 [DBG] POST requests are not supported
+2026-02-01 16:24:58.669 +02:00 [DBG] 1 candidate(s) found for the request path '/api/Users/login'
+2026-02-01 16:24:58.673 +02:00 [DBG] Endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)' with route pattern 'api/Users/login' is valid for the request path '/api/Users/login'
+2026-02-01 16:24:58.676 +02:00 [DBG] Request matched endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)'
+2026-02-01 16:24:58.679 +02:00 [DBG] The request has an origin header: 'https://localhost:7097'.
+2026-02-01 16:24:58.681 +02:00 [INF] CORS policy execution successful.
+2026-02-01 16:24:59.166 +02:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-02-01 16:24:59.170 +02:00 [INF] Executing endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)'
+2026-02-01 16:24:59.190 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(BsdFinalProject.DTOs.LoginDto) on controller BsdFinalProject.Controllers.UsersController (BsdFinalProject).
+2026-02-01 16:24:59.193 +02:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-02-01 16:24:59.194 +02:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-02-01 16:24:59.196 +02:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-02-01 16:24:59.198 +02:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-02-01 16:24:59.200 +02:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-02-01 16:24:59.203 +02:00 [DBG] Executing controller factory for controller BsdFinalProject.Controllers.UsersController (BsdFinalProject)
+2026-02-01 16:24:59.599 +02:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-02-01 16:24:59.608 +02:00 [DBG] Executed controller factory for controller BsdFinalProject.Controllers.UsersController (BsdFinalProject)
+2026-02-01 16:24:59.619 +02:00 [DBG] Attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto' ...
+2026-02-01 16:24:59.623 +02:00 [DBG] Attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto' using the name '' in request data ...
+2026-02-01 16:24:59.625 +02:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2026-02-01 16:24:59.630 +02:00 [DBG] Connection id "0HNJ1JMKHBMSC", Request id "0HNJ1JMKHBMSC:00000009": started reading request body.
+2026-02-01 16:24:59.633 +02:00 [DBG] Connection id "0HNJ1JMKHBMSC", Request id "0HNJ1JMKHBMSC:00000009": done reading request body.
+2026-02-01 16:24:59.642 +02:00 [DBG] JSON input formatter succeeded, deserializing to type 'BsdFinalProject.DTOs.LoginDto'
+2026-02-01 16:24:59.643 +02:00 [DBG] Done attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto'.
+2026-02-01 16:24:59.645 +02:00 [DBG] Done attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto'.
+2026-02-01 16:24:59.646 +02:00 [DBG] Attempting to validate the bound parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto' ...
+2026-02-01 16:24:59.653 +02:00 [DBG] Done attempting to validate the bound parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto'.
+2026-02-01 16:24:59.657 +02:00 [INF] Attempting to log in user with email: user@example.com
+2026-02-01 16:26:13.248 +02:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2026-02-01 16:26:13.441 +02:00 [DBG] Hosting starting
+2026-02-01 16:26:13.465 +02:00 [INF] User profile is available. Using 'C:\Users\216233767\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-02-01 16:26:13.478 +02:00 [DBG] Reading data from file 'C:\Users\216233767\AppData\Local\ASP.NET\DataProtection-Keys\key-5b951a59-ec10-4d4c-be8e-bbe97774ec5d.xml'.
+2026-02-01 16:26:13.483 +02:00 [DBG] Found key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d}.
+2026-02-01 16:26:13.490 +02:00 [DBG] Considering key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d} with expiration date 2026-05-02 14:23:27Z as default key.
+2026-02-01 16:26:13.494 +02:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2026-02-01 16:26:13.497 +02:00 [DBG] Decrypting secret element using Windows DPAPI.
+2026-02-01 16:26:13.498 +02:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2026-02-01 16:26:13.502 +02:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2026-02-01 16:26:13.504 +02:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2026-02-01 16:26:13.506 +02:00 [DBG] Using key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d} as the default key.
+2026-02-01 16:26:13.509 +02:00 [DBG] Key ring with default key {5b951a59-ec10-4d4c-be8e-bbe97774ec5d} was loaded during application startup.
+2026-02-01 16:26:13.519 +02:00 [DBG] Middleware loaded
+2026-02-01 16:26:13.522 +02:00 [DBG] Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16515 B).
+2026-02-01 16:26:13.527 +02:00 [DBG] Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-01 16:26:13.593 +02:00 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2026-02-01 16:26:13.596 +02:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2026-02-01 16:26:13.604 +02:00 [DBG] Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-01 16:26:13.722 +02:00 [INF] Now listening on: https://localhost:7097
+2026-02-01 16:26:13.725 +02:00 [INF] Now listening on: http://localhost:5097
+2026-02-01 16:26:13.727 +02:00 [DBG] Loaded hosting startup assembly BsdFinalProject
+2026-02-01 16:26:13.729 +02:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2026-02-01 16:26:13.731 +02:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2026-02-01 16:26:13.733 +02:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2026-02-01 16:26:13.744 +02:00 [DBG] Executing API description provider 'EndpointMetadataApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-02-01 16:26:13.749 +02:00 [DBG] Executing API description provider 'DefaultApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-02-01 16:26:13.824 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-01 16:26:13.827 +02:00 [INF] Hosting environment: Development
+2026-02-01 16:26:13.829 +02:00 [INF] Content root path: M:\updated\BsdFinalProject
+2026-02-01 16:26:13.830 +02:00 [DBG] Hosting started
+2026-02-01 16:26:18.720 +02:00 [DBG] Connection id "0HNJ1JNEO2TBF" accepted.
+2026-02-01 16:26:18.725 +02:00 [DBG] Connection id "0HNJ1JNEO2TBF" started.
+2026-02-01 16:26:18.777 +02:00 [DBG] Connection 0HNJ1JNEO2TBF established using the following protocol: "Tls13"
+2026-02-01 16:26:18.828 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/index.html - null null
+2026-02-01 16:26:18.965 +02:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2026-02-01 16:26:18.969 +02:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2026-02-01 16:26:18.979 +02:00 [DBG] Response markup was updated to include Browser Link script injection.
+2026-02-01 16:26:18.981 +02:00 [DBG] Response markup was updated to include browser refresh script injection.
+2026-02-01 16:26:18.988 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/index.html - 200 null text/html;charset=utf-8 165.0619ms
+2026-02-01 16:26:18.994 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/_vs/browserLink - null null
+2026-02-01 16:26:18.994 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-01 16:26:19.024 +02:00 [DBG] Script injected: /_framework/aspnetcore-browser-refresh.js
+2026-02-01 16:26:19.027 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 32.7935ms
+2026-02-01 16:26:19.043 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/_vs/browserLink - 200 null text/javascript; charset=UTF-8 49.1206ms
+2026-02-01 16:26:19.073 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7097/swagger/v1/swagger.json - null null
+2026-02-01 16:26:19.093 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7097/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.4401ms
+2026-02-01 16:26:27.184 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7097/api/Users/login - application/json 57
+2026-02-01 16:26:27.196 +02:00 [DBG] POST requests are not supported
+2026-02-01 16:26:27.214 +02:00 [DBG] 1 candidate(s) found for the request path '/api/Users/login'
+2026-02-01 16:26:27.218 +02:00 [DBG] Endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)' with route pattern 'api/Users/login' is valid for the request path '/api/Users/login'
+2026-02-01 16:26:27.222 +02:00 [DBG] Request matched endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)'
+2026-02-01 16:26:27.226 +02:00 [DBG] The request has an origin header: 'https://localhost:7097'.
+2026-02-01 16:26:27.228 +02:00 [INF] CORS policy execution successful.
+2026-02-01 16:26:27.923 +02:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-02-01 16:26:27.927 +02:00 [INF] Executing endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)'
+2026-02-01 16:26:27.946 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(BsdFinalProject.DTOs.LoginDto) on controller BsdFinalProject.Controllers.UsersController (BsdFinalProject).
+2026-02-01 16:26:27.949 +02:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-02-01 16:26:27.952 +02:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-02-01 16:26:27.954 +02:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-02-01 16:26:27.956 +02:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-02-01 16:26:27.959 +02:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-02-01 16:26:27.975 +02:00 [DBG] Executing controller factory for controller BsdFinalProject.Controllers.UsersController (BsdFinalProject)
+2026-02-01 16:26:28.626 +02:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-02-01 16:26:28.692 +02:00 [DBG] Executed controller factory for controller BsdFinalProject.Controllers.UsersController (BsdFinalProject)
+2026-02-01 16:26:28.724 +02:00 [DBG] Attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto' ...
+2026-02-01 16:26:28.727 +02:00 [DBG] Attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto' using the name '' in request data ...
+2026-02-01 16:26:28.729 +02:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2026-02-01 16:26:28.735 +02:00 [DBG] Connection id "0HNJ1JNEO2TBF", Request id "0HNJ1JNEO2TBF:00000009": started reading request body.
+2026-02-01 16:26:28.737 +02:00 [DBG] Connection id "0HNJ1JNEO2TBF", Request id "0HNJ1JNEO2TBF:00000009": done reading request body.
+2026-02-01 16:26:28.746 +02:00 [DBG] JSON input formatter succeeded, deserializing to type 'BsdFinalProject.DTOs.LoginDto'
+2026-02-01 16:26:28.747 +02:00 [DBG] Done attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto'.
+2026-02-01 16:26:28.750 +02:00 [DBG] Done attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto'.
+2026-02-01 16:26:28.751 +02:00 [DBG] Attempting to validate the bound parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto' ...
+2026-02-01 16:26:28.757 +02:00 [DBG] Done attempting to validate the bound parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto'.
+2026-02-01 16:26:28.762 +02:00 [INF] Attempting to log in user with email: user@example.com
+2026-02-01 16:26:31.203 +02:00 [INF] start Verifying password using PBKDF2.
+2026-02-01 16:26:31.329 +02:00 [INF] Password verified for user with email: user@example.com
+2026-02-01 16:26:31.439 +02:00 [INF] start Creating JWT token for user with email: user@example.com
+2026-02-01 16:26:31.634 +02:00 [INF] User logged in successfully with email: user@example.com
+2026-02-01 16:26:31.689 +02:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2026-02-01 16:26:31.789 +02:00 [DBG] No information found on request to perform content negotiation.
+2026-02-01 16:26:31.838 +02:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2026-02-01 16:26:31.898 +02:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2026-02-01 16:26:31.943 +02:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2026-02-01 16:26:31.945 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-02-01 16:26:31.954 +02:00 [INF] Executed action BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject) in 3978.4178ms
+2026-02-01 16:26:31.956 +02:00 [INF] Executed endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)'
+2026-02-01 16:26:31.959 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7097/api/Users/login - 200 null application/json; charset=utf-8 4775.4539ms
+2026-02-01 16:26:41.096 +02:00 [DBG] Connection id "0HNJ1JNEO2TBF" received FIN.
+2026-02-01 16:26:41.100 +02:00 [DBG] The connection queue processing loop for 0HNJ1JNEO2TBF completed.
+2026-02-01 16:26:41.102 +02:00 [DBG] Connection id "0HNJ1JNEO2TBF" is closed. The last processed stream ID was 9.
+2026-02-01 16:26:41.104 +02:00 [DBG] Connection id "0HNJ1JNEO2TBF" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-02-01 16:26:41.110 +02:00 [DBG] Connection id "0HNJ1JNEO2TBF" stopped.
+2026-02-01 16:28:37.746 +02:00 [DBG] Connection id "0HNJ1JNEO2TBG" accepted.
+2026-02-01 16:28:37.765 +02:00 [DBG] Connection id "0HNJ1JNEO2TBG" started.
+2026-02-01 16:28:37.774 +02:00 [DBG] Connection 0HNJ1JNEO2TBG established using the following protocol: "Tls13"
+2026-02-01 16:28:58.761 +02:00 [DBG] Connection id "0HNJ1JNEO2TBG" received FIN.
+2026-02-01 16:28:58.773 +02:00 [DBG] Connection id "0HNJ1JNEO2TBG" is closed. The last processed stream ID was 0.
+2026-02-01 16:28:58.782 +02:00 [DBG] The connection queue processing loop for 0HNJ1JNEO2TBG completed.
+2026-02-01 16:28:58.788 +02:00 [DBG] Connection id "0HNJ1JNEO2TBG" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-02-01 16:28:58.794 +02:00 [DBG] Connection id "0HNJ1JNEO2TBG" stopped.
+2026-02-01 17:23:07.704 +02:00 [DBG] Connection id "0HNJ1JNEO2TBH" accepted.
+2026-02-01 17:23:07.739 +02:00 [DBG] Connection id "0HNJ1JNEO2TBH" started.
+2026-02-01 17:23:07.748 +02:00 [DBG] Connection 0HNJ1JNEO2TBH established using the following protocol: "Tls13"
+2026-02-01 17:23:07.790 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7097/api/Users/login - null null
+2026-02-01 17:23:07.801 +02:00 [DBG] OPTIONS requests are not supported
+2026-02-01 17:23:07.808 +02:00 [DBG] 1 candidate(s) found for the request path '/api/Users/login'
+2026-02-01 17:23:07.809 +02:00 [DBG] Request matched endpoint '405 HTTP Method Not Supported'
+2026-02-01 17:23:07.812 +02:00 [DBG] The request has an origin header: 'http://localhost:4200'.
+2026-02-01 17:23:07.814 +02:00 [INF] CORS policy execution successful.
+2026-02-01 17:23:07.816 +02:00 [DBG] The request is a preflight request.
+2026-02-01 17:23:07.818 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7097/api/Users/login - 204 null null 28.778ms
+2026-02-01 17:23:07.821 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7097/api/Users/login - application/json 49
+2026-02-01 17:23:07.825 +02:00 [DBG] POST requests are not supported
+2026-02-01 17:23:07.826 +02:00 [DBG] 1 candidate(s) found for the request path '/api/Users/login'
+2026-02-01 17:23:07.828 +02:00 [DBG] Endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)' with route pattern 'api/Users/login' is valid for the request path '/api/Users/login'
+2026-02-01 17:23:07.831 +02:00 [DBG] Request matched endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)'
+2026-02-01 17:23:07.833 +02:00 [DBG] The request has an origin header: 'http://localhost:4200'.
+2026-02-01 17:23:07.834 +02:00 [INF] CORS policy execution successful.
+2026-02-01 17:23:07.836 +02:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-02-01 17:23:07.838 +02:00 [INF] Executing endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)'
+2026-02-01 17:23:07.840 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(BsdFinalProject.DTOs.LoginDto) on controller BsdFinalProject.Controllers.UsersController (BsdFinalProject).
+2026-02-01 17:23:07.842 +02:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-02-01 17:23:07.843 +02:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-02-01 17:23:07.845 +02:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-02-01 17:23:07.847 +02:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-02-01 17:23:07.849 +02:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-02-01 17:23:07.851 +02:00 [DBG] Executing controller factory for controller BsdFinalProject.Controllers.UsersController (BsdFinalProject)
+2026-02-01 17:23:07.860 +02:00 [DBG] Executed controller factory for controller BsdFinalProject.Controllers.UsersController (BsdFinalProject)
+2026-02-01 17:23:07.862 +02:00 [DBG] Attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto' ...
+2026-02-01 17:23:07.864 +02:00 [DBG] Attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto' using the name '' in request data ...
+2026-02-01 17:23:07.865 +02:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2026-02-01 17:23:07.867 +02:00 [DBG] Connection id "0HNJ1JNEO2TBH", Request id "0HNJ1JNEO2TBH:00000003": started reading request body.
+2026-02-01 17:23:07.869 +02:00 [DBG] Connection id "0HNJ1JNEO2TBH", Request id "0HNJ1JNEO2TBH:00000003": done reading request body.
+2026-02-01 17:23:07.871 +02:00 [DBG] JSON input formatter succeeded, deserializing to type 'BsdFinalProject.DTOs.LoginDto'
+2026-02-01 17:23:07.872 +02:00 [DBG] Done attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto'.
+2026-02-01 17:23:07.874 +02:00 [DBG] Done attempting to bind parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto'.
+2026-02-01 17:23:07.875 +02:00 [DBG] Attempting to validate the bound parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto' ...
+2026-02-01 17:23:07.877 +02:00 [DBG] Done attempting to validate the bound parameter 'dto' of type 'BsdFinalProject.DTOs.LoginDto'.
+2026-02-01 17:23:07.879 +02:00 [INF] Attempting to log in user with email: user2@example.com
+2026-02-01 17:23:07.984 +02:00 [INF] start Verifying password using PBKDF2.
+2026-02-01 17:23:08.044 +02:00 [INF] Password verified for user with email: user2@example.com
+2026-02-01 17:23:08.047 +02:00 [INF] start Creating JWT token for user with email: user2@example.com
+2026-02-01 17:23:08.050 +02:00 [INF] User logged in successfully with email: user2@example.com
+2026-02-01 17:23:08.052 +02:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2026-02-01 17:23:08.055 +02:00 [DBG] No information found on request to perform content negotiation.
+2026-02-01 17:23:08.056 +02:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2026-02-01 17:23:08.057 +02:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2026-02-01 17:23:08.058 +02:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2026-02-01 17:23:08.060 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-02-01 17:23:08.061 +02:00 [INF] Executed action BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject) in 210.7263ms
+2026-02-01 17:23:08.063 +02:00 [INF] Executed endpoint 'BsdFinalProject.Controllers.UsersController.Login (BsdFinalProject)'
+2026-02-01 17:23:08.064 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7097/api/Users/login - 200 null application/json; charset=utf-8 243.6971ms
+2026-02-01 17:23:33.764 +02:00 [DBG] Connection id "0HNJ1JNEO2TBH" received FIN.
+2026-02-01 17:23:33.766 +02:00 [DBG] Connection id "0HNJ1JNEO2TBH" is closed. The last processed stream ID was 3.
+2026-02-01 17:23:33.807 +02:00 [DBG] The connection queue processing loop for 0HNJ1JNEO2TBH completed.
+2026-02-01 17:23:33.808 +02:00 [DBG] Connection id "0HNJ1JNEO2TBH" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-02-01 17:23:33.817 +02:00 [DBG] Connection id "0HNJ1JNEO2TBH" stopped.
+2026-02-01 17:31:53.145 +02:00 [DBG] Connection id "0HNJ1JNEO2TBI" accepted.
+2026-02-01 17:31:53.151 +02:00 [DBG] Connection id "0HNJ1JNEO2TBI" started.
+2026-02-01 17:31:53.162 +02:00 [DBG] Connection 0HNJ1JNEO2TBI established using the following protocol: "Tls13"
+2026-02-01 17:34:14.369 +02:00 [DBG] Connection id "0HNJ1JNEO2TBI" received FIN.
+2026-02-01 17:34:14.415 +02:00 [DBG] Connection id "0HNJ1JNEO2TBI" is closed. The last processed stream ID was 0.
+2026-02-01 17:34:14.448 +02:00 [DBG] The connection queue processing loop for 0HNJ1JNEO2TBI completed.
+2026-02-01 17:34:14.451 +02:00 [DBG] Connection id "0HNJ1JNEO2TBI" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-02-01 17:34:14.456 +02:00 [DBG] Connection id "0HNJ1JNEO2TBI" stopped.
