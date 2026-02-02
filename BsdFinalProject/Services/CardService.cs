@@ -12,12 +12,13 @@ namespace BsdFinalProject.Services
     public class CardService : ICardService
     {
         private readonly CardRepository _repository;
-        private readonly GiftService _Gservice = new();
+        private readonly IGiftService _Gservice;
         private readonly ILogger<CardService> _logger;
-        public CardService(ILogger<CardService> logger, SaleContextFactory saleContextFactory)
+        public CardService(ILogger<CardService> logger, SaleContextFactory saleContextFactory, IGiftService giftService)
         {
             _logger = logger;
             _repository = new CardRepository(saleContextFactory);
+            _Gservice = giftService;
         }
 
         public async Task<IEnumerable<GiftDtoWithSum?>> GetAllMyCard(int Id)

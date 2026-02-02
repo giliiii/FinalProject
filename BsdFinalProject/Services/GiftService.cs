@@ -1,6 +1,7 @@
 //using BsdFinalProject.IRepositories;
 //using BsdFinalProject.IServices;
 using BsdFinalProject.DTOs;
+using BsdFinalProject.IRepositories;
 using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Repositories;
@@ -10,18 +11,14 @@ namespace BsdFinalProject.Services
 {
     public class GiftService : IGiftService
     {
-        private readonly GiftRepository _repository ;
-        private readonly CategoryRepository _categoryRepository;
+        private readonly IGiftRepository _repository ;
+        private readonly ICategoryRepository _categoryRepository;
         private readonly ILogger<GiftService> _logger;
-        public GiftService(ILogger<GiftService> logger,SaleContextFactory saleContextFactory)
+        public GiftService(IGiftRepository repository,ICategoryRepository categoryRepository, ILogger<GiftService> logger)    
         {
+            _repository = repository;
+            _categoryRepository = categoryRepository;
             _logger = logger;
-            _repository = new GiftRepository(saleContextFactory);
-            _categoryRepository = new CategoryRepository(saleContextFactory);
-        }
-
-        public GiftService()
-        {
         }
 
         public async Task<GiftDto> CreateNewGift(GiftDto giftDto)

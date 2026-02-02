@@ -1,5 +1,6 @@
 using BsdFinalProject.Data;
 using BsdFinalProject.DTOs;
+using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Services;
 using FinalProject.Services;
@@ -14,11 +15,11 @@ namespace BsdFinalProject.Controllers
     public class GiftsController : ControllerBase
     {
         private readonly SaleContext _context;
-        private readonly GiftService _GiftService;
+        private readonly IGiftService _GiftService;
         private readonly ILogger<GiftsController> _logger;
         //public BasketsController(SaleContext context) => _context = context;
 
-        public GiftsController(GiftService giftService, SaleContext context, ILogger<GiftsController> logger)
+        public GiftsController(IGiftService giftService, SaleContext context, ILogger<GiftsController> logger)
         {
             _GiftService = giftService;
             _context = context;
@@ -50,7 +51,7 @@ namespace BsdFinalProject.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "Manager")]
+        //[Authorize(Roles = "Manager")]
         public async Task<ActionResult<GiftDto>> CreateNewGift(GiftDto giftDto)
         {
             try

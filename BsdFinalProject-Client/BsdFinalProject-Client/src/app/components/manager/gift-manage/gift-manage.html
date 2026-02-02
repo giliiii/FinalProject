@@ -1,1 +1,99 @@
-<p>gift-manage works!</p>
+<div class="card">
+    <p-dataview [value]="gifts" [layout]="layout">
+
+        <!-- HEADER -->
+        <ng-template #header>
+            <div class="flex justify-end">
+                <p-selectbutton
+                    [(ngModel)]="layout"
+                    [options]="options"
+                    [allowEmpty]="false">
+                </p-selectbutton>
+            </div>
+        </ng-template>
+
+        <!-- LIST VIEW -->
+        <ng-template #list let-items>
+            <div *ngFor="let item of items; let first = first">
+                <div
+                    class="flex flex-col sm:flex-row sm:items-center p-6 gap-4"
+                    [ngClass]="{ 'border-top-1 surface-border': !first }">
+
+                    <!-- IMAGE -->
+                    <div class="md:w-40">
+                        <img
+                            class="block mx-auto rounded w-full"
+                            [src]="item.picture || 'assets/no-image.png'"
+                            [alt]="item.name" />
+                    </div>
+
+                    <!-- DETAILS -->
+                    <div class="flex flex-col md:flex-row justify-between flex-1 gap-6">
+                        <div>
+                            <div class="text-lg font-medium">{{ item.name }}</div>
+                            <div class="text-sm text-surface-500 mt-1">
+                                קטגוריה: {{ item.categoryId }}
+                            </div>
+                            <div class="text-sm text-surface-500">
+                                תורם: {{ item.donorId }}
+                            </div>
+
+                            <div *ngIf="item.winnerName" class="mt-2 text-green-600 font-medium">
+                                זוכה: {{ item.winnerName }}
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-end gap-3">
+                            <span class="text-xl font-semibold">
+                                {{ item.cost | currency:'ILS' }}
+                            </span>
+                            <button pButton label="פרטים" icon="pi pi-eye"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <!-- GRID VIEW -->
+        <ng-template #grid let-items>
+            <div class="grid grid-cols-12 gap-4">
+                <div
+                    *ngFor="let item of items"
+                    class="col-span-12 sm:col-span-6 md:col-span-4 p-2">
+
+                    <div class="p-4 border rounded flex flex-col h-full">
+
+                        <img
+                            class="rounded mb-4"
+                            [src]="item.picture || 'assets/no-image.png'"
+                            [alt]="item.name" />
+
+                        <div class="text-lg font-medium">{{ item.name }}</div>
+
+                        <div class="text-sm text-surface-500">
+                            קטגוריה: {{ item.categoryId }}
+                        </div>
+
+                        <div class="mt-auto">
+                            <div class="text-xl font-semibold mt-4">
+                                {{ item.cost | currency:'ILS' }}
+                            </div>
+
+                            <div *ngIf="item.winnerName" class="text-green-600 text-sm mt-2">
+                                זוכה: {{ item.winnerName }}
+                            </div>
+
+                            <button
+                                pButton
+                                label="פרטים"
+                                icon="pi pi-eye"
+                                class="w-full mt-3">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+    </p-dataview>
+</div>

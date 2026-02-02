@@ -13,13 +13,14 @@ namespace FinalProject.Services
     public class BasketService : IBasketService
     {
         private readonly BasketRepository _repository;
-        private readonly GiftService _giftService = new();
+        private readonly IGiftService _giftService;
         private readonly ILogger<BasketService> _logger;
 
-        public BasketService(ILogger<BasketService> logger, SaleContextFactory saleContextFactory)
+        public BasketService(ILogger<BasketService> logger, SaleContextFactory saleContextFactory, IGiftService giftService)
         {
             _logger = logger;
             _repository = new BasketRepository(saleContextFactory);
+            _giftService = giftService;
         }
 
         public async Task<List<BasketDto>> GetAllMyBasket(int userId)
