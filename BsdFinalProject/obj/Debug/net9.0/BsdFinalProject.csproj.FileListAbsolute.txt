@@ -394,7 +394,7 @@ M:\updated\BsdFinalProject\obj\Debug\net9.0\staticwebassets.build.json
 M:\updated\BsdFinalProject\obj\Debug\net9.0\staticwebassets.build.json.cache
 M:\updated\BsdFinalProject\obj\Debug\net9.0\staticwebassets.development.json
 M:\updated\BsdFinalProject\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-M:\updated\BsdFinalProject\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 M:\updated\BsdFinalProject\obj\Debug\net9.0\BsdFinal.AF446E77.Up2Date
 M:\updated\BsdFinalProject\obj\Debug\net9.0\BsdFinalProject.genruntimeconfig.cache
 M:\updated\BsdFinalProject\obj\Debug\net9.0\ref\BsdFinalProject.dll
+M:\updated\BsdFinalProject\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

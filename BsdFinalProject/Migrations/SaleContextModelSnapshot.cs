@@ -38,6 +38,8 @@ namespace BsdFinalProject.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GiftId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Basket");
@@ -123,6 +125,9 @@ namespace BsdFinalProject.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("CategoryId1")
+                        .HasColumnType("int");
+
                     b.Property<int>("Cost")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
@@ -134,6 +139,9 @@ namespace BsdFinalProject.Migrations
                         .HasColumnType("nvarchar(300)");
 
                     b.Property<int>("DonorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DonorId1")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -157,35 +165,16 @@ namespace BsdFinalProject.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("CategoryId1");
+
                     b.HasIndex("DonorId");
+
+                    b.HasIndex("DonorId1");
 
                     b.ToTable("Gift", t =>
                         {
-                            t.HasCheckConstraint("CK_Gift_Cost", "Cost > 10 AND Cost < 100");
+                            t.HasCheckConstraint("CK_Gift_Cost", "Cost >= 10 AND Cost <= 100");
                         });
-                });
-
-            modelBuilder.Entity("BsdFinalProject.Models.Manager", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Manager");
                 });
 
             modelBuilder.Entity("BsdFinalProject.Models.User", b =>
@@ -212,7 +201,8 @@ namespace BsdFinalProject.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -257,11 +247,19 @@ namespace BsdFinalProject.Migrations
 
             modelBuilder.Entity("BsdFinalProject.Models.Basket", b =>
                 {
+                    b.HasOne("BsdFinalProject.Models.Gift", "Gift")
+                        .WithMany()
+                        .HasForeignKey("GiftId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BsdFinalProject.Models.User", "User")
                         .WithMany("BasketList")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Gift");
 
                     b.Navigation("User");
                 });
@@ -271,7 +269,7 @@ namespace BsdFinalProject.Migrations
                     b.HasOne("BsdFinalProject.Models.Gift", "Gift")
                         .WithMany("CardsList")
                         .HasForeignKey("GiftId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BsdFinalProject.Models.User", "User")
@@ -288,16 +286,24 @@ namespace BsdFinalProject.Migrations
             modelBuilder.Entity("BsdFinalProject.Models.Gift", b =>
                 {
                     b.HasOne("BsdFinalProject.Models.Category", "Category")
-                        .WithMany("GiftsList")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("BsdFinalProject.Models.Donor", "Donor")
+                    b.HasOne("BsdFinalProject.Models.Category", null)
                         .WithMany("GiftsList")
+                        .HasForeignKey("CategoryId1");
+
+                    b.HasOne("BsdFinalProject.Models.Donor", "Donor")
+                        .WithMany()
                         .HasForeignKey("DonorId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("BsdFinalProject.Models.Donor", null)
+                        .WithMany("GiftsList")
+                        .HasForeignKey("DonorId1");
 
                     b.Navigation("Category");
 

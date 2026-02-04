@@ -10,21 +10,22 @@ namespace BsdFinalProject.Repositories
 {
     public class ManagerRepository
     {
-        private readonly SaleContextFactory _saleContextFactory;
-        private Lazy<SaleContext> _lazyContext;
+        //    private readonly SaleContextFactory _saleContextFactory;
+        //    private Lazy<SaleContext> _lazyContext;
 
-        public ManagerRepository(SaleContextFactory saleContextFactory)
-        {
-            _saleContextFactory = saleContextFactory;
-            _lazyContext = new Lazy<SaleContext>(() => _saleContextFactory.CreateContext());
-        }
+        //    public ManagerRepository(SaleContextFactory saleContextFactory)
+        //    {
+        //        _saleContextFactory = saleContextFactory;
+        //        _lazyContext = new Lazy<SaleContext>(() => _saleContextFactory.CreateContext());
+        //    }
 
-        private SaleContext _context => _lazyContext.Value;
+        //    private SaleContext _context => _lazyContext.Value;
 
-        public async Task<Manager?> GetManagerById(int id)
-        {
-            return await _context.Manager.FindAsync(id);
-        }
+        //    public async Task<Manager?> GetManagerById(int id)
+        //    {
+        //        return await _context.Manager.FindAsync(id);
+        //    }
 
+        //}
     }
 }

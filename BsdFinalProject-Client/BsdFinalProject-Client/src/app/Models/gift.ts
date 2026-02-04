@@ -1,11 +1,11 @@
 
 export class GiftModel {
-  id!: number;
+  id!: Number;
   name!: string;
   description?: string;
-  cost!: number;
+  cost!: Number;
   picture?: string;
-  categoryId!: number;
-  donorId!: number;
+  categoryId!: Number;
+  donorId!: Number;
   winnerName?: string;
 }

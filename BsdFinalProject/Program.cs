@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
+using System.Security.Claims; // add this at top
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -87,7 +88,33 @@ if (!string.IsNullOrEmpty(key))
             ValidateIssuer = !string.IsNullOrEmpty(builder.Configuration["Jwt:Issuer"]),
             ValidateAudience = !string.IsNullOrEmpty(builder.Configuration["Jwt:Audience"]),
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
+            RoleClaimType = ClaimTypes.Role,
+            NameClaimType = ClaimTypes.NameIdentifier
+        };
+
+        // Add events to help diagnose 401s and to confirm token arrival
+        options.Events = new Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents
+        {
+            OnMessageReceived = ctx =>
+            {
+                // optional: inspect incoming Authorization header
+                var auth = ctx.Request.Headers["Authorization"].FirstOrDefault();
+                // you can log auth here with your logger (not shown)
+                return Task.CompletedTask;
+            },
+            OnAuthenticationFailed = ctx =>
+            {
+                // optional: log exception for debugging
+                // logger.LogError(ctx.Exception, "JWT authentication failed");
+                return Task.CompletedTask;
+            },
+            OnTokenValidated = ctx =>
+            {
+                // optional: inspect claims
+                // var role = ctx.Principal?.FindFirst(ClaimTypes.Role)?.Value;
+                return Task.CompletedTask;
+            }
         };
     });
 }
@@ -117,4 +144,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.Run();      

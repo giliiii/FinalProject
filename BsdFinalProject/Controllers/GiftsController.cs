@@ -51,7 +51,7 @@ namespace BsdFinalProject.Controllers
 
 
         [HttpPost]
-        //[Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult<GiftDto>> CreateNewGift(GiftDto giftDto)
         {
             try

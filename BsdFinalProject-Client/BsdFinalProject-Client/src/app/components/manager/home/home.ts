@@ -20,9 +20,10 @@ const routes: Routes = [
 
 @Component({
   selector: 'app-manager-home',
+  standalone: true,
   imports: [CommonModule, MenubarModule],
   templateUrl: './home.html',
-  styleUrl: './home.scss',
+  styleUrls: ['./home.scss'],
 })
 export class Home implements OnInit {
 items: MenuItem[] = [];

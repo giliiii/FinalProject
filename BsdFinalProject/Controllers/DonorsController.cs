@@ -4,6 +4,7 @@ using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Services;
 using FinalProject.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,7 @@ namespace BsdFinalProject.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult<IEnumerable<DonorDto>>> GetAllDonors()
         {
             var donors = await _DonorService.GetAllDonors();
@@ -49,6 +51,7 @@ namespace BsdFinalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult<CreateDonorDto>> CreateNewDonor(CreateDonorDto donorDto)
         {
             try
@@ -69,6 +72,7 @@ namespace BsdFinalProject.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult<DonorDto>> UpdateDonor(DonorDto donorDto)
         {
             try
@@ -89,6 +93,7 @@ namespace BsdFinalProject.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult<DonorDto>> DeleteDonor(int id)
         {
             try

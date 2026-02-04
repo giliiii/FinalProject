@@ -10,15 +10,15 @@ namespace BsdFinalProject.Repositories
     {
         private readonly SaleContextFactory _saleContextFactory;
         private Lazy<SaleContext> _lazyContext;
+        private readonly SaleContext _context;
 
-        public GiftRepository(SaleContextFactory saleContextFactory)
+        public GiftRepository(SaleContextFactory saleContextFactory, SaleContext context)
         {
             _saleContextFactory = saleContextFactory;
             _lazyContext = new Lazy<SaleContext>(() => _saleContextFactory.CreateContext());
+            this._context = context;
+
         }
-
-
-        private SaleContext _context => _lazyContext.Value;
 
         public async Task<Gift?> GetGiftById(int id)
         {
@@ -27,10 +27,22 @@ namespace BsdFinalProject.Repositories
 
         public async Task<IEnumerable<Gift>> GetAllGifts()
         {
-            return await _context.Gift.ToListAsync();
+                return await _context.Gift.ToListAsync();
         }
         public async Task<Gift> CreateNewGift(Gift gift)
         {
+            var donor = await _context.Donor
+                                    .Include(d => d.GiftsList)
+                                    .FirstOrDefaultAsync(d => d.Id == gift.DonorId);
+
+            if (donor != null)
+            {
+                donor.GiftsList ??= new List<Gift>();
+                donor.GiftsList.Add(gift);
+                await _context.SaveChangesAsync();
+                return gift;
+            }
+
             _context.Gift.Add(gift);
             await _context.SaveChangesAsync();
             return gift;

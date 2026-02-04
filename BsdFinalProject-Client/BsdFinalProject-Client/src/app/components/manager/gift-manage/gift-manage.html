@@ -1,3 +1,45 @@
+  <p-toast /> 
+<p-dialog [(visible)]="displayDialog" header="עדכון מתנה" [modal]="true" [style]="{width: '400px'}">
+  <div class="form-group">
+    <label for="newGiftName">שם המתנה:</label>
+    <input pInputText id="newGiftName" [(ngModel)]="newGiftName" type="text" placeholder="הכנס שם" class="form-input"/>
+  </div>
+  
+  <div class="form-group">
+    <label for="newGiftDescription">תיאור:</label>
+    <input pInputText id="newGiftDescription" [(ngModel)]="newGiftDescription" type="text" placeholder="הכנס תיאור" class="form-input"/>
+  </div>
+
+  <div class="form-group">
+    <label for="newGiftCost">מחיר:</label>
+    <input pInputText id="newGiftCost" [(ngModel)]="newGiftCost" type="number" placeholder="הכנס מחיר" class="form-input"/>
+  </div>
+
+  <div class="form-group">
+    <label for="newGiftPicture">תמונה:</label>
+    <input pInputText id="newGiftPicture" [(ngModel)]="newGiftPicture" type="text" placeholder="הכנס נתיב לתמונה" class="form-input"/>
+  </div>
+
+  <div class="form-group">
+    <label for="newGiftCategoryId">קטגוריה:</label>
+    <p-select 
+      id="newGiftCategoryId"
+      [(ngModel)]="selectedCategory" 
+      [options]="categoryOptions " 
+      optionLabel="label" 
+      optionValue="value"
+      placeholder="בחר קטגוריה"
+      appendTo="body"
+      class="w-full">
+    </p-select>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button pButton type="button" label="ביטול" (click)="closeDialog()" class="p-button-danger"></button>
+    <button pButton type="button" label="שמור" (click)="updateGiftDetails()" class="p-button-success"></button>
+  </ng-template>
+</p-dialog>
+
 <div class="card">
     <p-dataview [value]="gifts" [layout]="layout">
 
@@ -48,6 +90,10 @@
                                 {{ item.cost | currency:'ILS' }}
                             </span>
                             <button pButton label="פרטים" icon="pi pi-eye"></button>
+                            <button pButton label="מחיקת מתנה" icon="pi pi-trash" (click)="deleteGift(item.id)"></button>
+                            <div class="button-container">
+                                  <button pButton type="button" label="עדכון מתנה" icon="pi pi-pencil" (click)="openUpdateGiftDialog(item)" class="p-button-success"></button>
+                            </div> 
                         </div>
                     </div>
                 </div>

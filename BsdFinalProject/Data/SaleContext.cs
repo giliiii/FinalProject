@@ -11,7 +11,7 @@ namespace BsdFinalProject.Data
         public DbSet<Category> Category => Set<Category>();
         public DbSet<Donor> Donor => Set<Donor>();
         public DbSet<Gift> Gift => Set<Gift>();
-        public DbSet<Manager> Manager => Set<Manager>();
+        //public DbSet<Manager> Manager => Set<Manager>();
         public DbSet<User> User => Set<User>();
         public DbSet<Winner> Winner => Set<Winner>();
 
@@ -128,12 +128,12 @@ namespace BsdFinalProject.Data
             });
 
             // Manager configuration
-            modelBuilder.Entity<Manager>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.Password).IsRequired().HasMaxLength(200);
-            });
+            //modelBuilder.Entity<Manager>(entity =>
+            //{
+            //    entity.HasKey(e => e.Id);
+            //    entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
+            //    entity.Property(e => e.Password).IsRequired().HasMaxLength(200);
+            //});
 
 
             // Winner configuration

@@ -11,16 +11,14 @@ namespace BsdFinalProject.Services
 {
     public class WinnerService : IWinnerService
     {
-        private readonly WinnerRepository _repository;
-        private readonly GiftRepository _giftRepository;
+        private readonly IWinnerRepository _repository;
+        private readonly IGiftRepository _giftRepository;
         private readonly ILogger<WinnerService> _logger;
-        public WinnerService(ILogger<WinnerService> logger,SaleContextFactory saleContextFactory)
+        public WinnerService(IWinnerRepository repository, IGiftRepository giftRepository, ILogger<WinnerService> logger)
         {
+            _repository = repository;
+            _giftRepository = giftRepository;
             _logger = logger;
-            _repository = new WinnerRepository(saleContextFactory);
-            _giftRepository = new GiftRepository(saleContextFactory);
-
-
         }
 
         public async Task<IEnumerable<WinnerDto?>> GetAllWinners()

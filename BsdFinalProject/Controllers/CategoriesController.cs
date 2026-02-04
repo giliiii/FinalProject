@@ -5,6 +5,7 @@ using BsdFinalProject.Services;
 using FinalProject.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using BsdFinalProject.IServices;
 
 namespace BsdFinalProject.Controllers
 {
@@ -13,11 +14,11 @@ namespace BsdFinalProject.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly SaleContext _context;
-        private readonly CategoryService _CategoryService;
+        private readonly ICategoryService _CategoryService;
         private readonly ILogger<CategoriesController> _logger;
         //public BasketsController(SaleContext context) => _context = context;
 
-        public CategoriesController(CategoryService categoryService, SaleContext context, ILogger<CategoriesController> logger)
+        public CategoriesController(ICategoryService categoryService, SaleContext context, ILogger<CategoriesController> logger)
         {
             _CategoryService = categoryService;
             _context = context;
