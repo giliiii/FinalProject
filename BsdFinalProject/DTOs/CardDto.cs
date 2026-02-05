@@ -26,4 +26,21 @@ namespace BsdFinalProject.DTOs
         public int GiftId { get; set; }
         public int Count { get; set; }
     }
+
+    public class TopPurchasedDto
+    {
+        [Required]
+        public int GiftId { get; set; }
+        public int Count { get; set; }
+    }
+
+    public class CardWithBuyerDto
+    {
+        public int CardId { get; set; }
+        public int GiftId { get; set; }
+        public string? GiftName { get; set; }
+        public int BuyerId { get; set; }
+        public string? BuyerName { get; set; }
+        public DateTime BuingDate { get; set; }
+    }
 }

@@ -1,6 +1,7 @@
 //using BsdFinalProject.IRepositories;
 //using BsdFinalProject.IServices;
 using BsdFinalProject.DTOs;
+using BsdFinalProject.IRepositories;
 using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Repositories;
@@ -11,13 +12,13 @@ namespace BsdFinalProject.Services
 {
     public class CardService : ICardService
     {
-        private readonly CardRepository _repository;
+        private readonly ICardRepository _repository;
         private readonly IGiftService _Gservice;
         private readonly ILogger<CardService> _logger;
-        public CardService(ILogger<CardService> logger, SaleContextFactory saleContextFactory, IGiftService giftService)
+        public CardService(ILogger<CardService> logger, SaleContextFactory saleContextFactory, IGiftService giftService,ICardRepository cardRepository)
         {
             _logger = logger;
-            _repository = new CardRepository(saleContextFactory);
+            _repository = cardRepository;
             _Gservice = giftService;
         }
 
@@ -91,7 +92,19 @@ namespace BsdFinalProject.Services
             return cardDtos;
         }
 
+        public async Task<IEnumerable<CardWithBuyerDto?>> GetAllPurchasesOrderedByMostPurchasedGift()
+        {
+            return (await _repository.GetAllPurchasesOrderedByMostPurchasedGift());
+        }
 
+        public async Task<IEnumerable<CardWithBuyerDto>> GetAllCardsWithBuyers()
+        {
+            return (await _repository.GetAllCardsWithBuyerNames()).ToList();
+        }       
+        public async Task<IEnumerable<CardWithBuyerDto?>> GetAllPurchasesOrderedByCost()
+        {
+            return (await _repository.GetAllPurchasesOrderedByCost()).ToList();
+        }
     }
 
 }

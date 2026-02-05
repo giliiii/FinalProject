@@ -1,5 +1,6 @@
 using BsdFinalProject.Data;
 using BsdFinalProject.DTOs;
+using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
 using BsdFinalProject.Services;
 using FinalProject.Controllers;
@@ -15,11 +16,11 @@ namespace BsdFinalProject.Controllers
     public class CardsController : ControllerBase
     {
         private readonly SaleContext _context;
-        private readonly CardService _CardService;
+        private readonly ICardService _CardService;
         private readonly ILogger<CardsController> _logger;
         //public BasketsController(SaleContext context) => _context = context;
 
-        public CardsController(CardService cardService, SaleContext context,ILogger<CardsController> logger)
+        public CardsController(ICardService cardService, SaleContext context,ILogger<CardsController> logger)
         {
             _CardService = cardService;
             _context = context;
@@ -87,6 +88,42 @@ namespace BsdFinalProject.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+        [HttpGet("popular-purchases")]
+        public ActionResult<IEnumerable<CardWithBuyerDto>> GetPopularPurchases()
+        {
+            var purchases = _CardService.GetAllPurchasesOrderedByMostPurchasedGift();
+            if (purchases == null) 
+            {
+                return NotFound("No purchases found.");
+            }
+            return Ok(purchases);
+        }
+
+        [HttpGet("withBuyers")]
+        public async Task<ActionResult<IEnumerable<CardWithBuyerDto>>> GetAllCardsWithBuyers()
+        {
+            try
+            {
+                var list = await _CardService.GetAllCardsWithBuyers();
+                return Ok(list);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error fetching cards with buyer names.");
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+        [HttpGet("by-cost")]
+        public ActionResult<IEnumerable<CardWithBuyerDto>> GetAllPurchasesOrderedByCost()
+        {
+            var purchases = _CardService.GetAllPurchasesOrderedByCost();
+            if (purchases == null)
+            {
+                return NotFound("No purchases found.");
+            }
+            return Ok(purchases);
+        }
+        
         //[HttpGet]
         //public async Task<ActionResult<IEnumerable<CardDto>>> GetAll()
         //{

@@ -89,6 +89,26 @@
   },
   {
     "ContainingType": "BsdFinalProject.Controllers.CardsController",
+    "Method": "GetAllPurchasesOrderedByCost",
+    "RelativePath": "api/Cards/by-cost",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BsdFinalProject.DTOs.CardWithBuyerDto, BsdFinalProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BsdFinalProject.Controllers.CardsController",
     "Method": "GetCardById",
     "RelativePath": "api/Cards/byId/{id}",
     "HttpMethod": "GET",
@@ -150,6 +170,46 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[BsdFinalProject.DTOs.GiftDtoWithSum, BsdFinalProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BsdFinalProject.Controllers.CardsController",
+    "Method": "GetPopularPurchases",
+    "RelativePath": "api/Cards/popular-purchases",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BsdFinalProject.DTOs.CardWithBuyerDto, BsdFinalProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BsdFinalProject.Controllers.CardsController",
+    "Method": "GetAllCardsWithBuyers",
+    "RelativePath": "api/Cards/withBuyers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BsdFinalProject.DTOs.CardWithBuyerDto, BsdFinalProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

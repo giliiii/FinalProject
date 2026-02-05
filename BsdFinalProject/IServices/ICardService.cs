@@ -10,5 +10,8 @@ namespace BsdFinalProject.IServices
         Task<IEnumerable<CardDto?>> CreateNewcCards(List<BasketDto> baskets);
         Task<IEnumerable<GiftDtoWithSum?>> GetAllMyCard(int Id);
         Task<Card?> GetCardById(int id);
+        Task<IEnumerable<CardWithBuyerDto?>> GetAllPurchasesOrderedByMostPurchasedGift();
+        Task<IEnumerable<CardWithBuyerDto>> GetAllCardsWithBuyers();
+        Task<IEnumerable<CardWithBuyerDto>> GetAllPurchasesOrderedByCost();
     }
 }

@@ -98,21 +98,15 @@ if (!string.IsNullOrEmpty(key))
         {
             OnMessageReceived = ctx =>
             {
-                // optional: inspect incoming Authorization header
                 var auth = ctx.Request.Headers["Authorization"].FirstOrDefault();
-                // you can log auth here with your logger (not shown)
                 return Task.CompletedTask;
             },
             OnAuthenticationFailed = ctx =>
             {
-                // optional: log exception for debugging
-                // logger.LogError(ctx.Exception, "JWT authentication failed");
                 return Task.CompletedTask;
             },
             OnTokenValidated = ctx =>
             {
-                // optional: inspect claims
-                // var role = ctx.Principal?.FindFirst(ClaimTypes.Role)?.Value;
                 return Task.CompletedTask;
             }
         };

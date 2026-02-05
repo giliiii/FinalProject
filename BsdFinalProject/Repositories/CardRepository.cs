@@ -48,6 +48,62 @@ namespace BsdFinalProject.Repositories
             return cards;
         }
 
+        public async Task<IEnumerable<CardWithBuyerDto>> GetAllPurchasesOrderedByMostPurchasedGift()
+        {
+            var groupedCards= _context.Card
+                .Include(c => c.Gift)
+                .Include(c => c.User)
+                .GroupBy(c => c.GiftId)
+                .ToList();
+            return  groupedCards
+                .OrderByDescending(g => g.Count()) 
+                .SelectMany(g => g)
+                .Select(c => new CardWithBuyerDto
+                  {
+                    CardId = c.Id,
+                    GiftId = c.GiftId,
+                    GiftName = c.Gift.Name,  
+                    BuyerId = c.User.Id,  
+                    BuyerName = c.User.FullName,  
+                    BuingDate = c.BuingDate
+                  })
+                .ToList();          
+        }
+
+        public async Task<IEnumerable<CardWithBuyerDto>> GetAllPurchasesOrderedByCost()
+        {
+            return _context.Card
+                .Include(c => c.Gift)
+                .Include(c => c.User)
+                .OrderByDescending(g => g.Gift.Cost)
+                .Select(c => new CardWithBuyerDto
+                {
+                    CardId = c.Id,
+                    GiftId = c.GiftId,
+                    GiftName = c.Gift.Name,
+                    BuyerId = c.User.Id,
+                    BuyerName = c.User.FullName,
+                    BuingDate = c.BuingDate
+                })
+                .ToList();
+        }
+
+        public async Task<IEnumerable<CardWithBuyerDto>> GetAllCardsWithBuyerNames()
+        {
+            return await _context.Card
+                .Include(c => c.User)
+                .Include(c => c.Gift)
+                .Select(c => new CardWithBuyerDto
+                {
+                    CardId = c.Id,
+                    GiftId = c.GiftId,
+                    GiftName = c.Gift != null ? c.Gift.Name : null,
+                    BuyerId = c.UserId,
+                    BuyerName = c.User != null ? c.User.FullName : null,
+                    BuingDate = c.BuingDate
+                })
+                .ToListAsync();
+        }
 
 
         //public async Task<Basket> DeleteOneBasket(int id)//זה id של basket
