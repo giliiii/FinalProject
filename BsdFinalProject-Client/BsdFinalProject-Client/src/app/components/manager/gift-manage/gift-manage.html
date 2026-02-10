@@ -1,3 +1,50 @@
+  <p-panel header="חיפוש וסינון מתנות" [toggleable]="true" [collapsed]="false" class="mb-4">
+        <div class="grid grid-rows-1 lg:grid-rows-3 gap-4 items-end">
+            <!-- Search by gift name -->
+            <div class="flex flex-col">
+                <label for="giftName" class="block mb-2 font-semibold text-sm">חיפוש לפי שם מתנה</label>
+                <span class="p-input-icon-right w-full">
+                    <i class="pi pi-search"></i>
+                    <input 
+                        id="giftName"
+                        type="text" 
+                        pInputText
+                        [(ngModel)]="searchByGiftName"
+                        (input)="onGiftNameChange()"
+                        placeholder="הקלד שם מתנה..."
+                        class="w-full" />
+                </span>
+            </div>
+
+            <!-- Search by donor dropdown -->
+            <div class="flex flex-col">
+                <label for="donorSelect" class="block mb-2 font-semibold text-sm">סינון לפי תורם</label>
+                <p-select 
+                    id="donorSelect"
+                    [(ngModel)]="selectedDonor" 
+                    [options]="donors" 
+                    optionLabel="name"
+                    [showClear]="true"
+                    placeholder="בחר תורם..."
+                    (onChange)="onDonorChange()"
+                    styleClass="w-full">
+                </p-select>
+            </div>
+
+            <!-- Clear filters button -->
+            <div class="flex justify-center">
+                <button 
+                    pButton 
+                    type="button" 
+                    label="נקה סינונים" 
+                    icon="pi pi-times"
+                    (click)="clearFilters()"
+                    severity="secondary"
+                    [text]="true">
+                </button>
+            </div>
+        </div>
+  </p-panel>
   <p-toast /> 
 <p-dialog [(visible)]="displayDialog" header="עדכון מתנה" [modal]="true" [style]="{width: '400px'}">
   <div class="form-group">
@@ -33,13 +80,71 @@
       class="w-full">
     </p-select>
   </div>
-
+  
   <ng-template pTemplate="footer">
-    <button pButton type="button" label="ביטול" (click)="closeDialog()" class="p-button-danger"></button>
+    <button pButton type="button" label="ביטול" (click)="closeDialog2()" class="p-button-danger"></button>
     <button pButton type="button" label="שמור" (click)="updateGiftDetails()" class="p-button-success"></button>
   </ng-template>
 </p-dialog>
+<p-dialog [(visible)]="displayDialog2" header="הוסף מתנה חדש" [modal]="true" [style]="{width: '400px'}">
+  <div class="form-group">
+    <label for="giftName">שם המתנה:</label>
+    <input pInputText id="giftName" [(ngModel)]="newGiftname" type="text" placeholder="הכנס שם" class="form-input"/>
+  </div>
+  
+  <div class="form-group">
+    <label for="giftDescription">תיאור:</label>
+    <input pInputText id="giftDescription" [(ngModel)]="newGiftdescription" type="text" placeholder="הכנס תיאור" class="form-input"/>
+  </div>
 
+  <div class="form-group">
+    <label for="giftCost">עלות:</label>
+    <input pInputText id="giftCost" [(ngModel)]="newGiftcost" type="number" placeholder="הכנס עלות" class="form-input"/>
+  </div>
+
+  <div class="form-group">
+    <label for="giftDonor">תורם:</label>
+    <p-select 
+        id="giftDonor"
+        [(ngModel)]="newGiftdonorId" 
+        [options]="donors" 
+        optionLabel="name"
+        placeholder="בחר תורם..."
+        styleClass="w-full"
+        appendTo="body">
+    </p-select>
+    </div>
+
+    <div class="form-group">
+    <label for="giftCategory">קטגוריה:</label>
+    <p-select 
+        id="giftCategory"
+        [(ngModel)]="newGiftcategoryId" 
+        [options]="categories" 
+        optionLabel="name"
+        placeholder="בחר קטגוריה..."
+        styleClass="w-full"
+        appendTo="body">
+    </p-select>
+    </div>
+
+    <div class="form-group">
+    <label for="giftPicture">תמונה (URL):</label>   
+    <input pInputText id="giftPicture" [(ngModel)]="newGiftpicture" type="text" placeholder="הכנס URL לתמונה" class="form-input"/>
+    </div>
+
+    
+    
+
+  <ng-template pTemplate="footer">
+    <button pButton type="button" label="ביטול" (click)="closeDialog2()" class="p-button-danger"></button>
+    <button pButton type="button" label="שמור" (click)="addNewGift()" class="p-button-success"></button>
+  </ng-template>
+</p-dialog>
+
+ <div class="button-container">
+    <button pButton type="button" label="הוסף מתנה חדשה" icon="pi pi-plus" (click)="showAddGiftDialog()" class="p-button-success"></button>
+</div>
 <div class="card">
     <p-dataview [value]="gifts" [layout]="layout">
 
@@ -93,7 +198,8 @@
                             <button pButton label="מחיקת מתנה" icon="pi pi-trash" (click)="deleteGift(item.id)"></button>
                             <div class="button-container">
                                   <button pButton type="button" label="עדכון מתנה" icon="pi pi-pencil" (click)="openUpdateGiftDialog(item)" class="p-button-success"></button>
-                            </div> 
+                            </div>                         
+
                         </div>
                     </div>
                 </div>
@@ -135,6 +241,11 @@
                                 icon="pi pi-eye"
                                 class="w-full mt-3">
                             </button>
+                            <button pButton label="מחיקת מתנה" icon="pi pi-trash" (click)="deleteGift(item.id)"></button>
+                            <div class="button-container">
+                                  <button pButton type="button" label="עדכון מתנה" icon="pi pi-pencil" (click)="openUpdateGiftDialog(item)" class="p-button-success"></button>
+                            </div> 
+
                         </div>
                     </div>
                 </div>

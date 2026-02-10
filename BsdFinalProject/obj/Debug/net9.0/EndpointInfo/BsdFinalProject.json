@@ -1325,6 +1325,10 @@
         "additionalProperties": false
       },
       "CardWithBuyerDto": {
+        "required": [
+          "cardId",
+          "giftId"
+        ],
         "type": "object",
         "properties": {
           "cardId": {

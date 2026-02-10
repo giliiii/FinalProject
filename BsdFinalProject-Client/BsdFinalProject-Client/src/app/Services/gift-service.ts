@@ -31,8 +31,10 @@ export class GiftService {
     return this.http.get<GiftModel>(`${this.BASE_URL}/${id}`);
   }
 
-  createGift(gift: GiftModel): Observable<GiftModel> {
-    return this.http.post<GiftModel>(this.BASE_URL, gift);
+  createGift(gift: GiftModel,headers?:HttpHeaders): Observable<GiftModel> {
+     const finalHeaders = headers || this.getHeaders();
+     const options = { headers: finalHeaders };
+    return this.http.post<GiftModel>(this.BASE_URL, gift,options);
   }
 
 

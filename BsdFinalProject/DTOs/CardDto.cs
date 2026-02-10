@@ -36,7 +36,10 @@ namespace BsdFinalProject.DTOs
 
     public class CardWithBuyerDto
     {
+        [Required]
         public int CardId { get; set; }
+        [Required]
+        [ForeignKey("gift")]
         public int GiftId { get; set; }
         public string? GiftName { get; set; }
         public int BuyerId { get; set; }
