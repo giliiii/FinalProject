@@ -63,7 +63,6 @@ namespace BsdFinalProject.Services
                 Phone = dto.Phone,
                 Address = dto.Address,
                 Password = hashed,
-                Role = Role.User
             };
 
             var created = await _repo.CreateUser(user);
