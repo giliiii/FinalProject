@@ -1,3 +1,4 @@
+using BsdFinalProject.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace BsdFinalProject.DTOs
@@ -18,5 +19,6 @@ namespace BsdFinalProject.DTOs
 
         [MaxLength(500)]
         public string Address { get; set; }
+
     }
 }
