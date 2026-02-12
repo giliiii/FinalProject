@@ -33,7 +33,7 @@ export class CardManage {
                   next: (response: CardModel[]) => {
                       this.cards = response;
                       console.log("cards",this.cards);
-                      this.cdr.detectChanges()
+                      this.cdr.markForCheck();
                     //   this.changeRef.markForCheck();
                    },
                   error: (err) => {
@@ -49,17 +49,81 @@ export class CardManage {
 
             this.items = [
             {
-                icon: 'pi pi-pencil',
+                icon: 'pi pi-search',
+                 label: 'מתנה נרכשת ביותר', 
                 command: () => {
-                    this.messageService.add({ severity: 'info', summary: 'Add', detail: 'Data Added' });
-                }
-            },
+                      try {
+                        this.cardSrv.getPopularPurchases().subscribe({       
+                        next: (response: CardModel[]) => {
+                            this.cards = response;
+                            console.log("cards",this.cards);
+                            this.cdr.markForCheck();
+                            //   this.changeRef.markForCheck();
+                            },
+                         error: (err) => {
+                            console.log('get caards error:', err);
+                            this.messageService.add({ severity: 'error', summary: 'Error', detail:  'אינך מורשה לצפות ברשימת הכרטיסים' });
+                            }  
+                        })
+                        }
+                    catch {
+                        console.log('הבקשה נכשלה');
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'הבקשה נכשלה' });
+                         }
+                        }
+             },
             {
-                icon: 'pi pi-refresh',
-                command: () => {
-                    this.messageService.add({ severity: 'success', summary: 'Update', detail: 'Data Updated' });
+                icon: 'pi pi-search',               
+                label: 'מתנה יקרה ביותר', 
+                command: () => {                                       
+                    try {
+                        this.cardSrv.getAllPurchasesOrderedByCost().subscribe({       
+                        next: (response: CardModel[]) => {
+                            this.cards = response;
+                            console.log("cards",this.cards);
+                            this.cdr.markForCheck();
+                            //   this.changeRef.markForCheck();
+                            },
+                         error: (err) => {
+                            console.log('get caards error:', err);
+                            this.messageService.add({ severity: 'error', summary: 'Error', detail:  'אינך מורשה לצפות ברשימת הכרטיסים' });
+                            }  
+                        })
+                        }
+                    catch {
+                        console.log('הבקשה נכשלה');
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'הבקשה נכשלה' });
+                         }
+                        }  
+                },
+                {
+                icon: 'pi pi-search',              
+                label: 'סדר הרכישה', 
+                command: () => {       
+                    this.ngOnInit()     
+                     this.cdr.markForCheck();                           
+                    // try {
+                    //     this.cardSrv.getAllPurchasesOrderedByCost().subscribe({       
+                    //     next: (response: CardModel[]) => {
+                    //         this.cards = response;
+                    //         console.log("cards",this.cards);
+                    //         this.cdr.markForCheck();
+                    //         //   this.changeRef.markForCheck();
+                    //         },
+                    //      error: (err) => {
+                    //         console.log('get caards error:', err);
+                    //         this.messageService.add({ severity: 'error', summary: 'Error', detail:  'אינך מורשה לצפות ברשימת הכרטיסים' });
+                    //         }  
+                    //     })
+                    //     }
+                    // catch {
+                    //     console.log('הבקשה נכשלה');
+                    //     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'הבקשה נכשלה' });
+                    //      }
+                    //     }  
                 }
             }
+            
            ]      
                
         // this.productService.getProductsMini().then((data) => {

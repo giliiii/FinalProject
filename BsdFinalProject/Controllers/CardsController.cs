@@ -89,14 +89,17 @@ namespace BsdFinalProject.Controllers
             }
         }
         [HttpGet("popular-purchases")]
-        public ActionResult<IEnumerable<CardWithBuyerDto>> GetPopularPurchases()
+        public async Task<ActionResult<IEnumerable<CardWithBuyerDto>>> GetPopularPurchases()
         {
-            var purchases = _CardService.GetAllPurchasesOrderedByMostPurchasedGift();
-            if (purchases == null) 
+            try
             {
-                return NotFound("No purchases found.");
+                var purchases =await  _CardService.GetAllPurchasesOrderedByMostPurchasedGift();
+                return Ok(purchases);
             }
-            return Ok(purchases);
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpGet("withBuyers")]
@@ -114,14 +117,17 @@ namespace BsdFinalProject.Controllers
             }
         }
         [HttpGet("by-cost")]
-        public ActionResult<IEnumerable<CardWithBuyerDto>> GetAllPurchasesOrderedByCost()
+        public async Task<ActionResult<IEnumerable<CardWithBuyerDto>>> GetAllPurchasesOrderedByCost()
         {
-            var purchases = _CardService.GetAllPurchasesOrderedByCost();
-            if (purchases == null)
+            try
             {
-                return NotFound("No purchases found.");
+                var purchases = await _CardService.GetAllPurchasesOrderedByCost();
+                return Ok(purchases);
             }
-            return Ok(purchases);
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
         
         //[HttpGet]

@@ -24,14 +24,21 @@ import { DonorService } from '../../../Services/donor-service';
 import { DonorModel } from '../../../Models/donor';
 import { error, log } from 'console';
 import { PanelModule } from 'primeng/panel';
-
+import { BadgeModule } from 'primeng/badge';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { PrimeNG } from 'primeng/config';
+interface UploadEvent {
+    originalEvent: Event;
+    files: File[];
+}
 
 // import { ProductService } from '@/service/productservice';
 // import { Product } from '@/domain/product';
 // import { Product } from '@/domain/product';
 @Component({
   selector: 'app-gift-manage',
-  imports: [DataViewModule, SelectButtonModule, TagModule, ButtonModule, FormsModule, CommonModule, CurrencyPipe, DialogModule, SelectModule, InputTextModule,ToastModule,PanelModule],
+  imports: [DataViewModule, SelectButtonModule, TagModule, ButtonModule, FormsModule, CommonModule, CurrencyPipe, DialogModule, SelectModule, InputTextModule,ToastModule,PanelModule,BadgeModule,FileUploadModule,ProgressBarModule],
   providers: [MessageService],
   templateUrl: './gift-manage.html',
   styleUrl: './gift-manage.scss',
@@ -74,11 +81,14 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
     newGiftdescription?: string;
     newGiftcost!: number;
     newGiftpicture?: string;
-    newGiftcategoryId!: number;
-    newGiftdonorId!: number;
+    newGiftcategoryId!: categoryModel;
+    newGiftdonorId!: DonorModel;
     selectedDonor: DonorModel | null = null;
     searchByGiftName: string = "";
     donorsName:string[]=[];
+    files: any[] = [];
+    totalSize: number = 0;
+    totalSizePercent: number = 0;
 
     // messageService: MessageService = inject(MessageService);
 
@@ -403,9 +413,9 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
     payload.description = this.newGiftdescription || '';
     payload.cost = this.newGiftcost;
     payload.picture = this.newGiftpicture || '';
-    payload.categoryId = this.newGiftcategoryId;
-    payload.donorId = this.newGiftdonorId;
-      
+    payload.categoryId = this.newGiftcategoryId.id;  
+    payload.donorId = this.newGiftdonorId.id; 
+     console.log('האם התורם חוקי', payload.donorId); 
     console.log('שולח יצירת מתנה עם הנתונים:', JSON.stringify(payload));
     const headers = this.getHeaders(); 
     this.giftSrv.createGift(payload,headers).subscribe({
@@ -425,7 +435,7 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
         this.gifts = [...this.gifts, converted];
         // סגור הדיאלוג לאחר עיגון שינוי (הימנעות מבעיות בדיקה)
         setTimeout(() => {
-          this.closeDialog();
+          this.closeDialog2();
           this.cdr.markForCheck();
         }, 0);
       },
@@ -448,5 +458,54 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
       // Logic to edit the selected gift
     }
 
-  
+  /////////
+
+    //   onRemoveTemplatingFile(event, file, removeFileCallback, index) {
+    //     removeFileCallback(event, index);
+    //     this.totalSize -= parseInt(this.formatSize(file.size));
+    //     this.totalSizePercent = this.totalSize / 10;
+    // }
+
+    // onClearTemplatingUpload(clear) {
+    //     clear();
+    //     this.totalSize = 0;
+    //     this.totalSizePercent = 0;
+    // }
+
+    // onTemplatedUpload() {
+    //     this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
+    // }
+
+    // onSelectedFiles(event) {
+    //     this.files = event.currentFiles;
+    //     this.files.forEach((file) => {
+    //         this.totalSize += parseInt(this.formatSize(file.size));
+    //     });
+    //     this.totalSizePercent = this.totalSize / 10;
+    // }
+
+    // uploadEvent(callback) {
+    //     callback();
+    // }
+
+    // formatSize(bytes) {
+    //     const k = 1024;
+    //     const dm = 3;
+    //     const sizes = this.config.translation.fileSizeTypes;
+    //     if (bytes === 0) {
+    //         return `0 ${sizes[0]}`;
+    //     }
+        
+    //     const i = Math.floor(Math.log(bytes) / Math.log(k));
+    //     const formattedSize = parseFloat((bytes / Math.pow(k, i)).toFixed(dm));
+        
+    //     return `${formattedSize} ${sizes[i]}`;
+    // }
+    onUpload(event: any) {
+    this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
+    this.newGiftpicture = event.files[0].objectURL; // Assuming the uploaded file is an image and you want to set it as the gift picture
+    console.log('New gift picture URL:', this.newGiftpicture);
+    // אתה יכול להוסיף פה כל לוגיקה שקשורה להעלאת קובץ
+    console.log('File uploaded:', event);
+}
 }
