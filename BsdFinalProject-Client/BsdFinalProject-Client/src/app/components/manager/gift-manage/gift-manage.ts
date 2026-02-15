@@ -28,6 +28,7 @@ import { BadgeModule } from 'primeng/badge';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { PrimeNG } from 'primeng/config';
+
 interface UploadEvent {
     originalEvent: Event;
     files: File[];
@@ -309,7 +310,7 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
         }
       }
     
-    filterGifts() {
+   filterGifts() {
       console.log('Filtering gifts with:');
       console.log('searchByGiftName:', this.searchByGiftName);
       console.log('selectedDonor:', this.selectedDonor?.id);
@@ -337,6 +338,7 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
       console.log('Filtered gifts result:', this.filteredGifts);
       this.cdr.markForCheck();
     }
+    
 
     // Called when gift name search input changes
     onGiftNameChange() {
@@ -376,6 +378,8 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
       this.filteredGifts = this.gifts;
       this.cdr.detectChanges();
     }
+
+
 
     getDonorName(donorId: number): string {
       console.log(`getDonorName called with donorId: ${donorId} (type: ${typeof donorId})`);
@@ -458,54 +462,17 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
       // Logic to edit the selected gift
     }
 
-  /////////
+  onSelectFiles(event: any) {
+    const file = event.files[0]; // מקבל את הקובץ שנבחר
+    if (file) {
+      this.newGiftPicture = URL.createObjectURL(file); // יוצר URL זמני לתמונה
+      console.log("Chosen picture URL:", this.newGiftPicture);
+    }
+  }
 
-    //   onRemoveTemplatingFile(event, file, removeFileCallback, index) {
-    //     removeFileCallback(event, index);
-    //     this.totalSize -= parseInt(this.formatSize(file.size));
-    //     this.totalSizePercent = this.totalSize / 10;
-    // }
-
-    // onClearTemplatingUpload(clear) {
-    //     clear();
-    //     this.totalSize = 0;
-    //     this.totalSizePercent = 0;
-    // }
-
-    // onTemplatedUpload() {
-    //     this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
-    // }
-
-    // onSelectedFiles(event) {
-    //     this.files = event.currentFiles;
-    //     this.files.forEach((file) => {
-    //         this.totalSize += parseInt(this.formatSize(file.size));
-    //     });
-    //     this.totalSizePercent = this.totalSize / 10;
-    // }
-
-    // uploadEvent(callback) {
-    //     callback();
-    // }
-
-    // formatSize(bytes) {
-    //     const k = 1024;
-    //     const dm = 3;
-    //     const sizes = this.config.translation.fileSizeTypes;
-    //     if (bytes === 0) {
-    //         return `0 ${sizes[0]}`;
-    //     }
-        
-    //     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    //     const formattedSize = parseFloat((bytes / Math.pow(k, i)).toFixed(dm));
-        
-    //     return `${formattedSize} ${sizes[i]}`;
-    // }
-    onUpload(event: any) {
-    this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
-    this.newGiftpicture = event.files[0].objectURL; // Assuming the uploaded file is an image and you want to set it as the gift picture
-    console.log('New gift picture URL:', this.newGiftpicture);
-    // אתה יכול להוסיף פה כל לוגיקה שקשורה להעלאת קובץ
-    console.log('File uploaded:', event);
-}
+  // פונקציה שמפעילה את חלון הבחירה כאשר נלחץ על כפתור הבחירה
+  choosePicture(fileUpload: any) {
+    fileUpload.choose();
+  }
+  
 }
