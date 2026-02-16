@@ -134,6 +134,28 @@ namespace BsdFinalProject.Controllers
                 return NotFound(new { message = ex.Message });
             }
         }
+        [HttpGet("allCards/{giftId:int}")]
+        public async Task<ActionResult<List<CardDto>>> GetAllCardsByGiftId(int giftId)
+        {
+            try
+            {
+                var cards = await _GiftService.GetCardsByGiftId(giftId);
+
+                // אם לא נמצאו כרטיסים, מחזירים מערך ריק
+                if (cards == null || !cards.Any())
+                {
+                    return Ok(new List<CardDto>());  // מחזירים מערך ריק
+                }
+
+                return Ok(cards);  // אם יש כרטיסים, מחזירים אותם
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving cards for gift ID {GiftId}", giftId);
+                return NotFound(new { message = ex.Message });
+            }
+        }
+
 
         //[HttpGet]
         //public async Task<ActionResult<IEnumerable<GiftDto>>> GetAll()

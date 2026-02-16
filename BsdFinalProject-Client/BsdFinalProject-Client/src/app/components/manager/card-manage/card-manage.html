@@ -1,15 +1,16 @@
-<div class="card">
-    <div style="height: 500px; position: relative;">
+
+<p>card-manage works!</p>
+    <div class="card">
+    <div style="height: 200px; position: relative;">
             <p-toast />
-            <!-- <p-speeddial [model]="items" direction="up" [style]="{ position: 'absolute', left: 'calc(50% - 2rem)', bottom: 0 }" /> -->
+            <!-- <p-speeddial [model]="items" direction="up" [style]="{ position: 'absolute', left: 'calc(50% - 2rem)', bottom: 0 }" /> --> 
             <p-speeddial [model]="items" direction="down" [style]="{ position: 'absolute', left: 'calc(50% - 2rem)', top: 0 }" />
             <!-- <p-speeddial [model]="items" direction="left" [style]="{ position: 'absolute', top: 'calc(50% - 2rem)', right: 0 }" />
             <p-speeddial [model]="items" direction="right" [style]="{ position: 'absolute', top: 'calc(50% - 2rem)', left: 0 }" /> -->
     </div>
+<div class="card">
 </div>
 
-<p>card-manage works!</p>
-<div class="card">
         <p-toast />
         <p-table [value]="cards" selectionMode="single" [(selection)]="selectedCard" dataKey="code" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)" [tableStyle]="{ 'min-width': '50rem' }">
             <ng-template #header>

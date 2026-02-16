@@ -4,6 +4,7 @@ import { GiftModel } from '../Models/gift';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
+import { CardModel } from '../Models/card';
 
 
 
@@ -62,4 +63,8 @@ export class GiftService {
       `${this.BASE_URL}/cost/${price1}/${price2}`
     );
   }
+  getAllCards(giftId: number, headers?: HttpHeaders): Observable<CardModel[]> {
+        return this.http.get<CardModel[]>(`${this.BASE_URL}/allCards/${giftId}`, { headers });
+    }
+    
 }

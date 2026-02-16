@@ -28,7 +28,7 @@ namespace BsdFinalProject.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Manager")]
+        //[Authorize(Roles = "Manager")]
         public async Task<ActionResult<IEnumerable<DonorDto>>> GetAllDonors()
         {
             var donors = await _DonorService.GetAllDonors();

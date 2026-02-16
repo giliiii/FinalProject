@@ -82,5 +82,13 @@ namespace BsdFinalProject.Repositories
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<Card>> GetCardsByGiftId(int giftId)
+        {
+            return await _context.Card
+                .Where(c => c.GiftId == giftId)
+                .ToListAsync();
+        }
+
+
     }
 }

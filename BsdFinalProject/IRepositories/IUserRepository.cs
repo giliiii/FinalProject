@@ -6,5 +6,6 @@ namespace BsdFinalProject.IRepositories
     {
         Task<User> CreateUser(User user);
         Task<User?> GetByEmail(string email);
+        Task<User?> GetUserById(int userId);    
     }
 }

@@ -165,5 +165,10 @@ namespace BsdFinalProject.Services
 
             return CryptographicOperations.FixedTimeEquals(computed, hash);
         }
+        public async Task<User?> GetUserById(int userId)
+        {
+            return await _repo.GetUserById(userId);
+        }
+
     }
 }

@@ -32,6 +32,8 @@ namespace BsdFinalProject.Services
                 Picture = giftDto.Picture,
                 CategoryId = giftDto.CategoryId,
                 DonorId = giftDto.DonorId,
+                WinnerName = " "
+
             };
             try
             {
@@ -46,7 +48,7 @@ namespace BsdFinalProject.Services
                     Picture = g.Picture,
                     CategoryId = g.CategoryId,
                     DonorId = g.DonorId,
-                    WinnerName = g.WinnerName
+                    WinnerName = " "
                 };
             }
             catch (Exception ex)
@@ -177,5 +179,21 @@ namespace BsdFinalProject.Services
                 WinnerName = g.WinnerName
             }).ToList();
         }
+        public async Task<List<CardDto>> GetCardsByGiftId(int giftId)
+        {
+            _logger.LogInformation("start Retrieving cards for gift id {GiftId}", giftId);
+            var cards = await _repository.GetCardsByGiftId(giftId);
+            if (cards == null || cards.Count() == 0)
+            {
+                _logger.LogWarning("No cards found for gift id {GiftId}", giftId);
+                throw new Exception($"No cards found for gift id {giftId}.");
+            }
+            return cards.Select(c => new CardDto
+            {
+                Id = c.Id,
+                GiftId = c.GiftId,
+            }).ToList();
+        }
+
     }
 }

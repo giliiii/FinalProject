@@ -32,5 +32,12 @@ namespace BsdFinalProject.Repositories
             await _context.SaveChangesAsync();
             return user;
         }
+        public async Task<User?> GetUserById(int userId)
+        {
+            return await _context.User
+                .FirstOrDefaultAsync(u => u.Id == userId);
+        }
+
+
     }
 }

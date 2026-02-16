@@ -1,3 +1,26 @@
+
+   <p-toast />
+        <!-- <div class="card flex flex-wrap gap-6 items-center justify-between">
+            <p-fileupload #fu mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)" />
+            <p-button label="Upload" (onClick)="fu.upload()" severity="secondary" />
+        </div> -->
+    <!-- <input type="file" #fileInput accept="image/*" style="display:none" (change)="onFileSelected($event)" />
+    <button type="button" (click)="fileInput.click()"> </button>     -->
+    <!-- <button (click)="fileInput.click()">XXXX</button>
+    <input type="file" #fileInput accept="image/*" (change)="selectImage($event)" hidden>
+    <img *ngIf="imagePath" [src]="imagePath">
+   -->
+
+   <p-fileupload name="giftImage" [customUpload]="true" (onSelect)="onSelectFiles($event)" [auto]="true" [showUploadButton]="false" [showCancelButton]="false" accept="image/*">
+    <ng-template #file let-file>
+        <div class="flex flex-col items-center gap-2">
+            <img *ngIf="newGiftPicture" [src]="newGiftPicture" width="150" height="150" />
+            <p-button label="בחר תמונה" icon="pi pi-images" (onClick)="file.choose()" />
+        </div>
+    </ng-template>
+   </p-fileupload>
+
+
   <p-panel header="חיפוש וסינון מתנות" [toggleable]="true" [collapsed]="false" class="mb-4">
         <div class="grid grid-rows-1 lg:grid-rows-3 gap-4 items-end">
             <!-- Search by gift name -->
@@ -45,6 +68,7 @@
             </div>
         </div>
   </p-panel>
+
   <p-toast /> 
 <p-dialog [(visible)]="displayDialog" header="עדכון מתנה" [modal]="true" [style]="{width: '400px'}">
   <div class="form-group">
@@ -86,6 +110,8 @@
     <button pButton type="button" label="שמור" (click)="updateGiftDetails()" class="p-button-success"></button>
   </ng-template>
 </p-dialog>
+
+
 <p-dialog [(visible)]="displayDialog2" header="הוסף מתנה חדש" [modal]="true" [style]="{width: '400px'}">
   <div class="form-group">
     <label for="giftName">שם המתנה:</label>
@@ -131,11 +157,15 @@
     <div class="form-group">
     <label for="giftPicture">תמונה (URL):</label>   
     <input pInputText id="giftPicture" [(ngModel)]="newGiftpicture" type="text" placeholder="הכנס URL לתמונה" class="form-input"/>
-    </div>
-
-    
-    
-
+    <p-fileupload name="giftImage" [customUpload]="true" (onSelect)="onSelectFiles($event)" [auto]="true" [showUploadButton]="false" [showCancelButton]="false" accept="image/*">
+     <ng-template #file let-file>
+        <div class="flex flex-col items-center gap-2">
+            <img *ngIf="newGiftPicture" [src]="newGiftPicture" width="150" height="120" />
+            <p-button label="בחר תמונה" icon="pi pi-images" (onClick)="file.choose()" />
+        </div>
+    </ng-template>
+   </p-fileupload> 
+   </div>
   <ng-template pTemplate="footer">
     <button pButton type="button" label="ביטול" (click)="closeDialog2()" class="p-button-danger"></button>
     <button pButton type="button" label="שמור" (click)="addNewGift()" class="p-button-success"></button>
@@ -146,7 +176,7 @@
     <button pButton type="button" label="הוסף מתנה חדשה" icon="pi pi-plus" (click)="showAddGiftDialog()" class="p-button-success"></button>
 </div>
 <div class="card">
-    <p-dataview [value]="gifts" [layout]="layout">
+    <p-dataview [value]="filteredGifts" [layout]="layout">
 
         <!-- HEADER -->
         <ng-template #header>
@@ -192,7 +222,7 @@
 
                         <div class="flex flex-col items-end gap-3">
                             <span class="text-xl font-semibold">
-                                {{ item.cost | currency:'ILS' }}
+                                {{ formatCost(item.cost) }}
                             </span>
                             <button pButton label="פרטים" icon="pi pi-eye"></button>
                             <button pButton label="מחיקת מתנה" icon="pi pi-trash" (click)="deleteGift(item.id)"></button>
@@ -228,7 +258,7 @@
 
                         <div class="mt-auto">
                             <div class="text-xl font-semibold mt-4">
-                                {{ item.cost | currency:'ILS' }}
+                                {{ formatCost(item.cost) }}
                             </div>
 
                             <div *ngIf="item.winnerName" class="text-green-600 text-sm mt-2">

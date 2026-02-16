@@ -546,6 +546,32 @@
   },
   {
     "ContainingType": "BsdFinalProject.Controllers.GiftsController",
+    "Method": "GetAllCardsByGiftId",
+    "RelativePath": "api/Gifts/allCards/{giftId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "giftId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[BsdFinalProject.DTOs.CardDto, BsdFinalProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BsdFinalProject.Controllers.GiftsController",
     "Method": "GetGiftsByCategory",
     "RelativePath": "api/Gifts/category/{categoryId}",
     "HttpMethod": "GET",

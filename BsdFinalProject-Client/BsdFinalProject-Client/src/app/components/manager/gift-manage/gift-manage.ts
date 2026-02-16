@@ -24,14 +24,22 @@ import { DonorService } from '../../../Services/donor-service';
 import { DonorModel } from '../../../Models/donor';
 import { error, log } from 'console';
 import { PanelModule } from 'primeng/panel';
+import { BadgeModule } from 'primeng/badge';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { PrimeNG } from 'primeng/config';
 
+interface UploadEvent {
+    originalEvent: Event;
+    files: File[];
+}
 
 // import { ProductService } from '@/service/productservice';
 // import { Product } from '@/domain/product';
 // import { Product } from '@/domain/product';
 @Component({
   selector: 'app-gift-manage',
-  imports: [DataViewModule, SelectButtonModule, TagModule, ButtonModule, FormsModule, CommonModule, CurrencyPipe, DialogModule, SelectModule, InputTextModule,ToastModule,PanelModule],
+  imports: [DataViewModule, SelectButtonModule, TagModule, ButtonModule, FormsModule, CommonModule, DialogModule, SelectModule, InputTextModule,ToastModule,PanelModule,BadgeModule,FileUploadModule,ProgressBarModule],
   providers: [MessageService],
   templateUrl: './gift-manage.html',
   styleUrl: './gift-manage.scss',
@@ -45,13 +53,13 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
     donorSrv:DonorService=inject(DonorService);
     donors:DonorModel[]=[];                
     cSrv:CategoryService=inject(CategoryService) ;
-    id:Number=0;
+    id:number=0;
     name:string="";
     description:string="";
-    cost:Number=0;
+    cost:number=0;
     picture:string="";
-    categoryId:Number=0;
-    donorId:Number=0;
+    categoryId:number=0;
+    donorId:number=0;
     winnerName:string="";
     layout: 'list' | 'grid' = 'list';
     options: SelectItem[] = [
@@ -61,12 +69,12 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
     displayDialog: boolean = false;
     newGiftName:string="";
     newGiftDescription:string="";
-    newGiftCost:Number=0;
+    newGiftCost:number=0;
     newGiftPicture:string="";
-    newGiftCategoryId:Number=0;
+    newGiftCategoryId:number=0;
     categories: categoryModel[] = [];   
     categoryOptions: SelectItem[] = [];
-    selectedCategory: Number = 0;
+    selectedCategory: number = 0;
     filteredGifts:GiftModel[]=[];
     displayDialog2: boolean = false;
     newGiftid!: number;
@@ -74,11 +82,14 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
     newGiftdescription?: string;
     newGiftcost!: number;
     newGiftpicture?: string;
-    newGiftcategoryId!: number;
-    newGiftdonorId!: number;
+    newGiftcategoryId!: categoryModel;
+    newGiftdonorId!: DonorModel;
     selectedDonor: DonorModel | null = null;
     searchByGiftName: string = "";
     donorsName:string[]=[];
+    files: any[] = [];
+    totalSize: number = 0;
+    totalSizePercent: number = 0;
 
     // messageService: MessageService = inject(MessageService);
 
@@ -133,6 +144,7 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
                     })
                     this.filteredGifts = this.gifts;
                     console.log("✓ Gifts loaded:", this.gifts)
+                    this.cdr.markForCheck();
                     setTimeout(() => {
                       this.cdr.detectChanges();
                     }, 100); 
@@ -171,6 +183,8 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
                       next: (response: categoryModel[]) => {
                         this.categories = response || [];
                         console.log('✓ Categories loaded:', this.categories);
+                        this.cdr.markForCheck();
+
                         setTimeout(() => {
                           this.cdr.detectChanges();
                         }, 0); 
@@ -298,36 +312,34 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'עדכון המתנה נכשל' });
         }
       }
-    
-    filterGifts() {
-      console.log('Filtering gifts with:');
-      console.log('searchByGiftName:', this.searchByGiftName);
-      console.log('selectedDonor:', this.selectedDonor?.id);
-      console.log('selectedDonor:', this.selectedDonor);
-      console.log('All gifts:', this.gifts);
-      
-      this.filteredGifts = this.gifts.filter(gift => {
-        // Filter by donor
-        let donorMatch = true;
-        console.log(`Checking gift ${gift.name} with donorId ${gift.donorId} against selected donor Id ${this.selectedDonor?.id}`);
-        if (this.selectedDonor && this.selectedDonor.id) {
-          console.log(`Checking gift ${gift.name} with donorId ${gift.donorId} against selected donor Id ${this.selectedDonor.id}`);
-          alert("aaa!!!selectedDonor.Id,"+ this.selectedDonor.id + "selectedDonor.Name,"+ this.selectedDonor.Name)
-          donorMatch = gift.donorId === this.selectedDonor.id;
-          console.log(`Checking gift ${gift.name}: donorId=${gift.donorId}, selectedDonor.Id=${this.selectedDonor.id}, match=${donorMatch}`);
-        }
-        // Filter by gift name
-        const nameMatch = gift.name.toLowerCase().includes(this.searchByGiftName.toLowerCase());
-        
-        
-        
-        return nameMatch && donorMatch;
-      });
-      
-      console.log('Filtered gifts result:', this.filteredGifts);
-      this.cdr.markForCheck();
+filterGifts() {
+  console.log('Filtering gifts with:');
+  console.log('searchByGiftName:', this.searchByGiftName);
+  console.log('selectedDonor:', this.selectedDonor?.id);
+
+  // מאפס את filteredGifts למצב הראשוני של כל המתנות
+  this.filteredGifts = [...this.gifts];
+
+  // מבצע סינון על שם המתנה
+  if (this.searchByGiftName.trim()) {
+    this.filteredGifts = this.filteredGifts.filter(gift =>
+      gift.name.toLowerCase().includes(this.searchByGiftName.trim().toLowerCase())
+    );
+  }
+
+  // אם יש תורם שנבחר, מבצע סינון נוסף
+   let donorMatch = true;
+    if (this.selectedDonor && this.selectedDonor.id) {
+      this.filteredGifts = this.filteredGifts.filter(gift => gift.donorId === this.selectedDonor!.id);
     }
 
+  console.log('Filtered gifts result:', this.filteredGifts);
+  this.filteredGifts = [...this.filteredGifts];
+  this.cdr.markForCheck();
+}
+
+  
+    
     // Called when gift name search input changes
     onGiftNameChange() {
       this.filterGifts();
@@ -341,7 +353,7 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
       next: (gifts) => {
         console.log(gifts);
       
-        this.gifts = gifts || [];
+        this.filteredGifts = gifts || [];
         // פתיחת הדיאלוג אחרי שהנתונים התקבלו
         setTimeout(() => this.cdr.markForCheck(), 0);
       },
@@ -361,11 +373,13 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
 
     // Clear all filters
     clearFilters() {
-      this.searchByGiftName = "";
-      this.selectedDonor = null;
-      this.filteredGifts = this.gifts;
-      this.cdr.detectChanges();
-    }
+  this.searchByGiftName = "";
+  this.selectedDonor = null;
+  this.filteredGifts = [...this.gifts];  // מאפס את הסינון ומחזיר את כל המתנות
+  this.cdr.detectChanges();
+}
+
+
 
     getDonorName(donorId: number): string {
       console.log(`getDonorName called with donorId: ${donorId} (type: ${typeof donorId})`);
@@ -403,9 +417,9 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
     payload.description = this.newGiftdescription || '';
     payload.cost = this.newGiftcost;
     payload.picture = this.newGiftpicture || '';
-    payload.categoryId = this.newGiftcategoryId;
-    payload.donorId = this.newGiftdonorId;
-      
+    payload.categoryId = this.newGiftcategoryId.id;  
+    payload.donorId = this.newGiftdonorId.id; 
+     console.log('האם התורם חוקי', payload.donorId); 
     console.log('שולח יצירת מתנה עם הנתונים:', JSON.stringify(payload));
     const headers = this.getHeaders(); 
     this.giftSrv.createGift(payload,headers).subscribe({
@@ -425,7 +439,7 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
         this.gifts = [...this.gifts, converted];
         // סגור הדיאלוג לאחר עיגון שינוי (הימנעות מבעיות בדיקה)
         setTimeout(() => {
-          this.closeDialog();
+          this.closeDialog2();
           this.cdr.markForCheck();
         }, 0);
       },
@@ -448,5 +462,17 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
       // Logic to edit the selected gift
     }
 
+  onSelectFiles(event: any) {
+    const file = event.files[0]; // מקבל את הקובץ שנבחר
+    if (file) {
+      this.newGiftPicture = URL.createObjectURL(file); // יוצר URL זמני לתמונה
+      console.log("Chosen picture URL:", this.newGiftPicture);
+    }
+  }
+
+  // פונקציה שמפעילה את חלון הבחירה כאשר נלחץ על כפתור הבחירה
+  choosePicture(fileUpload: any) {
+    fileUpload.choose();
+  }
   
 }

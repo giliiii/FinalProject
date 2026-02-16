@@ -11,5 +11,6 @@ namespace BsdFinalProject.IRepositories
         Task<Gift?> GetGiftById(int id);
         Task<IEnumerable<Gift>> GetGiftsByCategory(int categoryId);
         Task<Gift?> UpdateGift(Gift gift);
+        Task<IEnumerable<Card>> GetCardsByGiftId(int giftId);
     }
 }

@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="flex justify-center mt-4">
+    <button pButton label="צפה בסל" icon="pi pi-shopping-cart" severity="info" (click)="openBasketDialog()"></button>
+  </div>
+
+  <!-- Basket Dialog -->
+  <p-dialog header="סל קניות" [(visible)]="basketDialogVisible" [modal]="true" [closable]="false" [style]="{ width: '450px' }">
+    <div *ngIf="baskets.length === 0">
+      <p>אין פריטים בסל קניות.</p>
+    </div>
+    <div *ngIf="baskets.length > 0">
+      <ul>
+        <li *ngFor="let basket of baskets">
+          <div class="flex justify-between">
+            <!-- <span>{{ basket.giftName }} - {{ formatCost(basket.cost) }}</span> -->
+            <button pButton icon="pi pi-trash" class="p-button-danger" (click)="deleteBasket(basket.Id)"></button>
+          </div>
+        </li>
+      </ul>
+      <div class="flex justify-between mt-4">
+        <button pButton label="לשלם" icon="pi pi-credit-card" (click)="openPaymentDialog()"></button>
+      </div>
+    </div>
+  </p-dialog>
+
+  <!-- Payment Dialog -->
+  <p-dialog header="פרטי אשראי" [(visible)]="paymentDialogVisible" [modal]="true" [closable]="false">
+    <div class="p-field">
+      <label for="creditCardNumber">מספר כרטיס אשראי</label>
+      <input id="creditCardNumber" type="text" pInputText [(ngModel)]="creditCardNumber" />
+    </div>
+    <div class="p-field">
+      <label for="expirationDate">תאריך תפוגה</label>
+      <input id="expirationDate" type="text" pInputText [(ngModel)]="expirationDate" />
+    </div>
+    <div class="flex justify-between">
+      <button pButton label="אישור" icon="pi pi-check" (click)="submitPayment()"></button>
+      <button pButton label="ביטול" icon="pi pi-times" (click)="paymentDialogVisible = false"></button>
+    </div>
+  </p-dialog>
+</div>

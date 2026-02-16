@@ -10,11 +10,14 @@ namespace BsdFinalProject.Repositories
     {
         private readonly SaleContextFactory _saleContextFactory;
         private Lazy<SaleContext> _lazyContext;
+        private readonly IGiftRepository _giftRepository;
 
-        public WinnerRepository(SaleContextFactory saleContextFactory)
+
+        public WinnerRepository(SaleContextFactory saleContextFactory, IGiftRepository giftRepository)
         {
             _saleContextFactory = saleContextFactory;
             _lazyContext = new Lazy<SaleContext>(() => _saleContextFactory.CreateContext());
+            _giftRepository = giftRepository;
         }
 
 
@@ -23,6 +26,7 @@ namespace BsdFinalProject.Repositories
         {
             _context.Winner.Add(winner);
             await _context.SaveChangesAsync();
+            //var gift=_context.Gift.
             return winner == null ? null : winner;
         }
 
@@ -47,12 +51,25 @@ namespace BsdFinalProject.Repositories
         public async Task<IEnumerable<int?>> GetUsersIdForGift(int Giftid)//זה id של winner
         {
             var gift = await _context.Gift.FindAsync(Giftid);
+
+            // אם אין מתנה כזאת או אם CardsList הוא null, החזר רשימה ריקה
+            if (gift == null)
+            {
+                return new List<int?>();  // רשימה ריקה
+            }
+
             List<int?> userIds = new List<int?>();
-            foreach (var card in gift.CardsList)
+
+            var allCards = await _context.Card.Where(c => c.GiftId == Giftid).ToListAsync();
+
+            foreach (var card in allCards)
             {
                 userIds.Add(card.UserId);
             }
-            return userIds == null ? null : userIds;
+
+            // אם לא נמצאו משתמשים, החזר רשימה ריקה
+            return userIds.Count == 0 ? new List<int?>() : userIds;
         }
     }
 }
+

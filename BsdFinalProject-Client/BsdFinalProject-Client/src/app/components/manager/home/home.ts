@@ -8,6 +8,10 @@ import { RouterModule, Routes } from '@angular/router';
 import {  DonorManage  } from '../donor-manage/donor-manage';
 import { GiftManage} from '../gift-manage/gift-manage';
 import { CardManage } from '../card-manage/card-manage';
+import { RandManage } from '../rand-manage/rand-manage';
+import { HttpHeaders } from '@angular/common/http';
+import { jwtDecode } from 'jwt-decode';
+import { BasketService } from '../../../Services/basket-service';
 
 
 const routes: Routes = [
@@ -21,32 +25,41 @@ const routes: Routes = [
 @Component({
   selector: 'app-manager-home',
   standalone: true,
-  imports: [CommonModule, MenubarModule],
+  imports: [CommonModule, MenubarModule,GiftManage,DonorManage,CardManage,RandManage],
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
 })
 export class Home implements OnInit {
 items: MenuItem[] = [];
-
- ngOnInit() {
+selectercomponent: string = 'home';
+ngOnInit() {
         this.items = [
             {
+                label: 'דף הבית',
+                icon: 'pi pi-fw pi-home',
+                command: () => this.selectercomponent = 'home'
+            },
+            {
                 label: 'ניהול תורמים',
-                icon: 'pi pi-home',
-                routerLink: '/manager/donors'
-
+                icon: 'pi pi-fw pi-users',
+                command: () => this.selectercomponent = 'donors'
             },
             {
                 label: 'ניהול מתנות',
-                icon: 'pi pi-star',
-                routerLink: '/manager/gifts'
-
+                icon: 'pi pi-fw pi-gift',
+                command: () => this.selectercomponent = 'gifts'
             },
             {
-                label: 'ניהול רכישות',
-                icon: 'pi pi-envelope',
-                routerLink: '/manager/cards'
+                label: 'ניהול כרטיסים',
+                icon: 'pi pi-fw pi-ticket',
+                command: () => this.selectercomponent = 'cards'
+            },
+            {
+                label: '🎁הגרלת מתנות',
+                command: () => this.selectercomponent = 'rand'
             }
         ];
 }
+
+
 }

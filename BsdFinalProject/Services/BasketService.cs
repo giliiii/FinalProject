@@ -1,4 +1,5 @@
 ﻿using BsdFinalProject.DTOs;
+using BsdFinalProject.IRepositories;
 using BsdFinalProject.IServices;
 //using BsdFinalProject.IServices;
 using BsdFinalProject.Models;
@@ -12,11 +13,11 @@ namespace FinalProject.Services
 {
     public class BasketService : IBasketService
     {
-        private readonly BasketRepository _repository;
+        private readonly IBasketRepository _repository;
         private readonly IGiftService _giftService;
-        private readonly ILogger<BasketService> _logger;
+        private readonly ILogger<IBasketService> _logger;
 
-        public BasketService(ILogger<BasketService> logger, SaleContextFactory saleContextFactory, IGiftService giftService)
+        public BasketService(ILogger<IBasketService> logger, SaleContextFactory saleContextFactory, IGiftService giftService)
         {
             _logger = logger;
             _repository = new BasketRepository(saleContextFactory);

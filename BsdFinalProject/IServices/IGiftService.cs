@@ -16,5 +16,6 @@ namespace BsdFinalProject.IServices
         Task<List<GiftDto>> GetGiftsByCategoryId(int categoryId);
         Task<List<GiftDto>> GetGiftsByCost(int price1, int price2);
         Task<GiftDto?> UpdateGift(GiftDto giftDto);
+        Task<List<CardDto>> GetCardsByGiftId(int giftId);
     }
 }

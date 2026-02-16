@@ -13,12 +13,17 @@ namespace BsdFinalProject.Services
     {
         private readonly IWinnerRepository _repository;
         private readonly IGiftRepository _giftRepository;
+        private readonly IGiftService _giftService;
+        private readonly IUserService _userService;
         private readonly ILogger<WinnerService> _logger;
-        public WinnerService(IWinnerRepository repository, IGiftRepository giftRepository, ILogger<WinnerService> logger)
+        public WinnerService(ILogger<WinnerService> logger, SaleContextFactory saleContextFactory, IGiftRepository giftRepository, IWinnerRepository winnerRepository, IGiftService giftService, IUserService userService)
         {
-            _repository = repository;
-            _giftRepository = giftRepository;
             _logger = logger;
+            _repository = winnerRepository;
+            _giftRepository = giftRepository;
+            _giftService = giftService;
+            _userService = userService;
+
         }
 
         public async Task<IEnumerable<WinnerDto?>> GetAllWinners()
@@ -59,6 +64,10 @@ namespace BsdFinalProject.Services
             Random rand = new Random();
             int randomIndex = rand.Next(userIds.Count());
             int? randomUserId = userIds.ElementAt(randomIndex);
+            if (randomUserId == null)
+            {
+                throw new Exception("Invalid user selected.");
+            }
             Winner winner = new Winner
             {
                 IdGift = giftId,
@@ -71,12 +80,34 @@ namespace BsdFinalProject.Services
                 _logger.LogError("Failed to create winner for giftId: {giftId}", giftId);
                 throw new Exception("Failed to create winner.");
             }
+            var gift = await _giftService.GetGiftById(createdWinner.IdGift);
+            var user = await _userService.GetUserById(createdWinner.IdUser);
+
+            gift.WinnerName = user.EMail;
+
+            var giftEntity = new Gift
+            {
+                Id = gift.Id,
+                Name = gift.Name,
+                Description = gift.Description,
+                Cost = gift.Cost,
+                WinnerName = gift.WinnerName
+            };
+
+
+            await _giftRepository.UpdateGift(giftEntity);
+
+
             WinnerDto winnerDto = new WinnerDto
             {
                 Id = createdWinner.Id,
                 IdGift = createdWinner.IdGift,
                 IdUser = createdWinner.IdUser
             };
+            //GiftDto gift = _giftService.GetGiftById(winnerDto.IdGift);
+            //UserDto user = _context.User
+            //הוספת שם הזוכה ל gift.winnername
+            //gift.WinnerName=
             return winnerDto;
         }
         public async Task<bool> DeleteAllWinners()
@@ -91,15 +122,15 @@ namespace BsdFinalProject.Services
             }
             foreach (var winner in winners)
             {
-                var gift = winner.Gift;
-                gift.WinnerName = "";
-                var g = await _giftRepository.UpdateGift(gift);
-                _logger.LogInformation("Reset winner for giftId: {giftId}", gift.Id);
-                if (g == null)
-                {
-                    throw new Exception("Failed to update gift while deleting winners.");
-                    _logger.LogError("Failed to update gift with id {GiftId} while deleting winners.", gift.Id);
-                }
+                //var gift = winner.Gift;
+                //gift.WinnerName = " ";
+                //var g = await _giftRepository.UpdateGift(gift);
+                //_logger.LogInformation("Reset winner for giftId: {giftId}", gift.Id);
+                //if (g == null)
+                //{
+                //    throw new Exception("Failed to update gift while deleting winners.");
+                //    _logger.LogError("Failed to update gift with id {GiftId} while deleting winners.", gift.Id);
+                //}
                 _logger.LogInformation("All associated gifts have been reset.");
                 var deletedWinners = await _repository.DeleteAllWinners();
                 _logger.LogInformation("All winners have been deleted.");

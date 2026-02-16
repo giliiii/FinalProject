@@ -1,11 +1,14 @@
+import { CardModel } from "./card";
 
 export class GiftModel {
-  id!: Number;
+  id!: number;
   name!: string;
   description?: string;
-  cost!: Number;
+  cost!: number;
   picture?: string;
-  categoryId!: Number;
-  donorId!: Number;
+  categoryId!: number;
+  donorId!: number;
   winnerName?: string;
+  donorName?: string; 
+  tickets?: CardModel[];
 }
