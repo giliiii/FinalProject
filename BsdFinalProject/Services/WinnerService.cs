@@ -47,56 +47,62 @@ namespace BsdFinalProject.Services
         public async Task<WinnerDto?> CreateNewWinner(int giftId)
         {
             _logger.LogInformation("start Creating a new winner for giftId: {giftId}", giftId);
+
+            // בדוק אם כבר יש זוכה למתנה
             var existingWinner = await _repository.GetWinnerByGiftId(giftId);
-            _logger.LogInformation("Checking for existing winner for giftId: {giftId}", giftId);
             if (existingWinner != null)
             {
                 _logger.LogWarning("Winner already exists for giftId: {giftId}", giftId);
                 throw new Exception("Winner for this gift already exists.");
             }
-            _logger.LogInformation("Fetching user IDs for giftId: {giftId}", giftId);
+
+            // שלב של יצירת הזוכה
             List<int?> userIds = (await _repository.GetUsersIdForGift(giftId)).ToList();
             if (userIds == null || userIds.Count == 0)
             {
                 _logger.LogWarning("No users found for giftId: {giftId}", giftId);
                 throw new Exception("No users found for this gift.");
             }
+
             Random rand = new Random();
             int randomIndex = rand.Next(userIds.Count());
             int? randomUserId = userIds.ElementAt(randomIndex);
+
             if (randomUserId == null)
             {
                 throw new Exception("Invalid user selected.");
             }
+
             Winner winner = new Winner
             {
                 IdGift = giftId,
                 IdUser = randomUserId.Value
             };
+
             _logger.LogInformation("Creating winner for userId: {userId} and giftId: {giftId}", randomUserId, giftId);
             var createdWinner = await _repository.CreateNewWinner(winner);
+
             if (createdWinner == null)
             {
                 _logger.LogError("Failed to create winner for giftId: {giftId}", giftId);
                 throw new Exception("Failed to create winner.");
             }
+
+            // השגת המתנה המתאימה לעדכון
             var gift = await _giftService.GetGiftById(createdWinner.IdGift);
             var user = await _userService.GetUserById(createdWinner.IdUser);
 
-            gift.WinnerName = user.EMail;
-
+            // עדכון המתנה עם שם הזוכה
+            //gift.WinnerName = user.FullName;
             var giftEntity = new Gift
             {
                 Id = gift.Id,
                 Name = gift.Name,
                 Description = gift.Description,
                 Cost = gift.Cost,
-                WinnerName = gift.WinnerName
+                WinnerName = user.FullName
             };
-
-
-            await _giftRepository.UpdateGift(giftEntity);
-
+            await _giftRepository.UpdateGift(giftEntity);  // עדכון המתנה
 
             WinnerDto winnerDto = new WinnerDto
             {
@@ -104,12 +110,11 @@ namespace BsdFinalProject.Services
                 IdGift = createdWinner.IdGift,
                 IdUser = createdWinner.IdUser
             };
-            //GiftDto gift = _giftService.GetGiftById(winnerDto.IdGift);
-            //UserDto user = _context.User
-            //הוספת שם הזוכה ל gift.winnername
-            //gift.WinnerName=
+
             return winnerDto;
         }
+
+    
         public async Task<bool> DeleteAllWinners()
         {
             _logger.LogInformation("start Deleting all winners and resetting associated gifts.");

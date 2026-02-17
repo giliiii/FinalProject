@@ -26,17 +26,16 @@ namespace BsdFinalProject.Repositories
         {
             _context.Winner.Add(winner);
             await _context.SaveChangesAsync();
-            //var gift=_context.Gift.
-            return winner == null ? null : winner;
+            return winner;
         }
 
         public async Task<IEnumerable<Winner?>> GetAllWinners()
         {
             return await _context.Winner.ToListAsync();
         }
-        public async Task<Winner?> GetWinnerByGiftId(int giftid)
+        public async Task<Winner?> GetWinnerByGiftId(int giftId)
         {
-            return await _context.Winner.FirstOrDefaultAsync(w => w.IdGift == giftid);
+            return await _context.Winner.FirstOrDefaultAsync(w => w.IdGift == giftId);
         }
 
         public async Task<IEnumerable<Winner?>> DeleteAllWinners()

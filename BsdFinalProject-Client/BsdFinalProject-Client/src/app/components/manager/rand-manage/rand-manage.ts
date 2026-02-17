@@ -19,6 +19,7 @@ import { DonorModel } from '../../../Models/donor';
 import { DonorService } from '../../../Services/donor-service';
 import { HttpClient } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-rand-manage',
@@ -61,11 +62,11 @@ export class RandManage {
     this.giftService.getAllGifts().subscribe((r) => {
       this.gifts = r; // מעדכן את המערך
       this.changeDetectorRef.detectChanges(); // זה יגרום ל-Angular לבדוק את השינויים ולעדכן את התצוגה
-      alert('yhh');
+      // alert('yhh');
 
       // אחרי שגמרנו עם ה-HTTP call והמערך התמלא, עכשיו נבצע את קריאות ה-API לכל מתנה
       this.gifts.forEach((g) => {
-        alert('h');
+        // alert('h');
         this.giftService.getAllCards(g.id, this.headers).subscribe({
           next: (cards) => {
             g.tickets = cards; // עדכון הכרטיסים
@@ -81,35 +82,62 @@ export class RandManage {
     });
   }
 
-  drawWinner(gift: GiftModel): void {
-    if (gift.winnerName !=" ") {
-      alert("למתנה זו כבר יש זוכה"+gift.winnerName+"!")
-      console.log("winner exist",`${gift.winnerName}`);
+  // drawWinner(gift: GiftModel): void {
+  //   console.log("draw winner for gift",gift);
+  //   if (gift.winnerName !=" ") {
+  //     alert("למתנה זו כבר יש זוכה"+gift.winnerName+"!")
+  //     console.log("winner exist",`${gift.winnerName}`);
       
-      return;
-    }
-    this.winnerService.addWinner(gift.id, this.headers).subscribe({
-      next: (w) => {
-        gift.winnerName = w?.winnerName;
-        this.changeDetectorRef.detectChanges();
-        console.log();
+  //     return;
+  //   }
+  //   this.winnerService.addWinner(gift.id, this.headers).subscribe({
+  //     next: (w) => {
+  //       console.log("winner added",w);
+  //       gift.winnerName = w?.winnerName;
+  //       this.changeDetectorRef.detectChanges();
+  //       console.log();
         
-        // כדי לוודא שהשינוי ייתפס על ידי Angular
-      },
-      error: (err) => {
-        if (err.status === 404) {
-          // במקרה של שגיאת NotFound (אין רוכשים)
-          alert('אין רוכשים עבור המתנה הזו!');
-        } else if (err.status === 400) {
-          // במקרה של שגיאת BadRequest (שגיאה אחרת)
-          alert('שגיאה בהוספת הזוכה: ' + err.error.message);
-        } else {
-          // טיפול בשגיאות כלליות אחרות
-          alert('אירעה שגיאה לא צפויה.');
-        }
-      },
-    });
-  }
+  //       // כדי לוודא שהשינוי ייתפס על ידי Angular
+  //     },
+  //     error: (err) => {
+  //       if (err.status === 404) {
+  //         // במקרה של שגיאת NotFound (אין רוכשים)
+  //         alert('אין רוכשים עבור המתנה הזו!');
+  //       } else if (err.status === 400) {
+  //         // במקרה של שגיאת BadRequest (שגיאה אחרת)
+  //         alert('שגיאה בהוספת הזוכה: ' + err.error.message);
+  //       } else {
+  //         // טיפול בשגיאות כלליות אחרות
+  //         alert('אירעה שגיאה לא צפויה.');
+  //       }
+  //     },
+  //   });
+  // }
+
+  drawWinner(gift: GiftModel): void {
+    console.log("draw winner for gift",gift)
+    if (gift.winnerName?.trim() !== '') {
+    alert(`למתנה זו כבר יש זוכה: ${gift.winnerName}`);
+    return;
+   }
+
+  this.winnerService.addWinner(gift.id, this.headers).subscribe({
+    next: (response) => {
+      console.log("winner added", response);
+      gift.winnerName = response.winnerName;  // עדכון הזוכה במתנה
+      this.changeDetectorRef.detectChanges(); // עדכון ה-UI
+    },
+    error: (err) => {
+      if (err.status === 404) {
+        alert('אין רוכשים עבור המתנה הזו!');
+      } else if (err.status === 400) {
+        alert('שגיאה בהוספת הזוכה: ' + err.error.message);
+      } else {
+        alert('אירעה שגיאה לא צפויה.');
+      }
+    }
+  });
+}
 
   buyersCount(gift: GiftModel): number {
     return gift.tickets ? gift.tickets.length : 0;
