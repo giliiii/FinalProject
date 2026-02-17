@@ -1,5 +1,5 @@
 <div class="card">
-    
+
     <!-- SEARCH AND FILTER SECTION -->
     <div class="button-container">
     </div>
@@ -22,7 +22,8 @@
     </div>
 
     <div class="flex justify-center mt-4">
-        <button pButton label="צפה בסל הקניות" icon="pi pi-shopping-cart" severity="info" (click)="openBasketDialog()"></button>
+        <button pButton label="צפה בסל הקניות" icon="pi pi-shopping-cart" severity="info"
+            (click)="openBasketDialog()"></button>
     </div>
 
     <!-- פתיחת חלון צד ימין -->
@@ -34,16 +35,52 @@
             <ul>
                 <li *ngFor="let basket of baskets">
                     <div class="flex justify-between">
-                        <!-- <span>{{ basket.giftName }} - {{ formatCost(basket.cost) }}</span> -->
-                        <button pButton icon="pi pi-trash" class="p-button-danger" (click)="removeFromBasket(basket.Id)"></button>
+                        <span>{{ basket.giftName }} - {{ formatCost(basket.cost) }}</span>
+                        <button pButton icon="pi pi-trash" class="p-button-danger"
+                            (click)="removeFromBasket(basket.id)"></button>
                     </div>
-                    <h1> {{ basket.giftName }}</h1>
                 </li>
             </ul>
             <div class="flex justify-between mt-4">
                 <button pButton label="לשלם" icon="pi pi-credit-card" (click)="openPaymentDialog()"></button>
             </div>
         </div>
+        <!-- דיאלוג תשלום בתוך סל הקניות -->
+        <!-- דיאלוג תשלום בתוך סל הקניות -->
+        <p-dialog header="תשלום" [(visible)]="paymentDialogVisible" [modal]="true" [closable]="true"
+            [style]="{width: '300px', height: '500px'}"
+            contentStyle="display: flex; flex-direction: column; justify-content: flex-start; padding: 1rem;">
+
+            <div class="flex flex-col gap-4 h-full">
+                <!-- מספר כרטיס -->
+                <div class="flex flex-col w-full">
+                    <label for="cardNumber" class="block mb-1 font-semibold">מספר כרטיס אשראי</label>
+                    <input id="cardNumber" type="text" pInputText [(ngModel)]="creditCardNumber"
+                        placeholder="1234 5678 9012 3456" class="w-full" />
+                </div>
+                <br>
+                <!-- CVV -->
+                <div class="flex flex-col w-full">
+                    <label for="cvv" class="block mb-1 font-semibold">CVV</label>
+                    <input id="cvv" type="text" pInputText [(ngModel)]="creditCardCVV" placeholder="123"
+                        class="w-full" />
+                </div>
+                <br>
+                <!-- תוקף -->
+                <div class="flex flex-col w-full">
+                    <label for="expiry" class="block mb-1 font-semibold">תוקף (MM/YY)</label>
+                    <input id="expiry" type="text" pInputText [(ngModel)]="creditCardExpiry" placeholder="01/25"
+                        class="w-full" />
+                </div>
+                <br>
+                <!-- כפתור אישור -->
+                <div class="flex justify-center mt-auto w-full">
+                    <button pButton label="שלם" icon="pi pi-check" severity="success" (click)="confirmPayment()"
+                        class="w-full"></button>
+                </div>
+            </div>
+        </p-dialog>
+
     </p-drawer>
 
 
@@ -90,11 +127,11 @@
 
                                     </div>
                                 </div>
-                            <div class="flex gap-2 mb-3">
-                            <button pButton label="הוסף לסל" icon="pi pi-shopping-cart" severity="success" [rounded]="true"
-                                class="mb-3 w-full" (click)="addToBasket(item)">
-                            </button>
-                            </div>
+                                <div class="flex gap-2 mb-3">
+                                    <button pButton label="הוסף לסל" icon="pi pi-shopping-cart" severity="success"
+                                        [rounded]="true" class="mb-3 w-full" (click)="addToBasket(item)">
+                                    </button>
+                                </div>
                                 <div *ngIf="item.winnerName" class="mt-2">
                                     <p-tag [value]="'זוכה: ' + item.winnerName" severity="success"
                                         icon="pi pi-check"></p-tag>
@@ -138,12 +175,12 @@
                             </div>
                             // הוספה לסל
                             <div class="flex gap-2 mb-3">
-                            <button pButton label="הוסף לסל" icon="pi pi-shopping-cart" severity="success" [rounded]="true"
-                                class="mb-3 w-full">
-                            </button>
+                                <button pButton label="הוסף לסל" icon="pi pi-shopping-cart" severity="success"
+                                    [rounded]="true" class="mb-3 w-full">
+                                </button>
                             </div>
 
-                            
+
                             <div *ngIf="item.winnerName" class="mb-3">
                                 <p-tag [value]="'זוכה: ' + item.winnerName" severity="success" icon="pi pi-check"
                                     [rounded]="true"></p-tag>
@@ -172,5 +209,3 @@
     </p-dataview>
 
 </div>
-
-

@@ -54,5 +54,13 @@ namespace BsdFinalProject.Controllers
 
             return Ok(new { token });
         }
+        //get user by id
+        //[HttpGet]
+        //public async Task<IActionResult> getUserById(int id)
+        //{
+        //    if (_service.GetUserById(id)!)
+        //}
+
+        
     }
 }

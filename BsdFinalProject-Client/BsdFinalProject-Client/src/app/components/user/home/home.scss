@@ -1,0 +1,47 @@
+/* אחידות לכפתורים */
+::ng-deep .p-button {
+    min-width: 120px;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+/* אפקט Hover לכרטיסיות המתנה */
+.gift-card {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+}
+
+.gift-card:hover {
+    transform: translateY(-8px); /* ציפה למעלה */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06);
+    border-color: #007bff; /* שינוי עדין של צבע הגבול */
+}
+
+/* סידור התמונה */
+.gift-image-container {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.gift-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* מירכוז הטפסים בדיאלוג */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-field label {
+    font-weight: 600;
+    color: #4b5563;
+}

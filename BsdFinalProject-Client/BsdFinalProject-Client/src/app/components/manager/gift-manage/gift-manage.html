@@ -11,17 +11,13 @@
     <img *ngIf="imagePath" [src]="imagePath">
    -->
 
-   <p-fileupload name="giftImage" [customUpload]="true" (onSelect)="onSelectFiles($event)" [auto]="true" [showUploadButton]="false" [showCancelButton]="false" accept="image/*">
-    <ng-template #file let-file>
-        <div class="flex flex-col items-center gap-2">
-            <img *ngIf="newGiftPicture" [src]="newGiftPicture" width="150" height="150" />
-            <p-button label="בחר תמונה" icon="pi pi-images" (onClick)="file.choose()" />
-        </div>
-    </ng-template>
-   </p-fileupload>
+   
 
 
   <p-panel header="חיפוש וסינון מתנות" [toggleable]="true" [collapsed]="false" class="mb-4">
+    <ng-template #header>
+        <div class="w-full text-center font-bold text-xl">חיפוש וסינון מתנות</div>
+    </ng-template>
         <div class="grid grid-rows-1 lg:grid-rows-3 gap-4 items-end">
             <!-- Search by gift name -->
             <div class="flex flex-col">
@@ -189,98 +185,63 @@
             </div>
         </ng-template>
 
-        <!-- LIST VIEW -->
         <ng-template #list let-items>
-            <div *ngFor="let item of items; let first = first">
-                <div
-                    class="flex flex-col sm:flex-row sm:items-center p-6 gap-4"
-                    [ngClass]="{ 'border-top-1 surface-border': !first }">
-
-                    <!-- IMAGE -->
-                    <div class="md:w-40">
-                        <img
-                            class="block mx-auto rounded w-full"
-                            [src]="item.picture || 'assets/no-image.png'"
-                            [alt]="item.name" />
+            <div class="flex flex-col w-full">
+                <div *ngFor="let item of items; let first = first" 
+                     class="flex flex-col sm:flex-row sm:items-center p-6 gap-4 list-item-fixed" 
+                     [ngClass]="{ 'border-t surface-border': !first }">
+                    
+                    <div class="image-container-list">
+                        <img class="fixed-img shadow-2" [src]="item.picture || 'assets/no-image.png'" [alt]="item.name" />
                     </div>
 
-                    <!-- DETAILS -->
-                    <div class="flex flex-col md:flex-row justify-between flex-1 gap-6">
+                    <div class="flex flex-col md:flex-row justify-between flex-1 gap-6 text-right">
                         <div>
-                            <div class="text-lg font-medium">{{ item.name }}</div>
-                            <div class="text-sm text-surface-500 mt-1">
-                                קטגוריה: {{ item.categoryId }}
-                            </div>
-                            <div class="text-sm text-surface-500">
-                                תורם: {{ item.donorId }}
-                            </div>
-
-                            <div *ngIf="item.winnerName" class="mt-2 text-green-600 font-medium">
-                                זוכה: {{ item.winnerName }}
-                            </div>
+                            <div class="text-xl font-bold">{{ item.name }}</div>
+                            <div class="text-sm text-surface-500 mt-1">קטגוריה: {{ item.categoryId }}</div>
+                            <div class="text-sm text-surface-500">תורם: {{ item.donorId }}</div>
                         </div>
 
-                        <div class="flex flex-col items-end gap-3">
-                            <span class="text-xl font-semibold">
-                                {{ formatCost(item.cost) }}
-                            </span>
-                            <button pButton label="פרטים" icon="pi pi-eye"></button>
-                            <button pButton label="מחיקת מתנה" icon="pi pi-trash" (click)="deleteGift(item.id)"></button>
-                            <div class="button-container">
-                                  <button pButton type="button" label="עדכון מתנה" icon="pi pi-pencil" (click)="openUpdateGiftDialog(item)" class="p-button-success"></button>
-                            </div>                         
-
+                        <div class="flex flex-col items-end justify-end gap-3 mt-4 md:mt-10">
+                            <span class="text-2xl font-semibold text-primary">{{ formatCost(item.cost) }}</span>
+                            <div class="flex gap-2">
+                                <button pButton icon="pi pi-pencil" (click)="openUpdateGiftDialog(item)" 
+                                        class="p-button-success p-button-sm" label="עדכון"></button>
+                                <button pButton icon="pi pi-trash" (click)="deleteGift(item.id)" 
+                                        class="p-button-danger p-button-sm" label="מחיקה"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </ng-template>
 
-        <!-- GRID VIEW -->
         <ng-template #grid let-items>
-            <div class="grid grid-cols-12 gap-4">
-                <div
-                    *ngFor="let item of items"
-                    class="col-span-12 sm:col-span-6 md:col-span-4 p-2">
+            <div class="grid grid-cols-12 gap-4 p-3">
+                <div *ngFor="let item of items" class="col-span-12 sm:col-span-6 lg:col-span-4">
+                    <div class="p-4 border rounded shadow-1 flex flex-col text-right card-fixed-height">
+                        
+                        <div class="image-container-grid">
+                            <img class="fixed-img mb-4" [src]="item.picture || 'assets/no-image.png'" [alt]="item.name" />
+                        </div>
 
-                    <div class="p-4 border rounded flex flex-col h-full">
-
-                        <img
-                            class="rounded mb-4"
-                            [src]="item.picture || 'assets/no-image.png'"
-                            [alt]="item.name" />
-
-                        <div class="text-lg font-medium">{{ item.name }}</div>
-
-                        <div class="text-sm text-surface-500">
-                            קטגוריה: {{ item.categoryId }}
+                        <div class="content-container">
+                            <div class="text-lg font-bold truncate">{{ item.name }}</div>
+                            <div class="text-sm text-surface-500 mb-2">קטגוריה: {{ item.categoryId }}</div>
                         </div>
 
                         <div class="mt-auto">
-                            <div class="text-xl font-semibold mt-4">
-                                {{ formatCost(item.cost) }}
+                            <div class="text-xl font-semibold text-primary mb-3">{{ formatCost(item.cost) }}</div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button pButton label="עדכון" icon="pi pi-pencil" 
+                                        (click)="openUpdateGiftDialog(item)" class="p-button-success p-button-sm w-full"></button>
+                                <button pButton label="מחיקה" icon="pi pi-trash" 
+                                        (click)="deleteGift(item.id)" class="p-button-danger p-button-sm w-full"></button>
                             </div>
-
-                            <div *ngIf="item.winnerName" class="text-green-600 text-sm mt-2">
-                                זוכה: {{ item.winnerName }}
-                            </div>
-
-                            <button
-                                pButton
-                                label="פרטים"
-                                icon="pi pi-eye"
-                                class="w-full mt-3">
-                            </button>
-                            <button pButton label="מחיקת מתנה" icon="pi pi-trash" (click)="deleteGift(item.id)"></button>
-                            <div class="button-container">
-                                  <button pButton type="button" label="עדכון מתנה" icon="pi pi-pencil" (click)="openUpdateGiftDialog(item)" class="p-button-success"></button>
-                            </div> 
-
                         </div>
                     </div>
                 </div>
             </div>
         </ng-template>
-
     </p-dataview>
 </div>

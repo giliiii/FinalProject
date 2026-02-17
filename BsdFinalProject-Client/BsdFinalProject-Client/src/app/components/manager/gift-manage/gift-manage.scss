@@ -1,8 +1,135 @@
-::ng-deep .p-dropdown-panel {
-  max-height: 300px;  /* הגדרת גובה מקסימלי */
-  overflow-y: auto;   /* אפשר גלילה כאשר התוכן גדול מהגובה */
+/* מירכוז הקונטיינר של ה-DataView */
+::ng-deep .p-dataview-content {
+    background: transparent !important;
 }
-::ng-deep .p-dropdown-item {
-  font-size: 16px; /* הגדלת גודל הגופן של הפריטים */
-  padding: 10px;   /* הגדלת הריווח הפנימי של הפריטים */
+
+/* מירכוז ה-Paginator */
+::ng-deep .p-paginator {
+    justify-content: center !important;
+    border: none !important;
+    margin-top: 1rem;
+}
+
+/* ביטול הצמדה לשמאל של הגריד */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* ממרכז את הכרטיסים אם יש פחות מ-3 בשורה */
+}
+
+/* אחידות לכפתורים */
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+/* מירכוז כותרת הפאנל המובנית של PrimeNG */
+::ng-deep .p-panel-header {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+::ng-deep .p-panel-header-content {
+    margin: 0 auto; /* דוחף את הטקסט לאמצע */
+}
+
+/* יישור תיבות הטקסט ב-RTL */
+.flex-col label {
+    text-align: right;
+    width: 100%;
+}
+
+/* מירכוז הדיאלוגים */
+::ng-deep .p-dialog .p-dialog-header {
+    direction: rtl;
+}
+
+/* הצמדת כפתורי התצוגה לימין ב-DataView */
+::ng-deep .p-dataview-header {
+    direction: rtl;
+}
+/* מירכוז כותרת הפאנל */
+::ng-deep .p-panel-header {
+    justify-content: center !important;
+}
+
+/* יישור התוכן ב-Inputs לימין (עבור עברית) */
+input, .p-select {
+    text-align: right;
+    direction: rtl;
+}
+
+/* במידה והאתר לא מוגדר כ-RTL ב-body, נכריח את ה-header של ה-DataView */
+::ng-deep .p-dataview-header {
+    direction: rtl;
+}
+
+/* התאמה לכותרות מעל השדות */
+.flex-col label {
+    margin-right: 4px; /* רווח קטן מהדופן הימנית */
+}
+/* הגדרות כלליות לתמונות */
+.fixed-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* חותך את התמונה כדי שתמלא את המרחב בלי להתעוות */
+    border-radius: 4px;
+}
+
+/* תצוגת Grid - גובה קבוע לכרטיס ולתמונה */
+.card-fixed-height {
+    height: 400px; /* גובה קבוע לכל הכרטיס */
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container-grid {
+    height: 180px; /* גובה קבוע לאזור התמונה ב-Grid */
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+/* תצוגת List - גובה קבוע לתמונה */
+.image-container-list {
+    width: 120px;
+    height: 120px; /* ריבוע קבוע לתמונה ברשימה */
+    flex-shrink: 0; /* מונע מהתמונה להתכווץ */
+}
+
+.list-item-fixed {
+    min-height: 160px; /* מבטיח שכל שורה ברשימה תהיה בגובה מינימלי אחיד */
+}
+
+/* מניעת טקסט ארוך מדי מלהרוס את העיצוב */
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.card-fixed-height {
+    height: 420px; /* או הגובה שמתאים לך */
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container-grid {
+    height: 180px;
+    flex-shrink: 0; /* מונע מהתמונה להתכווץ */
+}
+
+/* הצמדת התוכן התחתון לסוף הכרטיס */
+.mt-auto {
+    margin-top: auto;
+}
+.list-item-fixed {
+    max-width: 100%; /* מאפשר לשורה למלא את כל הרוחב הזמין */
+    background-color: var(--surface-card);
+}
+
+.image-container-list {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0; /* מונע מהתמונה להצטמצם כשיש הרבה טקסט */
 }

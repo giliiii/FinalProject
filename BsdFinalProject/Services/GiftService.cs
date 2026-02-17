@@ -67,6 +67,7 @@ namespace BsdFinalProject.Services
                 _logger.LogWarning("Gift with id: {GiftId} not found", id);
                 throw new Exception($"Gift with id {id} not found.");
             }
+            
             return new GiftDto
             {
                 Id = g.Id,

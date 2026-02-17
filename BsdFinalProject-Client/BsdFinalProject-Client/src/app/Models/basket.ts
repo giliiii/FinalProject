@@ -1,7 +1,8 @@
 export class BasketModel {
-    Id!: number;
+    id!: number;
     giftId!: number;
     userId!: number;
-    giftName: string=" vvv";
+    giftName!: string;
+    cost!: number;
 }
 

@@ -437,6 +437,7 @@ filterGifts() {
         converted.donorId = r.donorId || r.DonorId;
         // עדכון ה-UI מיידית
         this.gifts = [...this.gifts, converted];
+        this.filteredGifts = [...this.filteredGifts, converted];
         // סגור הדיאלוג לאחר עיגון שינוי (הימנעות מבעיות בדיקה)
         setTimeout(() => {
           this.closeDialog2();

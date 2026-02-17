@@ -17,4 +17,7 @@ export class LoginService {
   register(item: any): Observable<any> {
     return this.http.post<any>(`${this.BASE_URL}/register`, item);
   }
+  // getUserById(id: number): Observable<any> {
+  //   return this.http.get<any>(`${this.BASE_URL}/byId/${id}`);
+  // }
 }
