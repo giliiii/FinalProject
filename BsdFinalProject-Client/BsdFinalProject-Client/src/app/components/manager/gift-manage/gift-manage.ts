@@ -61,7 +61,7 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
     categoryId:number=0;
     donorId:number=0;
     winnerName:string="";
-    layout: 'list' | 'grid' = 'list';
+    layout: 'list' | 'grid' = 'grid';
     options: SelectItem[] = [
     { label: 'List', value: 'list' },
     { label: 'Grid', value: 'grid' }
@@ -90,7 +90,9 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
     files: any[] = [];
     totalSize: number = 0;
     totalSizePercent: number = 0;
-
+    displayGiftDetailsDialog: boolean = false;
+    selectedGift: GiftModel | null = null;
+    
     // messageService: MessageService = inject(MessageService);
 
   private getHeaders(): HttpHeaders {
@@ -231,7 +233,15 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
         });
       }
       
-      
+      openGiftDetailsDialog(gift: GiftModel) {
+      this.selectedGift = gift;
+      this.displayGiftDetailsDialog = true;
+    }
+    closeGiftDetailsDialog() {
+      this.displayGiftDetailsDialog = false;
+      this.selectedGift = null;
+    }
+
       closeDialog() {
         this.displayDialog = false;
         this.resetForm();

@@ -26,4 +26,20 @@
        </tr>
      </ng-template>
    </p-table>
+  
+  <p-dialog header="מזכה!" [(visible)]="displayWinnerDialog" modal="true" [closable]="true" (onHide)="closeWinnerDialog()">
+    <div *ngIf="winnerUser">
+      <h3>מתנה: {{ winnerGiftName }}</h3>
+      <p><strong>שם מלא:</strong> {{ winnerUser.fullName }}</p>
+      <p><strong>אימייל:</strong> {{ winnerUser.eMail }}</p>
+      <p *ngIf="winnerUser.phone"><strong>טלפון:</strong> {{ winnerUser.phone }}</p>
+      <p *ngIf="winnerUser.address"><strong>כתובת:</strong> {{ winnerUser.address }}</p>
+    </div>
+    <div *ngIf="!winnerUser">
+      <p>הזוכה: {{ winnerGiftName }}</p>
+    </div>
+    <p-footer>
+      <button pButton type="button" label="סגור" (click)="closeWinnerDialog()"></button>
+    </p-footer>
+  </p-dialog>
  </div>

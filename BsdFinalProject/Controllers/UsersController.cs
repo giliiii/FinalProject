@@ -54,12 +54,36 @@ namespace BsdFinalProject.Controllers
 
             return Ok(new { token });
         }
-        //get user by id
-        //[HttpGet]
-        //public async Task<IActionResult> getUserById(int id)
-        //{
-        //    if (_service.GetUserById(id)!)
-        //}
+        // GET api/users/{id} - return user details by id
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUserById(int id)
+        {
+            try
+            {
+                var user = await _service.GetUserById(id);
+                if (user == null)
+                {
+                    _logger.LogInformation("User with id {Id} not found.", id);
+                    return NotFound(new { message = "User not found." });
+                }
+
+                var dto = new UserDto
+                {
+                    Id = user.Id,
+                    EMail = user.EMail,
+                    FullName = user.FullName,
+                    Phone = user.Phone,
+                    Address = user.Address
+                };
+
+                return Ok(dto);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting user by id {Id}", id);
+                return BadRequest(new { message = ex.Message });
+            }
+        }
 
         
     }

@@ -2,6 +2,8 @@ import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { GiftModel } from '../../../Models/gift';
 import { GiftService } from '../../../Services/gift-service';
 import { WinnerService } from '../../../Services/winner-service';
+import { UserService } from '../../../Services/user-service';
+import { UserModel } from '../../../Models/user';
 import { CommonModule } from '@angular/common';
 import { HttpHeaders } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
@@ -23,7 +25,8 @@ import { log } from 'node:console';
 
 @Component({
   selector: 'app-rand-manage',
-  imports: [SelectModule, TableModule, ButtonModule, CommonModule],
+  standalone: true,
+  imports: [SelectModule, TableModule, ButtonModule, CommonModule, DialogModule],
   templateUrl: './rand-manage.html',
   styleUrl: './rand-manage.scss',
 })
@@ -31,6 +34,7 @@ export class RandManage {
   gifts: GiftModel[] = [];
   giftService = inject(GiftService);
   winnerService = inject(WinnerService);
+  userService = inject(UserService);
   changeDetectorRef = inject(ChangeDetectorRef);
   headers: HttpHeaders = new HttpHeaders();
 
@@ -49,6 +53,11 @@ export class RandManage {
       Authorization: token ? `Bearer ${token}` : '',
     });
   }
+
+  // dialog state
+  displayWinnerDialog: boolean = false;
+  winnerUser: UserModel | null = null;
+  winnerGiftName: string = '';
 
   ngOnInit(): void {
     this.headers = this.getHeaders();
@@ -123,9 +132,25 @@ export class RandManage {
 
   this.winnerService.addWinner(gift.id, this.headers).subscribe({
     next: (response) => {
-      console.log("winner added", response);
-      gift.winnerName = response.winnerName;  // עדכון הזוכה במתנה
+      console.log('winner added', response);
+      gift.winnerName = response.winnerName; // עדכון הזוכה במתנה
       this.changeDetectorRef.detectChanges(); // עדכון ה-UI
+      // always open dialog and show gift name; then try to fetch user details
+      this.winnerGiftName = gift.name;
+      this.displayWinnerDialog = true;
+      this.changeDetectorRef.detectChanges();
+
+      if (response && response.userId) {
+        this.userService.getUserById(response.userId, this.headers).subscribe({
+          next: (user) => {
+            this.winnerUser = user;
+            this.changeDetectorRef.detectChanges();
+          },
+          error: (uErr) => {
+            console.error('Error fetching winner user details', uErr);
+          },
+        });
+      }
     },
     error: (err) => {
       if (err.status === 404) {
@@ -135,9 +160,15 @@ export class RandManage {
       } else {
         alert('אירעה שגיאה לא צפויה.');
       }
-    }
+    },
   });
 }
+
+  closeWinnerDialog(): void {
+    this.displayWinnerDialog = false;
+    this.winnerUser = null;
+    this.winnerGiftName = '';
+  }
 
   buyersCount(gift: GiftModel): number {
     return gift.tickets ? gift.tickets.length : 0;

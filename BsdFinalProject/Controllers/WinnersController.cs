@@ -50,39 +50,31 @@ namespace BsdFinalProject.Controllers
         {
             try
             {
-                // 1. бегчйн ан йщ лбш желд моърд
-                var existingWinner = await _WinnerService.CreateNewWinner(giftId);
-                if (existingWinner != null)
-                {
-                    _logger.LogWarning("Winner already exists for giftId: {giftId}", giftId);
-                    return BadRequest(new { message = "Winner already exists for this gift." });
-                }
-
-                // 2. йцйшъ желд згщ
+                // create a new winner for the gift (service will validate existing winners)
                 var winner = await _WinnerService.CreateNewWinner(giftId);
 
-                // 3. ан ма роца шелщ ае желд, озжйшйн щвйад
+                // 3. пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
                 if (winner == null)
                 {
                     return NotFound(new { message = "No users found for this gift." });
                 }
 
-                // 4. тглеп доърд тн щн джелд
+                // 4. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
                 var gift = await _giftService.GetGiftById(winner.IdGift);
                 var user = await _userService.GetUserById(winner.IdUser);
 
-                // тглеп доърд тн щн джелд
-                gift.WinnerName = user.FullName;  // тглеп дщн щм джелд
+                // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+                gift.WinnerName = user.FullName;  // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
                 await _giftService.UpdateGift(gift);
 
-                // 5. бгеч ан дщн алп теглп боърд
+                // 5. пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
                 var updatedGift = await _giftService.GetGiftById(gift.Id);
                 if (updatedGift.WinnerName != gift.WinnerName)
                 {
                     _logger.LogWarning("Failed to update WinnerName for giftId: {GiftId}", gift.Id);
                 }
 
-                return Ok(new { winnerName = gift.WinnerName, giftId = gift.Id });
+                return Ok(new { winnerName = gift.WinnerName, giftId = gift.Id, userId = winner.IdUser });
             }
             catch (ArgumentException ex)
             {
@@ -101,10 +93,10 @@ namespace BsdFinalProject.Controllers
             {
                 try
                 {
-                    var winners = await _WinnerService.GetAllWinners(); // ае дчшйад доъайод мдецйа аъ лм джелйн
-                    if (winners == null || !winners.Any()) // ан дотшк шйч
+                    var winners = await _WinnerService.GetAllWinners(); // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+                    if (winners == null || !winners.Any()) // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
                     {
-                        return NotFound(new { message = "айп желйн мозеч." });
+                        return NotFound(new { message = "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ." });
                     }
                     foreach (var winner in winners)
                     {

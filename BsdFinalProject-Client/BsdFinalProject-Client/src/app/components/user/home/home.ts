@@ -74,7 +74,7 @@ export class Home {
   headers: HttpHeaders = new HttpHeaders();
   categories: categoryModel[] = [];
   CategoryService: CategoryService = inject(CategoryService);
-  layout: 'list' | 'grid' = 'list';
+  layout: 'list' | 'grid' = 'grid';
   selectedDonor: DonorModel | null = null;
   searchByGiftName: string = "";
   displayUpdateDialog: boolean = false;

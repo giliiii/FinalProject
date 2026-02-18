@@ -137,11 +137,11 @@
 <!-- DataView של מתנות -->
 <div class="card">
     <p-dataview [value]="filteredGifts" [layout]="layout">
-        <ng-template #header>
+        <!-- <ng-template #header>
             <div class="flex justify-end">
                 <p-selectbutton [(ngModel)]="layout" [options]="options" [allowEmpty]="false"></p-selectbutton>
             </div>
-        </ng-template>
+        </ng-template> -->
 
         <!-- <ng-template #list let-items>
             <div class="flex flex-col w-full">
@@ -178,7 +178,9 @@
                         </div>
 
                         <div class="content-container">
-                            <div class="text-lg font-bold truncate">{{ item.name }}</div>
+                            <a (click)="openGiftDetailsDialog(item)" class="text-lg font-bold truncate">{{ item.name }}</a>
+                            <!-- <div class="text-sm text-surface-500 mt-1">תורם: {{ getDonorName(item.donorId) }}</div> -->
+                            <!-- <div class="text-sm text-surface-500">תיאור: {{ item.description }} </div> -->
                             <div class="text-sm text-surface-500 mb-2">קטגוריה: {{ item.categoryId }}</div>
                         </div>
 
@@ -187,8 +189,10 @@
                             <div class="grid grid-cols-2 gap-2">
                                 <button pButton label="עדכון" icon="pi pi-pencil" (click)="openUpdateGiftDialog(item)" class="btn-gold-outline p-button-sm w-full"></button>
                                 <button pButton label="מחיקה" icon="pi pi-trash" (click)="deleteGift(item.id)" class="btn-gold-outline p-button-sm w-full"></button>
+                                <button pButton label="פרטים" icon="pi pi-info-circle" (click)="openGiftDetailsDialog(item)" class="btn-gold-outline p-button-sm w-full mt-2"></button>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -196,3 +200,17 @@
     </p-dataview>
 </div>
 </div>
+
+<p-dialog header="פרטי מתנה" [(visible)]="displayGiftDetailsDialog" modal="true" [closable]="true" (onHide)="closeGiftDetailsDialog()">
+    <div *ngIf="selectedGift">
+        <h3>{{ selectedGift.name }}</h3>
+        <p><strong>תיאור:</strong> {{ selectedGift.description }}</p>
+        <p><strong>מחיר:</strong> {{ formatCost(selectedGift.cost) }}</p>
+        <p><strong>קוד קטגוריה:</strong> {{ selectedGift.categoryId }}</p>
+        <p><strong>קוד תורם:</strong> {{ selectedGift.donorId }}</p>
+        <img *ngIf="selectedGift.picture" [src]="selectedGift.picture" alt="{{ selectedGift.name }}" width="40%" class="mt-3"/>
+    </div>
+    <p-footer>
+        <button pButton type="button" label="סגור" (click)="closeGiftDetailsDialog()"></button>
+    </p-footer>
+</p-dialog>
