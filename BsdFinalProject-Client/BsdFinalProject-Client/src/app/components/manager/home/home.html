@@ -1,36 +1,36 @@
+  <button class="btn-home" (click)="router.navigate(['/'])">בית</button>
 <div class="manager-container">
-  
+
+  <!-- אזור ניווט קבוע -->
   <div class="navbar-section">
     <h1>ברוך הבא למערכת הניהול</h1>
-    <p-menubar [model]="items" />
+    <p-menubar [model]="items"></p-menubar>
   </div>
 
-  <!-- תוכן דינמי - משתנה לפי בחירה -->
+  <!-- תוכן מתחלף -->
   <div class="content-section">
-    <!-- דף הבית -->
+
+    <!-- GIF רק בדף הבית ומתחת לתפריט -->
+    <div *ngIf="selectercomponent === 'home'" class="home-background"></div>
+
     <div *ngIf="selectercomponent === 'home'" class="home-content">
-      <h2>דף הבית</h2>
-      <p>בחר אחת מהאפשרויות בתפריט כדי להתחיל ניהול</p>
     </div>
 
-    <!-- ניהול תורמים -->
     <div *ngIf="selectercomponent === 'donors'">
       <app-donor-manage></app-donor-manage>
     </div>
 
-    <!-- ניהול מתנות -->
     <div *ngIf="selectercomponent === 'gifts'">
       <app-gift-manage></app-gift-manage>
     </div>
 
-    <!-- ניהול כרטיסים -->
     <div *ngIf="selectercomponent === 'cards'">
       <app-card-manage></app-card-manage>
     </div>
 
-    <!-- הגרלת מתנות -->
     <div *ngIf="selectercomponent === 'rand'">
       <app-rand-manage></app-rand-manage>
     </div>
+
   </div>
 </div>

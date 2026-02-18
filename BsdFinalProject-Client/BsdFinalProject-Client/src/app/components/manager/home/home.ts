@@ -12,6 +12,37 @@ import { RandManage } from '../rand-manage/rand-manage';
 import { HttpHeaders } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
 import { BasketService } from '../../../Services/basket-service';
+import { Router } from '@angular/router';
+import {  inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { SelectModule } from 'primeng/select';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { ToastModule } from 'primeng/toast';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { RippleModule } from 'primeng/ripple';
+import { SelectItem } from 'primeng/api';
+import { DataViewModule } from 'primeng/dataview';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { PanelModule } from 'primeng/panel';
+import { GiftModel } from '../../../Models/gift';
+import { GiftService } from '../../../Services/gift-service';
+import { DonorService } from '../../../Services/donor-service';
+import { DonorModel } from '../../../Models/donor';
+import {  CurrencyPipe } from '@angular/common';
+import { ChangeDetectorRef } from '@angular/core';
+import { HttpClient} from '@angular/common/http';
+
+import { DialogModule } from 'primeng/dialog';
+import { categoryModel } from '../../../Models/category';
+import { CategoryService } from '../../../Services/category-service';
+import { error, log } from 'console';
+
+import { CardService } from '../../../Services/card-service';
+import { BasketModel } from '../../../Models/basket';
+
+import { DrawerModule } from 'primeng/drawer';  // הוסף את היבוא הזה
 
 
 const routes: Routes = [
@@ -29,9 +60,10 @@ const routes: Routes = [
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
 })
-export class Home implements OnInit {
+export class Home implements OnInit {  
 items: MenuItem[] = [];
 selectercomponent: string = 'home';
+  router = inject(Router);
 ngOnInit() {
         this.items = [
             {
@@ -55,7 +87,8 @@ ngOnInit() {
                 command: () => this.selectercomponent = 'cards'
             },
             {
-                label: '🎁הגרלת מתנות',
+                label: 'הגרלת מתנות',
+                icon: 'pi pi-fw pi-random',
                 command: () => this.selectercomponent = 'rand'
             }
         ];

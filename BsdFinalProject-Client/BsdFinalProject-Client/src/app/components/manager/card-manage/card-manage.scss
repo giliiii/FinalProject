@@ -1,0 +1,88 @@
+/* ===== עוטף ממורכז ===== */
+.menu-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+/* כפתור */
+::ng-deep .main-action-btn {
+  background: transparent !important;
+  border: 2px solid #d4af37 !important;
+  color: #b7950b !important;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50% !important;
+}
+
+/* ===== תפריט RTL ===== */
+::ng-deep .rtl-menu {
+  direction: rtl !important;
+  text-align: right !important;
+  margin-top: 4px !important; /* נוגע כמעט בכפתור */
+}
+
+/* יישור לימין */
+::ng-deep .rtl-menu.p-menu {
+  transform-origin: top right !important;
+}
+
+/* פריטים */
+::ng-deep .rtl-menu .p-menuitem-link {
+  justify-content: flex-start;
+  gap: 0.6rem;
+  font-weight: 500;
+  color: #b7950b !important;
+}
+
+::ng-deep .rtl-menu .p-menuitem-link:hover {
+  background: rgba(212, 175, 55, 0.1) !important;
+}
+
+
+/* ===== תפריט נפתח ===== */
+::ng-deep .p-menu {
+  border-radius: 14px !important;
+  border: 1px solid #d4af37 !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+::ng-deep .p-menu .p-menuitem-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.2rem;
+  font-weight: 500;
+  color: #b7950b !important;
+}
+
+::ng-deep .p-menu .p-menuitem-link:hover {
+  background: rgba(212, 175, 55, 0.1) !important;
+}
+
+/* אייקונים */
+::ng-deep .p-menu .p-menuitem-icon {
+  font-size: 1rem;
+}
+
+/* ============================= */
+/* ===== רספונסיביות ===== */
+/* ============================= */
+@media (max-width: 768px) {
+  :host {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  ::ng-deep .p-table {
+    font-size: 0.85rem;
+  }
+
+  ::ng-deep .p-speeddial-action {
+    min-width: 140px;
+    font-size: 0.8rem;
+  }
+}

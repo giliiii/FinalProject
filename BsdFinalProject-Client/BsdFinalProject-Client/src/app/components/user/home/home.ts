@@ -95,7 +95,6 @@ export class Home {
   creditCardCVV: string = '';
 
   options: SelectItem[] = [
-    { label: 'List', value: 'list' },
     { label: 'Grid', value: 'grid' }
   ];
 

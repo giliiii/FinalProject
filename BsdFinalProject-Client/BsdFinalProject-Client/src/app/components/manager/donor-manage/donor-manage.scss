@@ -1,0 +1,102 @@
+/* ===== רקע כללי כמו שאר הקומפוננטות ===== */
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: rgba(255, 223, 186, 0.05); /* זהב עדין מאוד */
+  padding: 2rem;
+}
+
+/* ===== כפתור הוספה ===== */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+::ng-deep .p-button-success {
+  background: transparent !important;
+  border: 2px solid #d4af37 !important;
+  color: #b7950b !important;
+  font-size: 1rem;
+  padding: 0.8rem 2rem !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease;
+}
+
+::ng-deep .p-button-success:hover {
+  background: rgba(212, 175, 55, 0.1) !important;
+}
+
+/* ===== טבלה ===== */
+.card {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+::ng-deep .p-table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+::ng-deep .p-table thead th {
+  background-color: rgba(255, 223, 186, 0.2);
+  text-align: center;
+  font-weight: 600;
+}
+
+::ng-deep .p-table tbody td {
+  text-align: center;
+}
+
+/* ===== כפתורי אייקונים בטבלה ===== */
+::ng-deep .p-button-danger,
+::ng-deep .p-button-info,
+::ng-deep .p-button-secondary {
+  background: transparent !important;
+  border: none !important;
+  color: #b7950b !important;
+}
+
+::ng-deep .p-button-danger:hover,
+::ng-deep .p-button-info:hover {
+  background: rgba(212, 175, 55, 0.1) !important;
+}
+
+/* ===== דיאלוגים ===== */
+::ng-deep .p-dialog {
+  border-radius: 16px !important;
+}
+
+::ng-deep .p-dialog .p-dialog-header {
+  background-color: rgba(255, 223, 186, 0.2) !important;
+  text-align: center;
+  font-weight: 600;
+}
+
+::ng-deep .p-dialog .p-dialog-content {
+  padding: 2rem !important;
+}
+
+/* ===== שדות קלט בדיאלוג ===== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.form-input {
+  border-radius: 10px !important;
+  padding: 0.7rem !important;
+}
+
+/* ===== כפתורי footer בדיאלוג ===== */
+::ng-deep .p-dialog .p-dialog-footer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+}

@@ -13,3 +13,28 @@ app-root {
   display: block;
   min-height: 100vh;
 }
+/* כחול יוקרתי עדין */
+:root {
+  --luxury-blue: #1e3a8a;        /* כחול עמוק */
+  --luxury-blue-light: #2c4fb5;  /* hover */
+}
+
+/* כל כפתורי PrimeNG */
+::ng-deep .p-button {
+  border: 2px solid var(--luxury-blue) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+/* hover עדין */
+::ng-deep .p-button:hover {
+  border-color: var(--luxury-blue-light) !important;
+  box-shadow: 0 0 8px rgba(30, 58, 138, 0.25);
+}
+
+/* אם יש כפתורים שקופים */
+::ng-deep .p-button.p-button-text,
+::ng-deep .p-button.p-button-outlined {
+  border: 2px solid var(--luxury-blue) !important;
+}
+

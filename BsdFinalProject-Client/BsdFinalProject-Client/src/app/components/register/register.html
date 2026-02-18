@@ -1,27 +1,48 @@
-<p>register works!</p>
-<!-- Register Form -->
-    <div class="flex flex-col gap-4 p-4">
-        <h2>הרשמה</h2>
-        <p-floatlabel>
-            <input pInputText [(ngModel)]="email" id="reg-email" name="reg-email" type="text" />
-            <label for="reg-email">email</label>
-        </p-floatlabel>
-        <p-floatlabel>
-            <input pInputText [(ngModel)]="fullName" id="fullName" name="fullName" type="text" />
-            <label for="fullName">שם מלא</label>
-        </p-floatlabel>
-        <p-floatlabel>
-            <input pInputText [(ngModel)]="password" id="reg-password" name="reg-password" type="password" />
-            <label for="reg-password">password</label>
-        </p-floatlabel>
-        <p-floatlabel>
-            <input pInputText [(ngModel)]="phone" id="phone" name="phone" type="text" />
-            <label for="phone">טלפון</label>
-        </p-floatlabel>
-        <p-floatlabel>
-            <input pInputText [(ngModel)]="address" id="address" name="address" type="text" />
-            <label for="address">כתובת</label>
-        </p-floatlabel>
-        <button (click)="register()">הרשמה</button>
-        <button (click)="goToLogin()" class="text-blue-500">חזור להתחברות</button>
+<div class="register-page">
+  <!-- כפתור חזרה לדף הבית -->
+  <button class="btn-home" (click)="router.navigate(['/'])">בית</button>
+
+  <div class="register-card">
+    <h2>הרשמה</h2>
+
+    <div class="form-group">
+      <p-floatlabel>
+        <input pInputText [(ngModel)]="email" id="reg-email" name="reg-email" type="text" />
+        <label for="reg-email">מייל</label>
+      </p-floatlabel>
     </div>
+
+    <div class="form-group">
+      <p-floatlabel>
+        <input pInputText [(ngModel)]="fullName" id="fullName" name="fullName" type="text" />
+        <label for="fullName">שם מלא</label>
+      </p-floatlabel>
+    </div>
+
+    <div class="form-group">
+      <p-floatlabel>
+        <input pInputText [(ngModel)]="password" id="reg-password" name="reg-password" type="password" />
+        <label for="reg-password">סיסמא</label>
+      </p-floatlabel>
+    </div>
+
+    <div class="form-group">
+      <p-floatlabel>
+        <input pInputText [(ngModel)]="phone" id="phone" name="phone" type="text" />
+        <label for="phone">טלפון</label>
+      </p-floatlabel>
+    </div>
+
+    <div class="form-group">
+      <p-floatlabel>
+        <input pInputText [(ngModel)]="address" id="address" name="address" type="text" />
+        <label for="address">כתובת</label>
+      </p-floatlabel>
+    </div>
+
+    <div class="buttons-container">
+      <button pButton (click)="register()" label="הרשמה" class="btn-gold-outline"></button>
+      <button pButton (click)="goToLogin()" label="חזור להתחברות" class="btn-gold-outline"></button>
+    </div>
+  </div>
+</div>

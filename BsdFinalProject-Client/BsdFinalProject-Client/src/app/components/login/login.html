@@ -1,13 +1,27 @@
-<div class="card flex flex-wrap justify-center items-end gap-6">
-    <p-floatlabel variant="in">
+<div class="login-page">
+  <!-- כפתור חזרה לדף הבית -->
+  <button class="btn-home" (click)="router.navigate(['/'])">בית</button>
+
+  <div class="login-card">
+    <h2>כניסה</h2>
+
+    <div class="form-group">
+      <p-floatlabel variant="in">
         <input pInputText id="email" [(ngModel)]="email" autocomplete="off" />
         <label for="email">מייל</label>
-    </p-floatlabel>
-    <p-floatlabel variant="in">
-        <input pInputText id="password" [(ngModel)]="password" autocomplete="off" />
-        <label for="password">סיסמא</label>
-    </p-floatlabel>
-    <div class="card flex justify-center mt-4">
-        <p-button (click)="login()" label="אישור"  />
+      </p-floatlabel>
     </div>
+
+    <div class="form-group">
+      <p-floatlabel variant="in">
+        <input pInputText id="password" [(ngModel)]="password" type="password" autocomplete="off" />
+        <label for="password">סיסמא</label>
+      </p-floatlabel>
+    </div>
+
+    <div class="buttons-container">
+      <button pButton (click)="login()" label="כניסה" class="btn-gold"></button>
+      <button pButton (click)="goToRegister()" label="הרשמה" class="btn-gold-outline"></button>
+    </div>
+  </div>
 </div>

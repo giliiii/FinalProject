@@ -8,8 +8,9 @@ import { GiftManage } from './components/manager/gift-manage/gift-manage';
 import { CardManage } from './components/manager/card-manage/card-manage';
 import { Basket } from './components/user/basket/basket';
 import { RandManage } from './components/manager/rand-manage/rand-manage';
+import { Home } from './components/home/home';
 export const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: Home },
   { path: 'login', component: LoginComponent },
   { path: 'user/home', component: UserHome },
   { path: 'user/basket', component: Basket },

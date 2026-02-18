@@ -8,12 +8,14 @@ import { CardModel } from '../../../Models/card';
 
 import { SpeedDialModule } from 'primeng/speeddial';
 import { MenuItem, MessageService } from 'primeng/api';
+import { MenuModule } from 'primeng/menu';
+import { ButtonModule } from 'primeng/button';
 
 // import { Product } from '@/domain/product';
 
 @Component({
   selector: 'app-card-manage',
-  imports: [TableModule, ToastModule,SpeedDialModule],
+  imports: [TableModule, ToastModule,SpeedDialModule,MenuModule,ButtonModule],
   providers: [MessageService],
   templateUrl: './card-manage.html',
   styleUrl: './card-manage.scss',
@@ -26,7 +28,7 @@ export class CardManage {
     // products!: Product[];
     selectedCard?: CardModel;
     cdr: ChangeDetectorRef = inject(ChangeDetectorRef); // הוספת ChangeDetectorRef
-    items: MenuItem[]|null  = null;
+    items: MenuItem[] = [];
     ngOnInit() {
           try {
             this.cardSrv.getAllCardsWithBuyers().subscribe({       

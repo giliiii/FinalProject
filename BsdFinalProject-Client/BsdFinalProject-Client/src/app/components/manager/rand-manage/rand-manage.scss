@@ -1,0 +1,75 @@
+/* ===== רקע כללי כמו שאר הקומפוננטות ===== */
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: rgba(255, 223, 186, 0.05); /* זהב עדין מאוד */
+  padding: 2rem;
+}
+
+/* ===== כפתור עליון ===== */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* כפתור זהב שקוף */
+::ng-deep .p-button-success {
+  background: transparent !important;
+  border: 2px solid #d4af37 !important;
+  color: #b7950b !important;
+  font-size: 1rem;
+  padding: 0.8rem 2rem !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease;
+}
+
+::ng-deep .p-button-success:hover {
+  background: rgba(212, 175, 55, 0.1) !important;
+}
+
+/* ===== טבלה ===== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+::ng-deep .p-table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+::ng-deep .p-table thead th {
+  background-color: rgba(255, 223, 186, 0.2);
+  text-align: center;
+  font-weight: 600;
+}
+
+::ng-deep .p-table tbody td {
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ===== כפתור הגרלה ===== */
+::ng-deep .p-button-info {
+  background: transparent !important;
+  border: 2px solid #d4af37 !important;
+  color: #b7950b !important;
+  border-radius: 10px !important;
+  padding: 0.5rem 1.2rem !important;
+  transition: all 0.3s ease;
+}
+
+::ng-deep .p-button-info:hover {
+  background: rgba(212, 175, 55, 0.1) !important;
+}
+
+/* ===== הדגשת הזוכה ===== */
+td:last-child {
+  font-weight: 600;
+  color: #b7950b;
+}

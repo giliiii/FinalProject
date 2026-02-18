@@ -51,7 +51,7 @@ namespace BsdFinalProject.Controllers
 
 
         [HttpPost]
-        //[Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult<GiftDto>> CreateNewGift(GiftDto giftDto)
         {
             try
@@ -72,7 +72,7 @@ namespace BsdFinalProject.Controllers
         }
 
         [HttpPut("{id:int}")]
-        //[Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult<GiftDto>> UpdateGift(int id, GiftDto giftDto)
         {
             if (id != giftDto.Id)

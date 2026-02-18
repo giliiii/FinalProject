@@ -155,7 +155,7 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
                         //הכנסת שמות התורמים למערך donorsName
                         this.donorsName = this.donors.map(donor => donor.Name);
                         //
-                        alert('Donors loaded: ' + JSON.stringify(this.donors));
+                        // alert('Donors loaded: ' + JSON.stringify(this.donors));
                         console.log('✓ Donors loaded:', this.donors);
                         setTimeout(() => {
                           this.cdr.detectChanges();
@@ -248,11 +248,12 @@ constructor(private cdr: ChangeDetectorRef, private messageService: MessageServi
 
        deleteGift (id:number){
           const headers = this.getHeaders(); 
-         console.log("headers",headers) 
+        //  console.log("headers",headers) 
          this.giftSrv.deleteGift(id, headers).subscribe({
           next: (response: boolean) => {
             console.log("Deleted gift with id:",id);
             this.gifts = this.gifts.filter(gift => gift.id !== id);
+             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'המתנה נמחקה בהצלחה' });
             this.ngOnInit();
           },
           error: (err) => {

@@ -1,47 +1,258 @@
-/* אחידות לכפתורים */
-::ng-deep .p-button {
-    min-width: 120px;
-    justify-content: center;
-    transition: transform 0.2s ease;
+/* ======================== */
+/* כללי ל-DataView ו-Grid */
+/* ======================== */
+  .btn-home {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border: 2px solid #ffdfba;
+    background-color: transparent;
+    color: #ffdfba;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: rgba(255, 223, 186, 0.1);
+      transform: scale(1.05);
+    }
+  }
+.gift-page {
+  min-height: 100vh;
+  width: 100%;
+  background-color: rgba(255, 223, 186, 0.05); // אותו רקע כמו דף הבית
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
-/* אפקט Hover לכרטיסיות המתנה */
-.gift-card {
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    border: 1px solid #e5e7eb;
-    background: #ffffff;
+/* אם יש מרווחים לבנים מה-body */
+:host {
+  display: block;
 }
 
-.gift-card:hover {
-    transform: translateY(-8px); /* ציפה למעלה */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06);
-    border-color: #007bff; /* שינוי עדין של צבע הגבול */
+::ng-deep body {
+  margin: 0;
+}
+/* רקע שקוף ל-DataView */
+::ng-deep .p-dataview-content {
+    background: transparent !important;
+    padding: 1rem 0;
 }
 
-/* סידור התמונה */
-.gift-image-container {
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
+/* Paginator במרכז */
+::ng-deep .p-paginator {
+    justify-content: center !important;
+    border: none !important;
+    margin: 1rem 0;
+}
+
+/* Grid של מתנות */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* מרכז את הכרטיסים */
+    gap: 2rem; /* רווח אופקי ואנכי בין הכרטיסים */
+    padding: 1rem;
+}
+
+/* כרטיס Grid */
+.card-fixed-height {
+    height: 420px;
+    display: flex;
+    flex-direction: column;
     border-radius: 8px;
-    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    transition: transform 0.2s;
+}
+.card-fixed-height:hover {
+    transform: translateY(-5px);
 }
 
-.gift-image-container img {
+/* תמונה בכרטיס Grid */
+.image-container-grid {
+    height: 180px;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+}
+.fixed-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 6px;
 }
 
-/* מירכוז הטפסים בדיאלוג */
-.form-field {
+/* כרטיס List */
+.list-item-fixed {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 160px;
+    padding: 1rem;
+    background-color: var(--surface-card);
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+}
+.image-container-list {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+/* טקסט */
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* הצמדת תוכן תחתון בסוף הכרטיס */
+.mt-auto {
+    margin-top: auto;
+}
+
+/* ======================== */
+/* פאנל וחיפושים */
+/* ======================== */
+
+/* כותרת הפאנל במרכז */
+::ng-deep .p-panel-header {
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+}
+::ng-deep .p-panel-header-content {
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* קונטיינר הפאנל */
+.sticky-filter-panel {
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* ריווח אחיד בין כל השדות בפאנל */
+.sticky-filter-panel .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    align-items: end;
+}
+
+/* כל שדה (label + input/select) */
+.sticky-filter-panel .flex-col {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+    gap: 0.25rem;
+    width: 100%;
 }
 
-.form-field label {
-    font-weight: 600;
-    color: #4b5563;
+/* תוויות */
+.sticky-filter-panel label {
+    text-align: right;
+    font-weight: 500;
+}
+
+/* input/select אחיד */
+.sticky-filter-panel input,
+.sticky-filter-panel .p-inputtext,
+.sticky-filter-panel .p-dropdown {
+    width: 100% !important;
+    text-align: right;
+    direction: rtl;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+/* input עם אייקון */
+.sticky-filter-panel .p-input-icon-right {
+    width: 100%;
+    display: block;
+}
+.sticky-filter-panel .p-input-icon-right input {
+    width: 100% !important;
+}
+
+/* כפתור נקה ממוקם במרכז */
+.sticky-filter-panel .clear-filters-btn {
+    justify-self: center;
+}
+
+/* דיאלוגים */
+::ng-deep .p-dialog .p-dialog-header {
+    text-align: center;
+    direction: rtl;
+}
+
+/* כפתורים במרכז */
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 1rem 0;
+}
+/* כפתור זהוב אחיד לכל הדף */
+.btn-gold-outline {
+  background-color: transparent !important;
+  color: #ffdfba !important;
+  border: 3px solid #ffdfba !important;
+  padding: 0.8rem 1.5rem !important;
+  font-size: 1rem !important;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-gold-outline:hover {
+  background-color: rgba(255, 223, 186, 0.2) !important;
+  transform: scale(1.03);
+}
+
+/* ניתן להחיל גם על כפתורי PrimeNG עם pButton */
+::ng-deep .p-button.btn-gold-outline {
+  background-color: transparent !important;
+  color: #ffdfba !important;
+  border: 3px solid #ffdfba !important;
+  border-radius: 8px !important;
+  font-weight: bold !important;
+  transition: all 0.3s !important;
+}
+
+::ng-deep .p-button.btn-gold-outline:hover {
+  background-color: rgba(255, 223, 186, 0.2) !important;
+  transform: scale(1.03);
+}
+
+/* DataView Header */
+::ng-deep .p-dataview-header {
+    direction: rtl;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+/* התאמה לרספונסיביות */
+@media (max-width: 768px) {
+    .card-fixed-height {
+        height: auto;
+    }
+    .image-container-grid {
+        height: 150px;
+    }
+    .list-item-fixed {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
